@@ -8,21 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		92DA6D23999248F707F44B62 /* Pods_Slash_Roll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFF4E395164C6ABB1AD2B4B9 /* Pods_Slash_Roll.framework */; };
+		D55A97E8276A4B5C003DC200 /* SRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A97E7276A4B5C003DC200 /* SRButton.swift */; };
+		D55A97EA276A6893003DC200 /* SRLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A97E9276A6893003DC200 /* SRLabel.swift */; };
+		D55A97EC276A6A7B003DC200 /* SRTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A97EB276A6A7B003DC200 /* SRTextField.swift */; };
 		D5DAFC3C276920C600520CE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5DAFC3B276920C600520CE9 /* GoogleService-Info.plist */; };
+		D5E82D6D276BD7C900DDCD73 /* SRScrollableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E82D6C276BD7C900DDCD73 /* SRScrollableViewController.swift */; };
 		D5E848BB2767F6FB0050F799 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E848BA2767F6FB0050F799 /* AppDelegate.swift */; };
 		D5E848BD2767F6FB0050F799 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E848BC2767F6FB0050F799 /* SceneDelegate.swift */; };
-		D5E848BF2767F6FB0050F799 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E848BE2767F6FB0050F799 /* AuthViewController.swift */; };
+		D5E848BF2767F6FB0050F799 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E848BE2767F6FB0050F799 /* AuthorizationViewController.swift */; };
 		D5E848C42767F6FC0050F799 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5E848C32767F6FC0050F799 /* Assets.xcassets */; };
 		D5E848C72767F6FC0050F799 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5E848C52767F6FC0050F799 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		20E451E4D485A54481B13234 /* Pods-Slash Roll.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slash Roll.release.xcconfig"; path = "Target Support Files/Pods-Slash Roll/Pods-Slash Roll.release.xcconfig"; sourceTree = "<group>"; };
+		D55A97E7276A4B5C003DC200 /* SRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRButton.swift; sourceTree = "<group>"; };
+		D55A97E9276A6893003DC200 /* SRLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRLabel.swift; sourceTree = "<group>"; };
+		D55A97EB276A6A7B003DC200 /* SRTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRTextField.swift; sourceTree = "<group>"; };
 		D5DAFC3B276920C600520CE9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D5E82D6C276BD7C900DDCD73 /* SRScrollableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRScrollableViewController.swift; sourceTree = "<group>"; };
 		D5E848B72767F6FB0050F799 /* Slash Roll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Slash Roll.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5E848BA2767F6FB0050F799 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5E848BC2767F6FB0050F799 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D5E848BE2767F6FB0050F799 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		D5E848BE2767F6FB0050F799 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		D5E848C32767F6FC0050F799 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5E848C62767F6FC0050F799 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5E848C82767F6FC0050F799 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,6 +67,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D55A97E5276A207A003DC200 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D5E848BE2767F6FB0050F799 /* AuthorizationViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D55A97E6276A48DE003DC200 /* Base Elements */ = {
+			isa = PBXGroup;
+			children = (
+				D55A97E7276A4B5C003DC200 /* SRButton.swift */,
+				D55A97E9276A6893003DC200 /* SRLabel.swift */,
+				D55A97EB276A6A7B003DC200 /* SRTextField.swift */,
+			);
+			path = "Base Elements";
+			sourceTree = "<group>";
+		};
+		D5E82D6B276BD6DC00DDCD73 /* Base Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D5E82D6C276BD7C900DDCD73 /* SRScrollableViewController.swift */,
+			);
+			name = "Base Controllers";
+			sourceTree = "<group>";
+		};
 		D5E848AE2767F6FB0050F799 = {
 			isa = PBXGroup;
 			children = (
@@ -82,7 +116,9 @@
 			children = (
 				D5E848BA2767F6FB0050F799 /* AppDelegate.swift */,
 				D5E848BC2767F6FB0050F799 /* SceneDelegate.swift */,
-				D5E848BE2767F6FB0050F799 /* AuthViewController.swift */,
+				D55A97E6276A48DE003DC200 /* Base Elements */,
+				D5E82D6B276BD6DC00DDCD73 /* Base Controllers */,
+				D55A97E5276A207A003DC200 /* Controllers */,
 				D5E848C32767F6FC0050F799 /* Assets.xcassets */,
 				D5E848C52767F6FC0050F799 /* LaunchScreen.storyboard */,
 				D5E848C82767F6FC0050F799 /* Info.plist */,
@@ -206,8 +242,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5E848BF2767F6FB0050F799 /* AuthViewController.swift in Sources */,
+				D55A97EA276A6893003DC200 /* SRLabel.swift in Sources */,
+				D5E848BF2767F6FB0050F799 /* AuthorizationViewController.swift in Sources */,
+				D55A97EC276A6A7B003DC200 /* SRTextField.swift in Sources */,
 				D5E848BB2767F6FB0050F799 /* AppDelegate.swift in Sources */,
+				D55A97E8276A4B5C003DC200 /* SRButton.swift in Sources */,
+				D5E82D6D276BD7C900DDCD73 /* SRScrollableViewController.swift in Sources */,
 				D5E848BD2767F6FB0050F799 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
