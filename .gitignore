@@ -1,6 +1,9 @@
 ## Gcc Patch
 /*.gcno
 
+## User settings
+xcuserdata/
+
 ### Xcode Patch ###
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
