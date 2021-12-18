@@ -17,7 +17,7 @@ class SRScrollableViewController: UIViewController {
     }()
 
     private(set) lazy var contentView = UIView()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureController()

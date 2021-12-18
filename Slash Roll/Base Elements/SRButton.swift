@@ -25,7 +25,7 @@ class SRButton: UIButton {
         }
 
         self.configuration = .filled()
-        self.configuration?.baseBackgroundColor = .blue
+        self.configuration?.baseBackgroundColor = SRColors.cherryColor
         self.configuration?.cornerStyle = .capsule
     }
 }

@@ -20,7 +20,7 @@ class SRLabel: UILabel {
     }
 
     private func configureLabelAppereance() {
-        self.textColor = .blue
+        self.textColor = SRColors.cherryLightColor
         self.snp.makeConstraints { make in
             make.height.equalTo(30)
         }

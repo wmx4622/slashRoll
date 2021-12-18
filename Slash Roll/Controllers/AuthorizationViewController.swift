@@ -47,7 +47,7 @@ class AuthorizationViewController: SRScrollableViewController {
     private lazy var forgotPasswordButton: UIButton = {
         let forgotPasswordButton = UIButton()
         let title = NSMutableAttributedString(string: "Забыли пароль?")
-        title.addAttributes([NSAttributedString.Key.underlineStyle : 1, NSAttributedString.Key.foregroundColor : UIColor(red: 0.941, green: 0.408, blue: 0.561, alpha: 1)], range: NSRange(location: 0, length: title.length))
+        title.addAttributes([NSAttributedString.Key.underlineStyle : 1, NSAttributedString.Key.foregroundColor : SRColors.cherryColor], range: NSRange(location: 0, length: title.length))
         forgotPasswordButton.setAttributedTitle(title, for: .normal)
         forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonDidTapped), for: .touchUpInside)
         return forgotPasswordButton
@@ -56,16 +56,17 @@ class AuthorizationViewController: SRScrollableViewController {
     private lazy var registerButton: UIButton = {
         let registerButton = UIButton()
         let title = NSMutableAttributedString(string: "Зарегистрироваться")
-        title.addAttributes([NSAttributedString.Key.foregroundColor: UIColor(red: 0.941, green: 0.408, blue: 0.561, alpha: 1)], range: NSRange(location: 0, length: title.length))
+        title.addAttributes([NSAttributedString.Key.foregroundColor: SRColors.cherryColor], range: NSRange(location: 0, length: title.length))
         registerButton.setAttributedTitle(title, for: .normal)
         registerButton.addTarget(self, action: #selector(registerButtonDidTap), for: .touchUpInside)
         return registerButton
     }()
 
+    //MARK: - View Controller Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = SRColors.whiteColor
         addSubviews()
         cofigureLayout()
         addKeyboardListener()
@@ -80,6 +81,8 @@ class AuthorizationViewController: SRScrollableViewController {
         self.contentView.addSubview(forgotPasswordButton)
         self.contentView.addSubview(registerButton)
     }
+
+    //MARK: - Layout Cofiguration
 
     private func cofigureLayout() {
 
@@ -110,6 +113,8 @@ class AuthorizationViewController: SRScrollableViewController {
             make.bottom.equalToSuperview().inset(20)
         }
     }
+
+    //MARK: - User Interaction
 
     private func addKeyboardListener() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)

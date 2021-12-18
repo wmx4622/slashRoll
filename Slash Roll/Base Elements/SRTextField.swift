@@ -24,7 +24,10 @@ class SRTextField: UITextField {
             make.height.equalTo(30)
         }
 
-        self.backgroundColor = .blue
+        self.backgroundColor = SRColors.cherryLightColor
         self.borderStyle = .roundedRect
+        self.clearButtonMode = .whileEditing
+        self.autocorrectionType = .no
+        self.tintColor = SRColors.whiteColor
     }
 }
