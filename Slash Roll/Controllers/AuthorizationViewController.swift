@@ -13,18 +13,6 @@ class AuthorizationViewController: SRScrollableViewController {
 
     //MARK: - GUI varibles
 
-    private lazy var emailLabel: SRLabel = {
-        let emailLabel = SRLabel()
-        emailLabel.text = "E-mail"
-        return emailLabel
-    }()
-
-    private lazy var passwordLabel: SRLabel = {
-        let passwordLabel = SRLabel()
-        passwordLabel.text = "Пароль"
-        return passwordLabel
-    }()
-
     private lazy var emailTextField: SRTextField = {
         let emailTextField = SRTextField()
         emailTextField.placeholder = "E-mail"
@@ -70,8 +58,6 @@ class AuthorizationViewController: SRScrollableViewController {
         addSubviews()
         cofigureLayout()
         addKeyboardListener()
-
-
     }
 
     private func addSubviews() {
@@ -87,7 +73,7 @@ class AuthorizationViewController: SRScrollableViewController {
     private func cofigureLayout() {
 
         self.emailTextField.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
+            make.top.equalToSuperview().offset(20)
             make.leading.trailing.equalToSuperview().inset(8)
         }
 

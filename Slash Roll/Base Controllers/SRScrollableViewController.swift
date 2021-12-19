@@ -17,7 +17,7 @@ class SRScrollableViewController: UIViewController {
     }()
 
     private(set) lazy var contentView = UIView()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureController()
@@ -39,5 +39,4 @@ class SRScrollableViewController: UIViewController {
             make.edges.equalTo(self.scrollView.contentLayoutGuide)
         }
     }
-    
 }
