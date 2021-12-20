@@ -57,7 +57,7 @@ class AuthorizationViewController: SRScrollableViewController {
         view.backgroundColor = SRColors.whiteColor
         addSubviews()
         cofigureLayout()
-        addKeyboardListener()
+        addKeyboardListener(lastViewFrame: registerButton.frame)
     }
 
     private func addSubviews() {
@@ -102,26 +102,6 @@ class AuthorizationViewController: SRScrollableViewController {
 
     //MARK: - User Interaction
 
-    private func addKeyboardListener() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-    }
-
-    @objc func keyboardWillHide(notification: Notification) {
-        scrollView.contentInset = .zero
-        scrollView.verticalScrollIndicatorInsets = .zero
-    }
-
-    @objc func keyboardWillShow(notification: Notification) {
-
-        guard let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-
-        scrollView.contentInset.bottom = keyboardFrame.height
-        scrollView.verticalScrollIndicatorInsets.bottom = keyboardFrame.height
-        scrollView.scrollRectToVisible(registerButton.frame.insetBy(dx: -8, dy: -8), animated: false)
-        scrollView.keyboardDismissMode = .interactive
-    }
-
     @objc private func logInButtonTapped() {
         print("Залогиниться")
     }
@@ -131,7 +111,7 @@ class AuthorizationViewController: SRScrollableViewController {
     }
 
     @objc private func registerButtonDidTap() {
-        print("Зарегистрироваться")
+        navigationController?.pushViewController(RegistrationViewController(), animated: true)
     }
 }
 

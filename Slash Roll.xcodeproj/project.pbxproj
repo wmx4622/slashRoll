@@ -14,6 +14,8 @@
 		D56610B7276E41CE00FEA131 /* SRColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56610B6276E41CE00FEA131 /* SRColors.swift */; };
 		D56610BA276EA2DC00FEA131 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56610B9276EA2DC00FEA131 /* RegistrationViewController.swift */; };
 		D5DAFC3C276920C600520CE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5DAFC3B276920C600520CE9 /* GoogleService-Info.plist */; };
+		D5E3EFF1276FB71800ECC6EF /* Extension + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E3EFF0276FB71800ECC6EF /* Extension + String.swift */; };
+		D5E3EFF3276FCA2400ECC6EF /* Extension + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E3EFF2276FCA2400ECC6EF /* Extension + UIViewController.swift */; };
 		D5E82D6D276BD7C900DDCD73 /* SRScrollableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E82D6C276BD7C900DDCD73 /* SRScrollableViewController.swift */; };
 		D5E848BB2767F6FB0050F799 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E848BA2767F6FB0050F799 /* AppDelegate.swift */; };
 		D5E848BD2767F6FB0050F799 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E848BC2767F6FB0050F799 /* SceneDelegate.swift */; };
@@ -30,6 +32,8 @@
 		D56610B6276E41CE00FEA131 /* SRColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRColors.swift; sourceTree = "<group>"; };
 		D56610B9276EA2DC00FEA131 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		D5DAFC3B276920C600520CE9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D5E3EFF0276FB71800ECC6EF /* Extension + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + String.swift"; sourceTree = "<group>"; };
+		D5E3EFF2276FCA2400ECC6EF /* Extension + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIViewController.swift"; sourceTree = "<group>"; };
 		D5E82D6C276BD7C900DDCD73 /* SRScrollableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRScrollableViewController.swift; sourceTree = "<group>"; };
 		D5E848B72767F6FB0050F799 /* Slash Roll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Slash Roll.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5E848BA2767F6FB0050F799 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +110,15 @@
 			path = "Base Controllers";
 			sourceTree = "<group>";
 		};
+		D5E3EFEF276FB6B200ECC6EF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D5E3EFF0276FB71800ECC6EF /* Extension + String.swift */,
+				D5E3EFF2276FCA2400ECC6EF /* Extension + UIViewController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		D5E848AE2767F6FB0050F799 = {
 			isa = PBXGroup;
 			children = (
@@ -133,8 +146,9 @@
 				D56610B8276E6FEB00FEA131 /* Base Controllers */,
 				D55A97E5276A207A003DC200 /* Controllers */,
 				D56610B5276E414A00FEA131 /* Constants */,
-				D5E848C52767F6FC0050F799 /* LaunchScreen.storyboard */,
+				D5E3EFEF276FB6B200ECC6EF /* Extensions */,
 				D5E848C32767F6FC0050F799 /* Assets.xcassets */,
+				D5E848C52767F6FC0050F799 /* LaunchScreen.storyboard */,
 				D5E848C82767F6FC0050F799 /* Info.plist */,
 				D5DAFC3B276920C600520CE9 /* GoogleService-Info.plist */,
 			);
@@ -256,12 +270,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5E3EFF1276FB71800ECC6EF /* Extension + String.swift in Sources */,
 				D55A97EA276A6893003DC200 /* SRLabel.swift in Sources */,
 				D5E848BF2767F6FB0050F799 /* AuthorizationViewController.swift in Sources */,
 				D55A97EC276A6A7B003DC200 /* SRTextField.swift in Sources */,
 				D56610BA276EA2DC00FEA131 /* RegistrationViewController.swift in Sources */,
 				D5E848BB2767F6FB0050F799 /* AppDelegate.swift in Sources */,
 				D56610B7276E41CE00FEA131 /* SRColors.swift in Sources */,
+				D5E3EFF3276FCA2400ECC6EF /* Extension + UIViewController.swift in Sources */,
 				D55A97E8276A4B5C003DC200 /* SRButton.swift in Sources */,
 				D5E82D6D276BD7C900DDCD73 /* SRScrollableViewController.swift in Sources */,
 				D5E848BD2767F6FB0050F799 /* SceneDelegate.swift in Sources */,

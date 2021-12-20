@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Firebase
 
 class RegistrationViewController: SRScrollableViewController {
 
@@ -45,7 +45,7 @@ class RegistrationViewController: SRScrollableViewController {
     private lazy var registrationButton: SRButton = {
         let registrationButton = SRButton()
         registrationButton.configuration?.title = "Зарегистривоваться"
-        registrationButton.addTarget(self, action: #selector(finishRegistration), for: .touchUpInside)
+        registrationButton.addTarget(self, action: #selector(registrationButtonTapped), for: .touchUpInside)
         return registrationButton
     }()
 
@@ -56,7 +56,7 @@ class RegistrationViewController: SRScrollableViewController {
         view.backgroundColor = SRColors.whiteColor
         addSubviews()
         configureLayout()
-        addKeyboardListener()
+        addKeyboardListener(lastViewFrame: registrationButton.frame)
     }
 
     private func addSubviews() {
@@ -104,27 +104,51 @@ class RegistrationViewController: SRScrollableViewController {
     }
     //MARK: - User Interaction
 
-    private func addKeyboardListener() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    @objc private func registrationButtonTapped() {
+        guard isRegistrationInformationValid(),
+              let email = emailTextField.text,
+              let password = passwordTextField.text,
+              let name = nameTextField.text,
+              let surname = surnameTextField.text else { return }
+
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] (createUserResult, error) in
+            if let error = error {
+                self?.showAlert(title: "Ошибка", message: error.localizedDescription)
+            } else if let createUserResult = createUserResult {
+                let fullname = "\(name) \(surname)"
+                let changeRequest = createUserResult.user.createProfileChangeRequest()
+                changeRequest.displayName = fullname
+                changeRequest.commitChanges { error in
+                    if let error = error {
+                        self?.showAlert(title: "Ошибка", message: error.localizedDescription)
+                    }
+                }
+            }
+        }
     }
 
-    @objc func keyboardWillHide(notification: Notification) {
-        scrollView.contentInset = .zero
-        scrollView.verticalScrollIndicatorInsets = .zero
-    }
+    //MARK: - Validate Sign In Information
 
-    @objc func keyboardWillShow(notification: Notification) {
+    private func isRegistrationInformationValid() -> Bool {
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text,
+              let confirmPassword = confirmPasswordTextField.text else { return false }
 
-        guard let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        if !email.isEmailValid() {
+            showAlert(title: "Ошибка", message: "Неверный формат e-mail адреса")
+            return false
+        }
 
-        scrollView.contentInset.bottom = keyboardFrame.height
-        scrollView.verticalScrollIndicatorInsets.bottom = keyboardFrame.height
-        scrollView.scrollRectToVisible(registrationButton.frame.insetBy(dx: -8, dy: -8), animated: false)
-        scrollView.keyboardDismissMode = .interactive
-    }
+        if !password.isPasswordValid() {
+            showAlert(title: "Ошибка", message: "Пароль должен содержать от 8 знаков латинского алфавита, одну большую букву и спецсимвол")
+            return false
+        }
 
-    @objc private func finishRegistration() {
-        print("Закончить регистрацию")
+        if password != confirmPassword {
+            showAlert(title: "Ошибка", message: "Пароли не совпадают")
+            return false
+        }
+
+        return true
     }
 }
