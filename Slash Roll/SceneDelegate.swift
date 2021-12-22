@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -22,6 +23,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let authorizationViewController = AuthorizationViewController()
 
         let authorizationNavigationController = UINavigationController(rootViewController: authorizationViewController)
+
+        authorizationViewController.navigationController?.navigationBar.tintColor = SRColors.cherryColor
+        authorizationViewController.navigationController?.navigationBar.barTintColor = SRColors.cherryLightColor
+        
 
         window.rootViewController = authorizationNavigationController
         window.makeKeyAndVisible()

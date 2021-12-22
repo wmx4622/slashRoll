@@ -5,8 +5,8 @@
 //  Created by Voxar on 18.12.21.
 //
 
-import Foundation
 import UIKit
+
 
 struct SRColors {
     static let cherryLightColor = UIColor(red: 240/255, green: 107/255, blue: 143/255, alpha: 1)

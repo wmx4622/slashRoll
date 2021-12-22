@@ -11,24 +11,28 @@ import SnapKit
 
 class AuthorizationViewController: SRScrollableViewController {
 
-    //MARK: - GUI varibles
+    //MARK: - GUI variables
 
     private lazy var emailTextField: SRTextField = {
         let emailTextField = SRTextField()
         emailTextField.placeholder = "E-mail"
+        emailTextField.returnKeyType = .next
+        emailTextField.keyboardType = .emailAddress
         return emailTextField
     }()
 
     private lazy var passwordTextField: SRTextField = {
         let passwordTextField = SRTextField()
         passwordTextField.placeholder = "Пароль"
+        passwordTextField.isSecureTextEntry = true
+        passwordTextField.returnKeyType = .join
         return passwordTextField
     }()
 
     private lazy var logInButton: SRButton = {
         let logInButton = SRButton()
         logInButton.configuration?.title = "Войти"
-        logInButton.addTarget(self, action: #selector(logInButtonTapped), for: .touchUpInside)
+        logInButton.addTarget(self, action: #selector(logInButtonDidTapped), for: .touchUpInside)
         return logInButton
     }()
 
@@ -61,39 +65,39 @@ class AuthorizationViewController: SRScrollableViewController {
     }
 
     private func addSubviews() {
-        self.contentView.addSubview(emailTextField)
-        self.contentView.addSubview(passwordTextField)
-        self.contentView.addSubview(logInButton)
-        self.contentView.addSubview(forgotPasswordButton)
-        self.contentView.addSubview(registerButton)
+        contentView.addSubview(emailTextField)
+        contentView.addSubview(passwordTextField)
+        contentView.addSubview(logInButton)
+        contentView.addSubview(forgotPasswordButton)
+        contentView.addSubview(registerButton)
     }
 
     //MARK: - Layout Cofiguration
 
     private func cofigureLayout() {
 
-        self.emailTextField.snp.makeConstraints { make in
+        emailTextField.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.trailing.equalToSuperview().inset(8)
         }
 
-        self.passwordTextField.snp.makeConstraints { make in
+        passwordTextField.snp.makeConstraints { make in
             make.top.equalTo(emailTextField.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview().inset(8)
         }
 
-        self.logInButton.snp.makeConstraints { make in
+        logInButton.snp.makeConstraints { make in
             make.top.equalTo(passwordTextField.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(8)
 
         }
 
-        self.forgotPasswordButton.snp.makeConstraints { make in
+        forgotPasswordButton.snp.makeConstraints { make in
             make.top.equalTo(logInButton.snp.bottom).offset(8)
             make.centerX.equalTo(contentView.snp.centerX)
         }
 
-        self.registerButton.snp.makeConstraints { make in
+        registerButton.snp.makeConstraints { make in
             make.top.equalTo(forgotPasswordButton.snp.bottom).offset(8)
             make.centerX.equalTo(contentView.snp.centerX)
             make.bottom.equalToSuperview().inset(20)
@@ -102,16 +106,18 @@ class AuthorizationViewController: SRScrollableViewController {
 
     //MARK: - User Interaction
 
-    @objc private func logInButtonTapped() {
-        print("Залогиниться")
+    @objc private func logInButtonDidTapped() {
+        
     }
 
     @objc private func forgotPasswordButtonDidTapped() {
-        print("Забыли пароль")
+        navigationController?.pushViewController(RestorePasswordViewController(), animated: true)
     }
 
     @objc private func registerButtonDidTap() {
         navigationController?.pushViewController(RegistrationViewController(), animated: true)
     }
+
 }
 
+//MARK: - Delegates

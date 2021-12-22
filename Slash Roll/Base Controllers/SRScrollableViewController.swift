@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 
+
 class SRScrollableViewController: UIViewController {
 
     //MARK: - GUI varibles
@@ -24,24 +25,24 @@ class SRScrollableViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureController()
+        configureController()
     }
     //MARK: - Controller Cofiguration
 
     private func configureController() {
 
-        self.view.addSubview(self.scrollView)
+        view.addSubview(scrollView)
 
-        self.scrollView.snp.makeConstraints { make in
-            make.edges.equalTo(self.view.safeAreaLayoutGuide.snp.edges)
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide.snp.edges)
         }
 
-        self.scrollView.alwaysBounceVertical = true
-        self.scrollView.addSubview(contentView)
+        scrollView.alwaysBounceVertical = true
+        scrollView.addSubview(contentView)
 
-        self.contentView.snp.makeConstraints { make in
-            make.width.equalTo(self.view.safeAreaLayoutGuide.snp.width)
-            make.edges.equalTo(self.scrollView.contentLayoutGuide)
+        contentView.snp.makeConstraints { make in
+            make.width.equalTo(view.safeAreaLayoutGuide.snp.width)
+            make.edges.equalTo(scrollView.contentLayoutGuide)
         }
     }
 

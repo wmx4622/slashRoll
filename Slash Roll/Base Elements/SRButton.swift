@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SnapKit
+
 
 class SRButton: UIButton {
     
@@ -24,8 +26,8 @@ class SRButton: UIButton {
             make.height.equalTo(30)
         }
 
-        self.configuration = .filled()
-        self.configuration?.baseBackgroundColor = SRColors.cherryColor
-        self.configuration?.cornerStyle = .capsule
+        configuration = .filled()
+        configuration?.baseBackgroundColor = SRColors.cherryColor
+        configuration?.cornerStyle = .capsule
     }
 }

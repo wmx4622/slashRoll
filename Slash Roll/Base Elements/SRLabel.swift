@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 
 class SRLabel: UILabel {
@@ -20,8 +21,8 @@ class SRLabel: UILabel {
     }
 
     private func configureLabelAppereance() {
-        self.textColor = SRColors.cherryLightColor
-        self.snp.makeConstraints { make in
+        textColor = SRColors.cherryLightColor
+        snp.makeConstraints { make in
             make.height.equalTo(30)
         }
     }

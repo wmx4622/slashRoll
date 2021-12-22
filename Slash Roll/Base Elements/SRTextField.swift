@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 
 class SRTextField: UITextField {
@@ -20,14 +21,14 @@ class SRTextField: UITextField {
     }
 
     private func configureTextFieldAppereance() {
-        self.snp.makeConstraints { make in
+        snp.makeConstraints { make in
             make.height.equalTo(30)
         }
 
-        self.backgroundColor = SRColors.cherryLightColor
-        self.borderStyle = .roundedRect
-        self.clearButtonMode = .whileEditing
-        self.autocorrectionType = .no
-        self.tintColor = SRColors.whiteColor
+        backgroundColor = SRColors.cherryLightColor
+        borderStyle = .roundedRect
+        clearButtonMode = .whileEditing
+        autocorrectionType = .no
+        tintColor = SRColors.whiteColor
     }
 }

@@ -7,45 +7,59 @@
 
 import UIKit
 import Firebase
+import SnapKit
+
 
 class RegistrationViewController: SRScrollableViewController {
 
-    //MARK: - GUI varibles
+    //MARK: - GUI variables
 
     private lazy var nameTextField: SRTextField = {
         let nameTextField = SRTextField()
         nameTextField.placeholder = "Имя"
+        nameTextField.returnKeyType = .next
+        nameTextField.delegate = self
         return nameTextField
     }()
 
     private lazy var surnameTextField: SRTextField = {
         let surnameTextField = SRTextField()
         surnameTextField.placeholder = "Фамилия"
+        surnameTextField.returnKeyType = .next
+        surnameTextField.delegate = self
         return surnameTextField
     }()
 
     private lazy var emailTextField: SRTextField = {
         let emailTextField = SRTextField()
         emailTextField.placeholder = "E-mail"
+        emailTextField.returnKeyType = .next
+        emailTextField.delegate = self
         return emailTextField
     }()
 
     private lazy var passwordTextField: SRTextField = {
         let passwordTextField = SRTextField()
         passwordTextField.placeholder = "Пароль"
+        passwordTextField.isSecureTextEntry = true
+        passwordTextField.returnKeyType = .next
+        passwordTextField.delegate = self
         return passwordTextField
     }()
 
     private lazy var confirmPasswordTextField: SRTextField = {
         let confirmPasswordTextField = SRTextField()
         confirmPasswordTextField.placeholder = "Подтвердите пароль"
+        confirmPasswordTextField.isSecureTextEntry = true
+        confirmPasswordTextField.returnKeyType = .join
+        confirmPasswordTextField.delegate = self
         return confirmPasswordTextField
     }()
 
     private lazy var registrationButton: SRButton = {
         let registrationButton = SRButton()
         registrationButton.configuration?.title = "Зарегистривоваться"
-        registrationButton.addTarget(self, action: #selector(registrationButtonTapped), for: .touchUpInside)
+        registrationButton.addTarget(self, action: #selector(registerButtonDidTapped), for: .touchUpInside)
         return registrationButton
     }()
 
@@ -71,40 +85,45 @@ class RegistrationViewController: SRScrollableViewController {
     //MARK: - Layout Configuration
 
     private func configureLayout() {
-        self.nameTextField.snp.makeConstraints { make in
+        nameTextField.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.trailing.equalToSuperview().inset(8)
         }
 
-        self.surnameTextField.snp.makeConstraints { make in
+        surnameTextField.snp.makeConstraints { make in
             make.top.equalTo(nameTextField.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview().inset(8)
         }
 
-        self.emailTextField.snp.makeConstraints { make in
+        emailTextField.snp.makeConstraints { make in
             make.top.equalTo(surnameTextField.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview().inset(8)
         }
 
-        self.passwordTextField.snp.makeConstraints { make in
+        passwordTextField.snp.makeConstraints { make in
             make.top.equalTo(emailTextField.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview().inset(8)
         }
 
-        self.confirmPasswordTextField.snp.makeConstraints { make in
+        confirmPasswordTextField.snp.makeConstraints { make in
             make.top.equalTo(passwordTextField.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview().inset(8)
         }
 
-        self.registrationButton.snp.makeConstraints { make in
+        registrationButton.snp.makeConstraints { make in
             make.top.equalTo(confirmPasswordTextField.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(8)
             make.bottom.equalToSuperview().inset(20)
         }
     }
+    
     //MARK: - User Interaction
 
-    @objc private func registrationButtonTapped() {
+    @objc private func registerButtonDidTapped() {
+        finishRegistation()
+    }
+
+    private func finishRegistation() {
         guard isRegistrationInformationValid(),
               let email = emailTextField.text,
               let password = passwordTextField.text,
@@ -115,9 +134,9 @@ class RegistrationViewController: SRScrollableViewController {
             if let error = error {
                 self?.showAlert(title: "Ошибка", message: error.localizedDescription)
             } else if let createUserResult = createUserResult {
-                let fullname = "\(name) \(surname)"
+                let fullName = "\(name) \(surname)"
                 let changeRequest = createUserResult.user.createProfileChangeRequest()
-                changeRequest.displayName = fullname
+                changeRequest.displayName = fullName
                 changeRequest.commitChanges { error in
                     if let error = error {
                         self?.showAlert(title: "Ошибка", message: error.localizedDescription)
@@ -127,7 +146,7 @@ class RegistrationViewController: SRScrollableViewController {
         }
     }
 
-    //MARK: - Validate Sign In Information
+    //MARK: - Validate Sign Up Information
 
     private func isRegistrationInformationValid() -> Bool {
         guard let email = emailTextField.text,
@@ -140,7 +159,7 @@ class RegistrationViewController: SRScrollableViewController {
         }
 
         if !password.isPasswordValid() {
-            showAlert(title: "Ошибка", message: "Пароль должен содержать от 8 знаков латинского алфавита, одну большую букву и спецсимвол")
+            showAlert(title: "Ошибка", message: "Пароль должен содержать от 8 знаков только латинского алфавита, одну большую букву и спецсимвол")
             return false
         }
 
@@ -148,6 +167,33 @@ class RegistrationViewController: SRScrollableViewController {
             showAlert(title: "Ошибка", message: "Пароли не совпадают")
             return false
         }
+
+        return true
+    }
+}
+
+extension RegistrationViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case nameTextField:
+            surnameTextField.becomeFirstResponder()
+
+        case surnameTextField:
+            emailTextField.becomeFirstResponder()
+
+        case emailTextField:
+            passwordTextField.becomeFirstResponder()
+
+        case passwordTextField:
+            confirmPasswordTextField.becomeFirstResponder()
+
+        case confirmPasswordTextField:
+            finishRegistation()
+
+        default:
+            break
+        }
+
 
         return true
     }
