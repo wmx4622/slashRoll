@@ -34,7 +34,7 @@ class SRScrollableViewController: UIViewController {
         view.addSubview(scrollView)
 
         scrollView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide.snp.edges)
+            make.edges.equalTo(view.snp.edges)
         }
 
         scrollView.alwaysBounceVertical = true

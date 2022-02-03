@@ -121,3 +121,20 @@ class AuthorizationViewController: SRScrollableViewController {
 }
 
 //MARK: - Delegates
+
+extension AuthorizationViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case emailTextField:
+            passwordTextField.becomeFirstResponder()
+
+        case passwordTextField:
+            logInButtonDidTapped()
+            
+        default:
+            break
+        }
+
+        return true
+    }
+}

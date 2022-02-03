@@ -194,7 +194,6 @@ extension RegistrationViewController: UITextFieldDelegate {
             break
         }
 
-
         return true
     }
 }
