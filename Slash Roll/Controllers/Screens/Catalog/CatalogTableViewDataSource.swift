@@ -7,30 +7,24 @@
 
 import UIKit
 
+
 class CatalogTableViewDataSource: NSObject, UITableViewDataSource {
 
     typealias City = String
 
-    private lazy var cities: [City] = ["Минск", "Москва", "Лондон","Минск", "Москва", "Лондон","Минск", "Москва", "Лондон","Минск", "Москва", "Лондон","Минск", "Москва", "Лондон","Минск", "Москва", "Лондон","Минск", "Москва", "Лондон","Минск", "Москва", "Лондон","Минск", "Москва", "Лондон","Минск", "Москва", "Лондон","Минск", "Москва", "Лондон","Минск", "Москва", "Лондон","Минск", "Москва", "Лондон","Минск", "Москва", "Лондон","Минск", "Москва", "Лондон","Минск", "Москва", "Лондон","Минск", "Москва", "Лондон","Минск", "Москва", "Лондон","Минск", "Москва", "Лондон","Минск", "Москва", "Лондон",]
+    private lazy var Products: [SRProduct] = [SRProduct.makeExampleProduct()]
 
-    func getCity(withID id: Int) -> City {
-        cities[id]
-    }
-
-    func removeCity(withID id: Int) {
-        cities.remove(at: id)
+    func getProduct(withID id: Int) -> SRProduct {
+        Products[id]
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        cities.count
+        Products.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        var configurator = cell.defaultContentConfiguration()
-        configurator.text = cities[indexPath.row]
-        cell.contentConfiguration = configurator
-        cell.accessoryType = .disclosureIndicator
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CatalogTableViewCell.reuseIdentifier , for: indexPath) as? CatalogTableViewCell else { return UITableViewCell() }
+        cell.setCell(product: Products[indexPath.row])
         return cell
     }
 }
