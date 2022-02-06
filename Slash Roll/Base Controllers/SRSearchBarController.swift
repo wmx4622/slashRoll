@@ -13,7 +13,7 @@ class SRSearchBarController: UISearchController {
         super.init(searchResultsController: searchResultsController)
         obscuresBackgroundDuringPresentation = false
         searchBar.searchTextField.backgroundColor = SRColors.cherryLightColor
-        self.searchBar.searchTextField.tintColor = SRColors.whiteColor
+        searchBar.searchTextField.tintColor = SRColors.whiteColor
 
     }
 

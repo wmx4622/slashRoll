@@ -26,9 +26,16 @@ class SRTextField: UITextField {
         }
 
         backgroundColor = SRColors.cherryLightColor
+        attributedPlaceholder = NSAttributedString(
+            string: " ",
+            attributes: [
+                NSAttributedString.Key.foregroundColor:SRColors.whiteColor
+            ]
+        )
         borderStyle = .roundedRect
         clearButtonMode = .whileEditing
         autocorrectionType = .no
         tintColor = SRColors.whiteColor
+        textColor = SRColors.whiteColor
     }
 }

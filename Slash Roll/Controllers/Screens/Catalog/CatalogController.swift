@@ -10,7 +10,6 @@ import UIKit
 
 class CatalogController: UIViewController {
 
-
     private lazy var tableViewDataSource = CatalogTableViewDataSource()
 
     //MARK: - GUI varibles
@@ -57,9 +56,7 @@ class CatalogController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
-
         view.backgroundColor = SRColors.whiteColor
-
     }
 
     override func viewWillLayoutSubviews() {
@@ -71,6 +68,7 @@ class CatalogController: UIViewController {
         view.addSubview(tableView)
 //        view.addSubview(catalogNavigationView)
         navigationItem.searchController = searchBarController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
 }
 

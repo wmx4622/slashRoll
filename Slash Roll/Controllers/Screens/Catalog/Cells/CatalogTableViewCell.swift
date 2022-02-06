@@ -53,8 +53,6 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
         configureLayout()
     }
 
-
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -97,7 +95,7 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
     func setCell(product: SRProduct) {
         self.productImageView.image = self.placeholderImage
         self.productNameLabel.text = product.productName
-        self.countWeightLabel.text = "\(product.productCount) штук \u{005C} \(product.ProductWeight) грамм"
+        self.countWeightLabel.text = "\(product.productCount) штук \u{005C} \(product.productWeight) грамм"
         self.productPriceLabel.text = "Цена \(product.productPrice)"
     }
 }
