@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		92DA6D23999248F707F44B62 /* Pods_Slash_Roll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFF4E395164C6ABB1AD2B4B9 /* Pods_Slash_Roll.framework */; };
 		D5541EE82772309F0075BD86 /* RestorePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */; };
+		D557A61327B033E400CC6EC6 /* SRSearchBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557A61227B033E400CC6EC6 /* SRSearchBarController.swift */; };
 		D55A97E8276A4B5C003DC200 /* SRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A97E7276A4B5C003DC200 /* SRButton.swift */; };
 		D55A97EA276A6893003DC200 /* SRLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A97E9276A6893003DC200 /* SRLabel.swift */; };
 		D55A97EC276A6A7B003DC200 /* SRTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A97EB276A6A7B003DC200 /* SRTextField.swift */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		20E451E4D485A54481B13234 /* Pods-Slash Roll.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slash Roll.release.xcconfig"; path = "Target Support Files/Pods-Slash Roll/Pods-Slash Roll.release.xcconfig"; sourceTree = "<group>"; };
 		D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewController.swift; sourceTree = "<group>"; };
+		D557A61227B033E400CC6EC6 /* SRSearchBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRSearchBarController.swift; sourceTree = "<group>"; };
 		D55A97E7276A4B5C003DC200 /* SRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRButton.swift; sourceTree = "<group>"; };
 		D55A97E9276A6893003DC200 /* SRLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRLabel.swift; sourceTree = "<group>"; };
 		D55A97EB276A6A7B003DC200 /* SRTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRTextField.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				D5E82D6C276BD7C900DDCD73 /* SRScrollableViewController.swift */,
+				D557A61227B033E400CC6EC6 /* SRSearchBarController.swift */,
 			);
 			path = "Base Controllers";
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				D56610BA276EA2DC00FEA131 /* RegistrationViewController.swift in Sources */,
 				D56B57AF27AF3C8700DB097D /* CatalogNavigationView.swift in Sources */,
 				D5E848BB2767F6FB0050F799 /* AppDelegate.swift in Sources */,
+				D557A61327B033E400CC6EC6 /* SRSearchBarController.swift in Sources */,
 				D56610B7276E41CE00FEA131 /* SRColors.swift in Sources */,
 				D5732E9A27ADE7020012C049 /* ReusableCellProtocol.swift in Sources */,
 				D5E3EFF3276FCA2400ECC6EF /* Extension + UIViewController.swift in Sources */,
