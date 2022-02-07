@@ -10,7 +10,8 @@ import UIKit
 
 class CatalogTableViewDataSource: NSObject, UITableViewDataSource {
 
-    private lazy var productsFromDatabase = [SRProduct(productName: "zz", productCount: 20, productWeight: 200, productPrice: 30), SRProduct.makeExampleProduct()]//Array(repeating: SRProduct.makeExampleProduct(), count: 20) // вернуть lazy
+    private lazy var productsFromDatabase = [SRProduct(productName: "Имбирь ролл", productCount: 20, productWeight: 200, productPrice: 30, productType: .roll), SRProduct.init(productName: "Имбирь", productCount: 1, productWeight: 20, productPrice: 3, productType: .snack), SRProduct(productName: "Шеф-ролл", productCount: 5, productWeight: 100, productPrice: 15, productType: .roll), SRProduct(productName: "Соевый соус", productCount: 1, productWeight: 90, productPrice: 6, productType: .snack)]
+
     private lazy var shownProducts: [SRProduct] = productsFromDatabase
 
     func getProduct(withID id: Int) -> SRProduct {
@@ -27,12 +28,24 @@ class CatalogTableViewDataSource: NSObject, UITableViewDataSource {
         return cell
     }
 
-    func filterProducts(by name: String) {
-        if name.isEmpty {
+    func filterProducts(by name: String, productCategoryNumber: Int) {
+        switch (name.isEmpty, productCategoryNumber == 0) {
+        case (true, true):
             shownProducts = productsFromDatabase
-        } else {
+
+        case(true, false):
+            shownProducts = productsFromDatabase.filter { product in
+                product.productType.rawValue == productCategoryNumber
+            }
+            
+        case(false, true):
             shownProducts = productsFromDatabase.filter { product in
                 product.productName.lowercased().contains(name.lowercased())
+            }
+
+        case(false, false):
+            shownProducts = productsFromDatabase.filter { product in
+                product.productName.lowercased().contains(name.lowercased()) && product.productType.rawValue == productCategoryNumber
             }
         }
     }

@@ -33,12 +33,13 @@ class CatalogController: UIViewController {
     private lazy var searchBarController: SRSearchBarController = {
         let searchBarController = SRSearchBarController(searchResultsController: nil)
         searchBarController.searchResultsUpdater = self
+        searchBarController.searchBar.delegate = self
         searchBarController.searchBar.sizeToFit()
-        searchBarController.searchBar.scopeButtonTitles = ["Всё", "Роллы", "Сеты"]
+        searchBarController.searchBar.scopeButtonTitles = ["Всё", "Роллы", "Закуски"]
         searchBarController.searchBar.setScopeBarButtonTitleTextAttributes([NSAttributedString.Key.foregroundColor : SRColors.cherryLightColor], for: .normal)
         searchBarController.searchBar.setScopeBarButtonTitleTextAttributes([NSAttributedString.Key.foregroundColor : SRColors.cherryColor], for: .selected)
         searchBarController.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(
-            string: "Найдите роллы вам по душе",
+            string: "Найдите то, что вам по душе",
             attributes: [
                 NSAttributedString.Key.foregroundColor: SRColors.whiteColor
             ]
@@ -83,6 +84,7 @@ class CatalogController: UIViewController {
     }
 }
 
+//MARK: - Delegates
 extension CatalogController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -93,9 +95,15 @@ extension CatalogController: UITableViewDelegate {
 extension CatalogController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchedText = searchController.searchBar.text else { return }
-        tableViewDataSource.filterProducts(by: searchedText)
+        let scope = searchController.searchBar.selectedScopeButtonIndex
+        tableViewDataSource.filterProducts(by: searchedText, productCategoryNumber: scope)
         tableView.reloadData()
     }
+}
 
-
+extension CatalogController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        guard let searchedText = searchBar.text else { return }
+        tableViewDataSource.filterProducts(by: searchedText, productCategoryNumber: selectedScope)
+    }
 }
