@@ -31,10 +31,21 @@ class CatalogController: UIViewController {
     }()
 
     private lazy var searchBarController: SRSearchBarController = {
-        let seachBarController = SRSearchBarController(searchResultsController: nil)
-        seachBarController.searchResultsUpdater = self
-        seachBarController.searchBar.placeholder = "Найдите роллы вам по душе"
-        return seachBarController
+        let searchBarController = SRSearchBarController(searchResultsController: nil)
+        searchBarController.searchResultsUpdater = self
+        searchBarController.searchBar.sizeToFit()
+        searchBarController.searchBar.scopeButtonTitles = ["Всё", "Роллы", "Сеты"]
+        searchBarController.searchBar.setScopeBarButtonTitleTextAttributes([NSAttributedString.Key.foregroundColor : SRColors.cherryLightColor], for: .normal)
+        searchBarController.searchBar.setScopeBarButtonTitleTextAttributes([NSAttributedString.Key.foregroundColor : SRColors.cherryColor], for: .selected)
+        searchBarController.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(
+            string: "Найдите роллы вам по душе",
+            attributes: [
+                NSAttributedString.Key.foregroundColor: SRColors.whiteColor
+            ]
+        )
+        
+
+        return searchBarController
     }()
 
     //MARK: - Layout Configuration

@@ -14,6 +14,7 @@ class SRSearchBarController: UISearchController {
         obscuresBackgroundDuringPresentation = false
         searchBar.searchTextField.backgroundColor = SRColors.cherryLightColor
         searchBar.searchTextField.tintColor = SRColors.whiteColor
+        searchBar.searchTextField.textColor = SRColors.whiteColor
 
     }
 

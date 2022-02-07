@@ -29,7 +29,7 @@ class SRTextField: UITextField {
         attributedPlaceholder = NSAttributedString(
             string: " ",
             attributes: [
-                NSAttributedString.Key.foregroundColor:SRColors.whiteColor
+                NSAttributedString.Key.foregroundColor: SRColors.whiteColor
             ]
         )
         borderStyle = .roundedRect
