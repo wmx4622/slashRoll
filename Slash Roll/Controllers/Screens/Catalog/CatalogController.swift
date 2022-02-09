@@ -6,9 +6,10 @@
 //
 
 import UIKit
-
+import Firebase
 
 class CatalogController: UIViewController {
+    //MARK: - Properties
 
     private lazy var tableViewDataSource = CatalogTableViewDataSource()
 
@@ -19,7 +20,7 @@ class CatalogController: UIViewController {
         return catalogNavigationView
     }()
 
-    private lazy var tableView: SRTableView = {
+     lazy var tableView: SRTableView = {
         let tableView = SRTableView(frame: view.frame, style: .grouped)
         tableView.dataSource = tableViewDataSource
         tableView.delegate = self
@@ -44,8 +45,6 @@ class CatalogController: UIViewController {
                 NSAttributedString.Key.foregroundColor: SRColors.whiteColor
             ]
         )
-        
-
         return searchBarController
     }()
 
@@ -63,12 +62,15 @@ class CatalogController: UIViewController {
 //        }
     }
 
-    //MARK: View Controller Life Cycle
+    //MARK: - View Controller Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
         view.backgroundColor = SRColors.whiteColor
+        tableViewDataSource.loadProductList { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
 
     override func viewWillLayoutSubviews() {
@@ -85,6 +87,7 @@ class CatalogController: UIViewController {
 }
 
 //MARK: - Delegates
+
 extension CatalogController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

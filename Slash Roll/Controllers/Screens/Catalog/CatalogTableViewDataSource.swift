@@ -6,13 +6,23 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 
 class CatalogTableViewDataSource: NSObject, UITableViewDataSource {
 
-    private lazy var productsFromDatabase = [SRProduct(productName: "Имбирь ролл", productCount: 20, productWeight: 200, productPrice: 30, productType: .roll), SRProduct.init(productName: "Имбирь", productCount: 1, productWeight: 20, productPrice: 3, productType: .snack), SRProduct(productName: "Шеф-ролл", productCount: 5, productWeight: 100, productPrice: 15, productType: .roll), SRProduct(productName: "Соевый соус", productCount: 1, productWeight: 90, productPrice: 6, productType: .snack)]
+    //MARK: - Properties
 
-    private lazy var shownProducts: [SRProduct] = productsFromDatabase
+    private lazy var productsFromDatabase: [QueryDocumentSnapshot] = []
+    private lazy var parsedProducts: [SRProduct] = [] {
+        didSet {
+            shownProducts = parsedProducts
+        }
+    }
+
+    private lazy var shownProducts: [SRProduct] = []
+
+    //MARK: - DataSource
 
     func getProduct(withID id: Int) -> SRProduct {
         shownProducts[id]
@@ -28,25 +38,44 @@ class CatalogTableViewDataSource: NSObject, UITableViewDataSource {
         return cell
     }
 
+    //MARK: - Filtring
+
     func filterProducts(by name: String, productCategoryNumber: Int) {
         switch (name.isEmpty, productCategoryNumber == 0) {
         case (true, true):
-            shownProducts = productsFromDatabase
+            shownProducts = parsedProducts
 
         case(true, false):
-            shownProducts = productsFromDatabase.filter { product in
+            shownProducts = parsedProducts.filter { product in
                 product.productType.rawValue == productCategoryNumber
             }
-            
+
         case(false, true):
-            shownProducts = productsFromDatabase.filter { product in
+            shownProducts = parsedProducts.filter { product in
                 product.productName.lowercased().contains(name.lowercased())
             }
 
         case(false, false):
-            shownProducts = productsFromDatabase.filter { product in
+            shownProducts = parsedProducts.filter { product in
                 product.productName.lowercased().contains(name.lowercased()) && product.productType.rawValue == productCategoryNumber
             }
+        }
+    }
+
+    //MARK: - Firebase Requests
+
+    func loadProductList(callback: @escaping () -> ()) {
+        let database = Firestore.firestore()
+        database.collection(DatabaseCollectionsNames.products.rawValue).getDocuments { [weak self] (snapshot, error) in
+            guard let self = self else { return }
+            if let error = error {
+                Swift.debugPrint(error.localizedDescription)
+            } else if let snapshot = snapshot {
+                self.productsFromDatabase = snapshot.documents
+            }
+
+            self.parsedProducts = SRProduct.parseProducts(queryDocumentsArray: self.productsFromDatabase)
+            callback()
         }
     }
 }
