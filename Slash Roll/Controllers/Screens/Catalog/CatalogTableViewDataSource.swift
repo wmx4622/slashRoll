@@ -76,6 +76,6 @@ class CatalogTableViewDataSource: NSObject, UITableViewDataSource {
 
             self.parsedProducts = SRProduct.parseProducts(queryDocumentsArray: self.productsFromDatabase)
             callback()
-        }
+        } 
     }
 }

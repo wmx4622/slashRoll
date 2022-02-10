@@ -1,5 +1,5 @@
 //
-//  Network Manager.swift
+//  DataBaseCollectionNames.swift
 //  Slash Roll
 //
 //  Created by Voxar on 8.02.22.

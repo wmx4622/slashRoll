@@ -6,16 +6,17 @@
 //
 
 import UIKit
-
+import Firebase
+import FirebaseUI
 
 class CatalogTableViewCell: UITableViewCell, ReusableCell {
 
-    private let placeholderImage: UIImage = UIImage(systemName: "umbrella") ?? UIImage()
+    private let placeholderImage: UIImage = UIImage(named: "placeholder") ?? UIImage()
     private let productImageSize: CGSize = CGSize(width: 60, height: 60)
 
-//    var productImage: UIImage {
-//        self.productImageView.image ?? self.placeholderImage
-//    }
+    var productImage: UIImage {
+        self.productImageView.image ?? self.placeholderImage
+    }
 
     private lazy var productContainerView: UIView = {
         let productContainerView = UIView()
@@ -92,10 +93,19 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
         }
     }
 
+    private func loadImage(product: SRProduct) {
+        let storageRef = Storage.storage().reference()
+        let reference = storageRef.child(product.productImageUrl)
+        self.productImageView.sd_setImage(with: reference)
+    }
+
     func setCell(product: SRProduct) {
         self.productImageView.image = self.placeholderImage
         self.productNameLabel.text = product.productName
-        self.countWeightLabel.text = "\(product.productCount) штук \u{005C} \(product.productWeight) грамм"
-        self.productPriceLabel.text = "Цена \(product.productPrice)"
+        self.countWeightLabel.text = "\(product.productCount) штук | \(product.productWeight) грамм"
+        self.productPriceLabel.text = "Цена \(product.productPrice) руб."
+        if !product.productImageUrl.isEmpty {
+            loadImage(product: product)
+        }
     }
 }
