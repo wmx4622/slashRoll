@@ -9,6 +9,16 @@ import Foundation
 
 
 enum DatabaseCollectionsNames: String {
-    case products
+    case products = "products"
+}
+
+enum DataBaseDocumentFieldsNames: String {
+    case productName = "productName"
+    case productCount = "productCount"
+    case productWeight = "productWeight"
+    case productPrice = "productPrice"
+    case productImageUrl = "productImageUrl"
+    case productCategoryNumber = "productCategoryNumber"
+    case productComposition =  "productComposition"
 }
 

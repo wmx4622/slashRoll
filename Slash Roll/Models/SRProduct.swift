@@ -17,23 +17,28 @@ enum ProductType: Int {
 }
 
 struct SRProduct {
-    var productID: String
-    var productName: String
-    var productCount: Int
-    var productWeight: Gramm
-    var productPrice: Double
-    var productImageUrl: String
-    var productType: ProductType
+    var id: String
+    var name: String
+    var count: Int
+    var weight: Gramm
+    var price: Double
+    var composition: String
+    var imageUrl: String
+    var type: ProductType
 
-
-//    static func makeExampleProduct() -> SRProduct {
-//        SRProduct(productID: "ID", productName: "Example roll", productCount: 8, productWeight: 125, productPrice: 10, productType: .roll)
-//    }
 
     static func parseProducts(queryDocumentsArray:[QueryDocumentSnapshot]) -> [SRProduct] {
         var productsArray: [SRProduct] = []
         for document in queryDocumentsArray {
-            let product = SRProduct(productID: document.documentID, productName: document["productName"] as? String ?? "", productCount: document["productCount"] as? Int ?? 0, productWeight: document["productWeight"] as? Int ?? 0, productPrice: document["productPrice"] as? Double ?? 0, productImageUrl: document["productImageUrl"] as? String ?? "", productType: ProductType(rawValue: document["productCategoryNumber"] as? Int ?? 1) ?? .roll)
+            let product = SRProduct(
+                id: document.documentID, name: document[DataBaseDocumentFieldsNames.productName.rawValue] as? String ?? "",
+                count: document[DataBaseDocumentFieldsNames.productCount.rawValue] as? Int ?? 0,
+                weight: document[DataBaseDocumentFieldsNames.productWeight.rawValue] as? Int ?? 0,
+                price: document[DataBaseDocumentFieldsNames.productPrice.rawValue] as? Double ?? 0,
+                composition: document[DataBaseDocumentFieldsNames.productComposition.rawValue] as? String ?? "",
+                imageUrl: document[DataBaseDocumentFieldsNames.productImageUrl.rawValue] as? String ?? "",
+                type: ProductType(rawValue: document[DataBaseDocumentFieldsNames.productCategoryNumber.rawValue] as? Int ?? 1) ?? .roll
+            )
             productsArray.append(product)
         }
         return productsArray

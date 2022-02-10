@@ -47,17 +47,17 @@ class CatalogTableViewDataSource: NSObject, UITableViewDataSource {
 
         case(true, false):
             shownProducts = parsedProducts.filter { product in
-                product.productType.rawValue == productCategoryNumber
+                product.type.rawValue == productCategoryNumber
             }
 
         case(false, true):
             shownProducts = parsedProducts.filter { product in
-                product.productName.lowercased().contains(name.lowercased())
+                product.name.lowercased().contains(name.lowercased())
             }
 
         case(false, false):
             shownProducts = parsedProducts.filter { product in
-                product.productName.lowercased().contains(name.lowercased()) && product.productType.rawValue == productCategoryNumber
+                product.name.lowercased().contains(name.lowercased()) && product.type.rawValue == productCategoryNumber
             }
         }
     }

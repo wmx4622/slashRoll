@@ -39,6 +39,9 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
         imageView.image = placeholderImage
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = productImageSize.height / 2
+        imageView.layer.borderWidth = 1
+        imageView.layer.borderColor = SRColors.cherryLightColor.cgColor
         return imageView
     }()
 
@@ -73,7 +76,7 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
 
         productImageView.snp.makeConstraints { make in
             make.top.bottom.leading.equalToSuperview().inset(8)
-            make.height.width.equalTo(60)
+            make.height.width.equalTo(productImageSize)
 
         }
 
@@ -95,16 +98,16 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
 
     private func loadImage(product: SRProduct) {
         let storageRef = Storage.storage().reference()
-        let reference = storageRef.child(product.productImageUrl)
+        let reference = storageRef.child(product.imageUrl)
         self.productImageView.sd_setImage(with: reference)
     }
 
     func setCell(product: SRProduct) {
         self.productImageView.image = self.placeholderImage
-        self.productNameLabel.text = product.productName
-        self.countWeightLabel.text = "\(product.productCount) штук | \(product.productWeight) грамм"
-        self.productPriceLabel.text = "Цена \(product.productPrice) руб."
-        if !product.productImageUrl.isEmpty {
+        self.productNameLabel.text = product.name
+        self.countWeightLabel.text = "\(product.count) штук | \(product.weight) грамм"
+        self.productPriceLabel.text = "Цена \(String(format: "%.2f", product.price)) руб."
+        if !product.imageUrl.isEmpty {
             loadImage(product: product)
         }
     }
