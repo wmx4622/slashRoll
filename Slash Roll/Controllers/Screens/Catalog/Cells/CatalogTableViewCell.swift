@@ -11,12 +11,16 @@ import FirebaseUI
 
 class CatalogTableViewCell: UITableViewCell, ReusableCell {
 
+    //MARK: - Properties
+
     private let placeholderImage: UIImage = UIImage(named: "placeholder") ?? UIImage()
     private let productImageSize: CGSize = CGSize(width: 60, height: 60)
 
     var productImage: UIImage {
         self.productImageView.image ?? self.placeholderImage
     }
+
+    //MARK: - GUI variables
 
     private lazy var productContainerView: UIView = {
         let productContainerView = UIView()
@@ -51,6 +55,8 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
         return productPriceLabel
     }()
 
+    //MARK: - Life Cycle
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubviews()
@@ -68,6 +74,8 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
         productContainerView.addSubview(productImageView)
         productContainerView.addSubview(productPriceLabel)
     }
+
+    //MARK: - Cell appearance configuration
 
     private func configureLayout() {
         productContainerView.snp.makeConstraints { make in
@@ -96,12 +104,6 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
         }
     }
 
-    private func loadImage(product: SRProduct) {
-        let storageRef = Storage.storage().reference()
-        let reference = storageRef.child(product.imageUrl)
-        self.productImageView.sd_setImage(with: reference)
-    }
-
     func setCell(product: SRProduct) {
         self.productImageView.image = self.placeholderImage
         self.productNameLabel.text = product.name
@@ -110,5 +112,13 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
         if !product.imageUrl.isEmpty {
             loadImage(product: product)
         }
+    }
+
+    //MARK: - Firebase requests
+
+    private func loadImage(product: SRProduct) {
+        let storageRef = Storage.storage().reference()
+        let reference = storageRef.child(product.imageUrl)
+        self.productImageView.sd_setImage(with: reference)
     }
 }

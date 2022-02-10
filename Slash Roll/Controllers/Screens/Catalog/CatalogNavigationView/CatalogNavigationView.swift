@@ -9,13 +9,13 @@ import UIKit
 
 
 class CatalogNavigationView: UIView {
+
     //MARK: - GUI Varibles
+    
     private lazy var searchBar: SRTextField = {
         let searchBar = SRTextField()
         return searchBar
     }()
-
-
 
     //MARK: - UIView Life Cycle
 
