@@ -26,9 +26,9 @@ struct SRProduct {
     var imageUrl: String
     var type: ProductType
 
-
     static func parseProducts(queryDocumentsArray:[QueryDocumentSnapshot]) -> [SRProduct] {
         var productsArray: [SRProduct] = []
+
         for document in queryDocumentsArray {
             let product = SRProduct(
                 id: document.documentID, name: document[DataBaseDocumentFieldsNames.productName.rawValue] as? String ?? "",
@@ -39,8 +39,10 @@ struct SRProduct {
                 imageUrl: document[DataBaseDocumentFieldsNames.productImageUrl.rawValue] as? String ?? "",
                 type: ProductType(rawValue: document[DataBaseDocumentFieldsNames.productCategoryNumber.rawValue] as? Int ?? 1) ?? .roll
             )
+
             productsArray.append(product)
         }
+
         return productsArray
     }
 }
