@@ -13,14 +13,14 @@ class SRLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureLabelAppereance()
+        configureLabelAppearance()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func configureLabelAppereance() {
+    private func configureLabelAppearance() {
         textColor = SRColors.cherryLightColor
         snp.makeConstraints { make in
             make.height.equalTo(30)

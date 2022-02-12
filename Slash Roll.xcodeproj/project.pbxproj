@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		92DA6D23999248F707F44B62 /* Pods_Slash_Roll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFF4E395164C6ABB1AD2B4B9 /* Pods_Slash_Roll.framework */; };
+		D523C5C527B711F90053EF86 /* SRQuantityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523C5C427B711F90053EF86 /* SRQuantityButton.swift */; };
+		D533DCBD27B59B0C00D99645 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D533DCBC27B59B0C00D99645 /* ProductDetailsViewController.swift */; };
 		D5541EE82772309F0075BD86 /* RestorePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */; };
 		D557A61327B033E400CC6EC6 /* SRSearchBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557A61227B033E400CC6EC6 /* SRSearchBarController.swift */; };
 		D55A97E8276A4B5C003DC200 /* SRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A97E7276A4B5C003DC200 /* SRButton.swift */; };
@@ -18,7 +20,7 @@
 		D56B57A927AF38D300DB097D /* CatalogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B57A827AF38D300DB097D /* CatalogTableViewCell.swift */; };
 		D56B57AC27AF39BE00DB097D /* SRProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B57AB27AF39BE00DB097D /* SRProduct.swift */; };
 		D56B57AF27AF3C8700DB097D /* CatalogNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B57AE27AF3C8700DB097D /* CatalogNavigationView.swift */; };
-		D5732E9327ADA5880012C049 /* CatalogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5732E9227ADA5880012C049 /* CatalogController.swift */; };
+		D5732E9327ADA5880012C049 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5732E9227ADA5880012C049 /* CatalogViewController.swift */; };
 		D5732E9527ADA9030012C049 /* SRTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5732E9427ADA9030012C049 /* SRTableView.swift */; };
 		D5732E9727ADBED00012C049 /* CatalogTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5732E9627ADBED00012C049 /* CatalogTableViewDataSource.swift */; };
 		D5732E9A27ADE7020012C049 /* ReusableCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5732E9927ADE7020012C049 /* ReusableCellProtocol.swift */; };
@@ -36,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		20E451E4D485A54481B13234 /* Pods-Slash Roll.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slash Roll.release.xcconfig"; path = "Target Support Files/Pods-Slash Roll/Pods-Slash Roll.release.xcconfig"; sourceTree = "<group>"; };
+		D523C5C427B711F90053EF86 /* SRQuantityButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRQuantityButton.swift; sourceTree = "<group>"; };
+		D533DCBC27B59B0C00D99645 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewController.swift; sourceTree = "<group>"; };
 		D557A61227B033E400CC6EC6 /* SRSearchBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRSearchBarController.swift; sourceTree = "<group>"; };
 		D55A97E7276A4B5C003DC200 /* SRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRButton.swift; sourceTree = "<group>"; };
@@ -46,7 +50,7 @@
 		D56B57A827AF38D300DB097D /* CatalogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableViewCell.swift; sourceTree = "<group>"; };
 		D56B57AB27AF39BE00DB097D /* SRProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRProduct.swift; sourceTree = "<group>"; };
 		D56B57AE27AF3C8700DB097D /* CatalogNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogNavigationView.swift; sourceTree = "<group>"; };
-		D5732E9227ADA5880012C049 /* CatalogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogController.swift; sourceTree = "<group>"; };
+		D5732E9227ADA5880012C049 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		D5732E9427ADA9030012C049 /* SRTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRTableView.swift; sourceTree = "<group>"; };
 		D5732E9627ADBED00012C049 /* CatalogTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableViewDataSource.swift; sourceTree = "<group>"; };
 		D5732E9927ADE7020012C049 /* ReusableCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCellProtocol.swift; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 				D55A97E7276A4B5C003DC200 /* SRButton.swift */,
 				D55A97E9276A6893003DC200 /* SRLabel.swift */,
 				D55A97EB276A6A7B003DC200 /* SRTextField.swift */,
+				D523C5C427B711F90053EF86 /* SRQuantityButton.swift */,
 				D5732E9427ADA9030012C049 /* SRTableView.swift */,
 			);
 			path = "Base Elements";
@@ -137,6 +142,7 @@
 				D5E848BE2767F6FB0050F799 /* AuthorizationViewController.swift */,
 				D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */,
 				D56610B9276EA2DC00FEA131 /* RegistrationViewController.swift */,
+				D533DCBC27B59B0C00D99645 /* ProductDetailsViewController.swift */,
 				D56B57A627AF387F00DB097D /* Catalog */,
 			);
 			path = Screens;
@@ -147,7 +153,7 @@
 			children = (
 				D56B57AD27AF3C6800DB097D /* CatalogNavigationView */,
 				D56B57A727AF38C200DB097D /* Cells */,
-				D5732E9227ADA5880012C049 /* CatalogController.swift */,
+				D5732E9227ADA5880012C049 /* CatalogViewController.swift */,
 				D5732E9627ADBED00012C049 /* CatalogTableViewDataSource.swift */,
 			);
 			path = Catalog;
@@ -354,18 +360,20 @@
 				D55A97EC276A6A7B003DC200 /* SRTextField.swift in Sources */,
 				D5541EE82772309F0075BD86 /* RestorePasswordViewController.swift in Sources */,
 				D56B57A927AF38D300DB097D /* CatalogTableViewCell.swift in Sources */,
-				D5732E9327ADA5880012C049 /* CatalogController.swift in Sources */,
+				D5732E9327ADA5880012C049 /* CatalogViewController.swift in Sources */,
 				D5732E9527ADA9030012C049 /* SRTableView.swift in Sources */,
 				D56610BA276EA2DC00FEA131 /* RegistrationViewController.swift in Sources */,
 				D56B57AF27AF3C8700DB097D /* CatalogNavigationView.swift in Sources */,
 				D5E848BB2767F6FB0050F799 /* AppDelegate.swift in Sources */,
 				D557A61327B033E400CC6EC6 /* SRSearchBarController.swift in Sources */,
 				D56610B7276E41CE00FEA131 /* SRColors.swift in Sources */,
+				D533DCBD27B59B0C00D99645 /* ProductDetailsViewController.swift in Sources */,
 				D5732E9A27ADE7020012C049 /* ReusableCellProtocol.swift in Sources */,
 				D5C7C55A27B2BFDF009837E6 /* DataBaseCollectionNames.swift in Sources */,
 				D5E3EFF3276FCA2400ECC6EF /* Extension + UIViewController.swift in Sources */,
 				D55A97E8276A4B5C003DC200 /* SRButton.swift in Sources */,
 				D5732E9727ADBED00012C049 /* CatalogTableViewDataSource.swift in Sources */,
+				D523C5C527B711F90053EF86 /* SRQuantityButton.swift in Sources */,
 				D5E82D6D276BD7C900DDCD73 /* SRScrollableViewController.swift in Sources */,
 				D56B57AC27AF39BE00DB097D /* SRProduct.swift in Sources */,
 				D5E848BD2767F6FB0050F799 /* SceneDelegate.swift in Sources */,

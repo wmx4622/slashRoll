@@ -13,7 +13,7 @@ class SRButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureButtonAppereance()
+        configureButtonAppearance()
         
     }
 
@@ -21,7 +21,7 @@ class SRButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func configureButtonAppereance() {
+    private func configureButtonAppearance() {
         self.snp.makeConstraints { make in
             make.height.equalTo(30)
         }

@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class CatalogController: UIViewController {
+class CatalogViewController: UIViewController {
     //MARK: - Properties
 
     private lazy var tableViewDataSource = CatalogTableViewDataSource()
@@ -20,13 +20,13 @@ class CatalogController: UIViewController {
         return catalogNavigationView
     }()
 
-     lazy var tableView: SRTableView = {
+    lazy var tableView: SRTableView = {
         let tableView = SRTableView(frame: view.frame, style: .grouped)
         tableView.dataSource = tableViewDataSource
         tableView.delegate = self
         tableView.backgroundColor = SRColors.whiteColor
-//        tableView.contentInset.top = catalogNavigationView.frame.size.height + 16
-//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: CatalogTableViewCell.reuseIdentifier)
+        //        tableView.contentInset.top = catalogNavigationView.frame.size.height + 16
+        //        tableView.register(UITableViewCell.self, forCellReuseIdentifier: CatalogTableViewCell.reuseIdentifier)
         tableView.register(CatalogTableViewCell.self, forCellReuseIdentifier: CatalogTableViewCell.reuseIdentifier)
         return tableView
     }()
@@ -56,10 +56,10 @@ class CatalogController: UIViewController {
             make.width.height.equalTo(view.safeAreaLayoutGuide)
         }
 
-//        catalogNavigationView.snp.makeConstraints { make in
-//            make.top.equalTo(view.safeAreaLayoutGuide).inset(16)
-//            make.trailing.leading.equalToSuperview().inset(8)
-//        }
+        //        catalogNavigationView.snp.makeConstraints { make in
+        //            make.top.equalTo(view.safeAreaLayoutGuide).inset(16)
+        //            make.trailing.leading.equalToSuperview().inset(8)
+        //        }
     }
 
     //MARK: - View Controller Life Cycle
@@ -80,7 +80,7 @@ class CatalogController: UIViewController {
 
     private func addSubviews() {
         view.addSubview(tableView)
-//        view.addSubview(catalogNavigationView)
+        //        view.addSubview(catalogNavigationView)
         navigationItem.searchController = searchBarController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -88,14 +88,25 @@ class CatalogController: UIViewController {
 
 //MARK: - Delegates
 
-extension CatalogController: UITableViewDelegate {
+extension CatalogViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         76
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var product = tableViewDataSource.getProduct(withID: indexPath.row)
+        if let cell = tableView.cellForRow(at: indexPath) as? CatalogTableViewCell {
+            product.image = cell.productImage
+        }
+
+        let productDetailsViewController = ProductDetaisViewController()
+        productDetailsViewController.shownProduct = product
+        navigationController?.pushViewController(productDetailsViewController, animated: true)
+    }
 }
 
-extension CatalogController: UISearchResultsUpdating {
+extension CatalogViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchedText = searchController.searchBar.text else { return }
         let scope = searchController.searchBar.selectedScopeButtonIndex
@@ -104,7 +115,7 @@ extension CatalogController: UISearchResultsUpdating {
     }
 }
 
-extension CatalogController: UISearchBarDelegate {
+extension CatalogViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         guard let searchedText = searchBar.text else { return }
         tableViewDataSource.filterProducts(by: searchedText, productCategoryNumber: selectedScope)

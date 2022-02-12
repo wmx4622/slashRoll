@@ -34,19 +34,19 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
     }()
 
     private lazy var countWeightLabel: SRLabel = {
-        let productDescription = SRLabel()
-        return productDescription
+        let countWeightLabel = SRLabel()
+        return countWeightLabel
     }()
 
     private lazy var productImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = placeholderImage
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = productImageSize.height / 2
-        imageView.layer.borderWidth = 1
-        imageView.layer.borderColor = SRColors.cherryLightColor.cgColor
-        return imageView
+        let productImageView = UIImageView()
+        productImageView.image = placeholderImage
+        productImageView.clipsToBounds = true
+        productImageView.contentMode = .scaleAspectFit
+        productImageView.layer.cornerRadius = productImageSize.height / 2
+        productImageView.layer.borderWidth = 1
+        productImageView.layer.borderColor = SRColors.cherryLightColor.cgColor
+        return productImageView
     }()
 
 

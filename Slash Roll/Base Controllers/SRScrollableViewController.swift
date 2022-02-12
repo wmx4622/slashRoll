@@ -27,6 +27,7 @@ class SRScrollableViewController: UIViewController {
         super.viewDidLoad()
         configureController()
     }
+    
     //MARK: - Controller Cofiguration
 
     private func configureController() {

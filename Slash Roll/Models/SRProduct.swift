@@ -23,6 +23,7 @@ struct SRProduct {
     var weight: Gramm
     var price: Double
     var composition: String
+    var image: UIImage?
     var imageUrl: String
     var type: ProductType
 
