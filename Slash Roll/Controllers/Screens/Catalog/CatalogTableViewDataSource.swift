@@ -57,7 +57,8 @@ class CatalogTableViewDataSource: NSObject, UITableViewDataSource {
 
         case(false, false):
             shownProducts = parsedProducts.filter { product in
-                product.name.lowercased().contains(name.lowercased()) && product.type.rawValue == productCategoryNumber
+                product.name.lowercased().contains(name.lowercased())
+                && product.type.rawValue == productCategoryNumber
             }
         }
     }

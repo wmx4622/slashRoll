@@ -26,8 +26,8 @@ class CatalogViewController: UIViewController {
         tableView.delegate = self
         tableView.backgroundColor = SRColors.whiteColor
         //        tableView.contentInset.top = catalogNavigationView.frame.size.height + 16
-        //        tableView.register(UITableViewCell.self, forCellReuseIdentifier: CatalogTableViewCell.reuseIdentifier)
         tableView.register(CatalogTableViewCell.self, forCellReuseIdentifier: CatalogTableViewCell.reuseIdentifier)
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: CGFloat.leastNonzeroMagnitude, height: CGFloat.leastNonzeroMagnitude))
         return tableView
     }()
 
@@ -37,8 +37,6 @@ class CatalogViewController: UIViewController {
         searchBarController.searchBar.delegate = self
         searchBarController.searchBar.sizeToFit()
         searchBarController.searchBar.scopeButtonTitles = ["Всё", "Роллы", "Закуски"]
-        searchBarController.searchBar.setScopeBarButtonTitleTextAttributes([NSAttributedString.Key.foregroundColor : SRColors.cherryLightColor], for: .normal)
-        searchBarController.searchBar.setScopeBarButtonTitleTextAttributes([NSAttributedString.Key.foregroundColor : SRColors.cherryColor], for: .selected)
         searchBarController.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(
             string: "Найдите то, что вам по душе",
             attributes: [
@@ -67,21 +65,25 @@ class CatalogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
-        view.backgroundColor = SRColors.whiteColor
+        configureLayout()
+        configureControllerAppearance()
         tableViewDataSource.loadProductList { [weak self] in
             self?.tableView.reloadData()
         }
-    }
 
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        configureLayout()
     }
 
     private func addSubviews() {
         view.addSubview(tableView)
         //        view.addSubview(catalogNavigationView)
         navigationItem.searchController = searchBarController
+    }
+
+    private func configureControllerAppearance() {
+        title = "Каталог"
+        let textAttributes = [NSAttributedString.Key.foregroundColor: SRColors.cherryColor]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        view.backgroundColor = SRColors.whiteColor
         navigationItem.hidesSearchBarWhenScrolling = false
     }
 }
@@ -96,6 +98,7 @@ extension CatalogViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var product = tableViewDataSource.getProduct(withID: indexPath.row)
+
         if let cell = tableView.cellForRow(at: indexPath) as? CatalogTableViewCell {
             product.image = cell.productImage
         }

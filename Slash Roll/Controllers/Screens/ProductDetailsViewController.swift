@@ -41,7 +41,7 @@ class ProductDetaisViewController: SRScrollableViewController {
 
     private lazy var productCountWeightLabel: SRLabel = {
         let productCountWeightLabel = SRLabel()
-        productCountWeightLabel.text = "Количество/вес:"
+        productCountWeightLabel.text = "Количество|вес:"
         return productCountWeightLabel
     }()
 

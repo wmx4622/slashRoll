@@ -15,7 +15,11 @@ class SRSearchBarController: UISearchController {
         searchBar.searchTextField.backgroundColor = SRColors.cherryLightColor
         searchBar.searchTextField.tintColor = SRColors.whiteColor
         searchBar.searchTextField.textColor = SRColors.whiteColor
-
+        searchBar.scopeButtonTitles = []
+        searchBar.setScopeBarButtonTitleTextAttributes([NSAttributedString.Key.foregroundColor : SRColors.whiteColor], for: .normal)
+        searchBar.setScopeBarButtonTitleTextAttributes([NSAttributedString.Key.foregroundColor : SRColors.cherryColor], for: .selected)
+        searchBar.setScopeBarButtonBackgroundImage(UIImage.getImage(from: SRColors.cherryLightColor), for: .normal)
+        searchBar.setScopeBarButtonDividerImage(UIImage.getImage(from: SRColors.whiteColor), forLeftSegmentState: .normal, rightSegmentState: .highlighted)
     }
 
     required init?(coder: NSCoder) {

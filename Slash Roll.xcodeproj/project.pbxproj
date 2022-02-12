@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		92DA6D23999248F707F44B62 /* Pods_Slash_Roll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFF4E395164C6ABB1AD2B4B9 /* Pods_Slash_Roll.framework */; };
+		D50A15B927B80C9900F20F4D /* Extension + UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50A15B827B80C9900F20F4D /* Extension + UIImage.swift */; };
 		D523C5C527B711F90053EF86 /* SRQuantityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523C5C427B711F90053EF86 /* SRQuantityButton.swift */; };
 		D533DCBD27B59B0C00D99645 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D533DCBC27B59B0C00D99645 /* ProductDetailsViewController.swift */; };
 		D5541EE82772309F0075BD86 /* RestorePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		20E451E4D485A54481B13234 /* Pods-Slash Roll.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slash Roll.release.xcconfig"; path = "Target Support Files/Pods-Slash Roll/Pods-Slash Roll.release.xcconfig"; sourceTree = "<group>"; };
+		D50A15B827B80C9900F20F4D /* Extension + UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIImage.swift"; sourceTree = "<group>"; };
 		D523C5C427B711F90053EF86 /* SRQuantityButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRQuantityButton.swift; sourceTree = "<group>"; };
 		D533DCBC27B59B0C00D99645 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			children = (
 				D5E3EFF0276FB71800ECC6EF /* Extension + String.swift */,
 				D5E3EFF2276FCA2400ECC6EF /* Extension + UIViewController.swift */,
+				D50A15B827B80C9900F20F4D /* Extension + UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				D5732E9727ADBED00012C049 /* CatalogTableViewDataSource.swift in Sources */,
 				D523C5C527B711F90053EF86 /* SRQuantityButton.swift in Sources */,
 				D5E82D6D276BD7C900DDCD73 /* SRScrollableViewController.swift in Sources */,
+				D50A15B927B80C9900F20F4D /* Extension + UIImage.swift in Sources */,
 				D56B57AC27AF39BE00DB097D /* SRProduct.swift in Sources */,
 				D5E848BD2767F6FB0050F799 /* SceneDelegate.swift in Sources */,
 			);
