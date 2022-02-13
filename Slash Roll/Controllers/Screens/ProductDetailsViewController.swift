@@ -37,7 +37,11 @@ class ProductDetaisViewController: SRScrollableViewController {
 
     private lazy var productCompositionLabel: SRLabel = {
         let productCompositionLabel = SRLabel()
+
         productCompositionLabel.text = "Состав продукта:"
+        productCompositionLabel.numberOfLines = 0
+        productCompositionLabel.lineBreakMode = .byWordWrapping
+//        productCompositionLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return productCompositionLabel
     }()
 
@@ -72,7 +76,8 @@ class ProductDetaisViewController: SRScrollableViewController {
     private lazy var nameConpostionCountWeightStackView: UIStackView = {
         let nameConpostionCountWeightStackView = UIStackView()
         nameConpostionCountWeightStackView.axis = .vertical
-        nameConpostionCountWeightStackView.spacing = 8
+        nameConpostionCountWeightStackView.alignment = .fill
+        nameConpostionCountWeightStackView.distribution = .fillProportionally
         return nameConpostionCountWeightStackView
     }()
 
@@ -157,6 +162,9 @@ class ProductDetaisViewController: SRScrollableViewController {
         productImageView.image = UIImage(named: "placeholder")
         view.backgroundColor = SRColors.whiteColor
         setFields(with: shownProduct)
+        nameConpostionCountWeightStackView.spacing = 8
+
+
     }
 
     private func addSubviews() {
@@ -199,6 +207,7 @@ class ProductDetaisViewController: SRScrollableViewController {
         nameConpostionCountWeightStackView.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(8)
             make.top.equalTo(productImageView.snp.bottom).offset(8)
+            make.trailing.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10))
         }
 
         showEnergyValueToggleButton.snp.makeConstraints { make in

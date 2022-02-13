@@ -30,6 +30,8 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
 
     private lazy var productNameLabel: SRLabel = {
         let productName = SRLabel()
+//        productName.lineBreakMode = .byWordWrapping
+        productName.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return productName
     }()
 
@@ -89,19 +91,19 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
         }
 
         productNameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(8)
+            make.top.equalToSuperview().offset(8)
             make.leading.equalTo(productImageView.snp.trailing).offset(8)
+            make.trailing.lessThanOrEqualTo(productPriceLabel.snp.leading).inset(-8)
         }
 
         productPriceLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(8)
             make.top.equalToSuperview().offset(8)
-
         }
 
         countWeightLabel.snp.makeConstraints { make in
             make.leading.equalTo(productNameLabel.snp.leading)
-            make.top.equalTo(productNameLabel.snp.bottom).offset(8)
+            make.top.equalTo(productPriceLabel.snp.bottom).offset(8)
         }
     }
 
@@ -115,11 +117,10 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
         }
     }
 
-    override func updateConstraints() {
-        super.updateConstraints()
+    override func layoutSubviews() {
+        super.layoutSubviews()
         configureLayout()
     }
-
     //MARK: - Firebase requests
 
     private func loadImage(product: SRProduct) {
