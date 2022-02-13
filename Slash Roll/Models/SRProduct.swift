@@ -26,6 +26,10 @@ struct SRProduct {
     var image: UIImage?
     var imageUrl: String
     var type: ProductType
+    var proteins: Double
+    var fats: Double
+    var carbohydrates: Double
+    var calories: Double
 
     static func parseProducts(queryDocumentsArray:[QueryDocumentSnapshot]) -> [SRProduct] {
         var productsArray: [SRProduct] = []
@@ -38,7 +42,11 @@ struct SRProduct {
                 price: document[DataBaseDocumentFieldsNames.productPrice.rawValue] as? Double ?? 0,
                 composition: document[DataBaseDocumentFieldsNames.productComposition.rawValue] as? String ?? "",
                 imageUrl: document[DataBaseDocumentFieldsNames.productImageUrl.rawValue] as? String ?? "",
-                type: ProductType(rawValue: document[DataBaseDocumentFieldsNames.productCategoryNumber.rawValue] as? Int ?? 1) ?? .roll
+                type: ProductType(rawValue: document[DataBaseDocumentFieldsNames.productCategoryNumber.rawValue] as? Int ?? 1) ?? .roll,
+                proteins: document[DataBaseDocumentFieldsNames.productProteins.rawValue] as? Double ?? 0,
+                fats: document[DataBaseDocumentFieldsNames.productFats.rawValue] as? Double ?? 0,
+                carbohydrates: document[DataBaseDocumentFieldsNames.productCarbohydrates.rawValue] as? Double ?? 0,
+                calories: document[DataBaseDocumentFieldsNames.productCalories.rawValue] as? Double ?? 0
             )
 
             productsArray.append(product)

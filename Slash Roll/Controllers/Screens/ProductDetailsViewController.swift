@@ -12,6 +12,8 @@ class ProductDetaisViewController: SRScrollableViewController {
     //MARK: - Properties
 
     var shownProduct: SRProduct?
+    private var productQuantityCounter = 1
+    private var isEnergyValueShowing = true
 
     //MARK: - GUI Varibles
 
@@ -71,17 +73,49 @@ class ProductDetaisViewController: SRScrollableViewController {
         let nameConpostionCountWeightStackView = UIStackView()
         nameConpostionCountWeightStackView.axis = .vertical
         nameConpostionCountWeightStackView.spacing = 8
-
         return nameConpostionCountWeightStackView
+    }()
+
+    private lazy var productFatsLabel: SRLabel = {
+        let productFatsLabel = SRLabel()
+        productFatsLabel.text = "Жиры"
+        return productFatsLabel
+    }()
+
+    private lazy var productProteinsLabel: SRLabel = {
+        let productProteinsLabel = SRLabel()
+        productProteinsLabel.text = "Белки"
+        return productProteinsLabel
+    }()
+
+    private lazy var productCarbohydratesLabel: SRLabel = {
+        let productCarbohydratesLabel = SRLabel()
+        productCarbohydratesLabel.text = "Углеводы"
+        return productCarbohydratesLabel
+    }()
+
+    private var productCaloriesLabel: SRLabel = {
+        let productCaloriesLabel = SRLabel()
+        productCaloriesLabel.text = "Калорийность"
+        return productCaloriesLabel
+    }()
+
+    private lazy var productEnergyValueStackView: UIStackView = {
+        let productEnergyValueStackView = UIStackView()
+        productEnergyValueStackView.axis = .vertical
+        productEnergyValueStackView.spacing = 8
+        return productEnergyValueStackView
     }()
 
     private lazy var increaseProductQuantityButton: SRQuantityButton = {
         let increaseProductQuantityButton = SRQuantityButton(title: "+")
+        increaseProductQuantityButton.addTarget(self, action: #selector(increaseProductQuantityButtonDidTapped), for: .touchUpInside)
         return increaseProductQuantityButton
     }()
 
     private lazy var decreaseProductQuantityButton: SRQuantityButton = {
         let increaseProductQuantityButton = SRQuantityButton(title: "-")
+        increaseProductQuantityButton.addTarget(self, action: #selector(decreaseProductQuantityButtonDidTapped), for: .touchUpInside)
         return increaseProductQuantityButton
     }()
 
@@ -103,6 +137,15 @@ class ProductDetaisViewController: SRScrollableViewController {
         let addToCartButton = SRButton()
         addToCartButton.configuration?.title = "Добавить в корзину"
         return addToCartButton
+    }()
+
+    private lazy var showEnergyValueToggleButton: UIButton = {
+        let forgotPasswordButton = UIButton()
+        let title = NSMutableAttributedString(string: "Показать энергетическую ценность")
+        title.addAttributes([NSAttributedString.Key.underlineStyle : 1, NSAttributedString.Key.foregroundColor : SRColors.cherryColor], range: NSRange(location: 0, length: title.length))
+        forgotPasswordButton.setAttributedTitle(title, for: .normal)
+        forgotPasswordButton.addTarget(self, action: #selector(showEnergyValueToggleDidTapped), for: .touchUpInside)
+        return forgotPasswordButton
     }()
 
     //MARK: - View Controller Life Cycle
@@ -135,6 +178,14 @@ class ProductDetaisViewController: SRScrollableViewController {
         productQuantityStackView.addArrangedSubview(decreaseProductQuantityButton)
         contentView.addSubview(productQuantityStackView)
 
+        productEnergyValueStackView.addArrangedSubview(productProteinsLabel)
+        productEnergyValueStackView.addArrangedSubview(productFatsLabel)
+        productEnergyValueStackView.addArrangedSubview(productCarbohydratesLabel)
+        productEnergyValueStackView.addArrangedSubview(productCaloriesLabel)
+        contentView.addSubview(productEnergyValueStackView)
+        contentView.addSubview(showEnergyValueToggleButton)
+
+
     }
 
     //MARK: - Layout Configuration
@@ -150,15 +201,26 @@ class ProductDetaisViewController: SRScrollableViewController {
             make.top.equalTo(productImageView.snp.bottom).offset(8)
         }
 
-        productPriceStackView.snp.makeConstraints { make in
+        showEnergyValueToggleButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(8)
             make.top.equalTo(nameConpostionCountWeightStackView.snp.bottom).offset(8)
+        }
+
+        productEnergyValueStackView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(8)
+            make.top.equalTo(showEnergyValueToggleButton.snp.bottom).offset(8)
+
+        }
+
+        productPriceStackView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(8)
+            make.top.equalTo(productEnergyValueStackView.snp.bottom).offset(8)
 
         }
 
         productQuantityStackView.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(8)
-            make.top.equalTo(nameConpostionCountWeightStackView.snp.bottom).offset(8)
+            make.top.equalTo(productEnergyValueStackView.snp.bottom).offset(8)
         }
 
         addToCartButton.snp.makeConstraints { make in
@@ -168,6 +230,83 @@ class ProductDetaisViewController: SRScrollableViewController {
         }
     }
 
+    private func openCloseEnergyValue() {
+        if isEnergyValueShowing {
+            contentView.layoutIfNeeded()
+            UIView.animate(withDuration: 1, delay: 0, options: [.curveLinear], animations: {
+
+                self.productEnergyValueStackView.snp.makeConstraints { make in
+                    make.height.equalTo(0)
+                }
+
+                self.productCaloriesLabel.snp.makeConstraints { make in
+                    make.height.equalTo(0)
+                }
+
+                self.productCarbohydratesLabel.snp.makeConstraints { make in
+                    make.height.equalTo(0)
+                }
+
+                self.productFatsLabel.snp.makeConstraints { make in
+                    make.height.equalTo(0)
+                }
+
+                self.productProteinsLabel.snp.makeConstraints { make in
+                    make.height.equalTo(0)
+                }
+
+                self.contentView.layoutIfNeeded()
+            }, completion: {_ in
+                self.isEnergyValueShowing = false
+            })
+        } else {
+
+            contentView.layoutIfNeeded()
+
+            UIView.animate(withDuration: 1, delay: 0, options: [.curveLinear], animations: {
+
+                self.productCarbohydratesLabel.snp.remakeConstraints { make in
+                    make.height.equalTo(30)
+                }
+
+                self.productProteinsLabel.snp.remakeConstraints { make in
+                    make.height.equalTo(30)
+                }
+
+                self.productFatsLabel.snp.remakeConstraints { make in
+                    make.height.equalTo(30)
+                }
+
+                self.productCaloriesLabel.snp.remakeConstraints { make in
+                    make.height.equalTo(30)
+                }
+
+                self.productEnergyValueStackView.snp.remakeConstraints { make in
+                    make.top.equalTo(self.showEnergyValueToggleButton.snp.bottom).offset(8)
+                    make.height.equalTo(144)
+                    make.leading.equalToSuperview().inset(8)
+                }
+
+                self.productQuantityStackView.snp.remakeConstraints { make in
+                    make.top.equalTo(self.productEnergyValueStackView.snp.bottom).offset(8)
+                    make.trailing.equalToSuperview().inset(8)
+                }
+
+                self.productPriceStackView.snp.makeConstraints { make in
+                    make.top.equalTo(self.productEnergyValueStackView.snp.bottom).offset(8)
+                    make.leading.equalToSuperview().inset(8)
+                }
+
+                self.productEnergyValueStackView.spacing = 8
+
+                self.contentView.layoutIfNeeded()
+
+            }, completion: {_ in
+                self.isEnergyValueShowing.toggle()
+
+            }
+            )}
+    }
     //MARK: - Controller Configuration
 
     private func setFields(with product: SRProduct?) {
@@ -177,5 +316,33 @@ class ProductDetaisViewController: SRScrollableViewController {
         productImageView.image = product.image
         productPriceLabel.text = (String(format: "%.2f", product.price))
         productCountWeightLabel.text = "\(product.count) штук | \(product.weight) грамм"
+        productProteinsLabel.text = "\(product.proteins) г/порция"
+        productFatsLabel.text = "\(product.fats)  г/порция"
+        productCarbohydratesLabel.text = "\(product.carbohydrates) г/порция"
+        productCaloriesLabel.text = "\(product.calories) калорий в порции"
     }
-}
+
+    //MARK: - User Interation
+
+    @objc private func increaseProductQuantityButtonDidTapped() {
+        if productQuantityCounter < 100 {
+            productQuantityCounter += 1
+            productQuantityLabel.text = String(productQuantityCounter)
+        } else {
+            showAlert(title: "Максимальное количество товара", message: "Для оптовой закупки свяжитесь с менджерами")
+        }
+    }
+
+    @objc private func decreaseProductQuantityButtonDidTapped() {
+        if productQuantityCounter > 1 {
+            productQuantityCounter -= 1
+            productQuantityLabel.text = String(productQuantityCounter)
+        }
+    }
+
+    @objc private func showEnergyValueToggleDidTapped() {
+        print(productEnergyValueStackView.frame.height)
+        openCloseEnergyValue()
+
+        }
+    }

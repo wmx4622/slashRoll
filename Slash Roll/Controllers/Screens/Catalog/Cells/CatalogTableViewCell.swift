@@ -60,7 +60,7 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubviews()
-        configureLayout()
+
     }
 
     required init?(coder: NSCoder) {
@@ -96,6 +96,7 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
         productPriceLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(8)
             make.top.equalToSuperview().offset(8)
+
         }
 
         countWeightLabel.snp.makeConstraints { make in
@@ -112,6 +113,11 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
         if !product.imageUrl.isEmpty {
             loadImage(product: product)
         }
+    }
+
+    override func updateConstraints() {
+        super.updateConstraints()
+        configureLayout()
     }
 
     //MARK: - Firebase requests

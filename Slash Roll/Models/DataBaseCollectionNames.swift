@@ -20,5 +20,9 @@ enum DataBaseDocumentFieldsNames: String {
     case productImageUrl = "productImageUrl"
     case productCategoryNumber = "productCategoryNumber"
     case productComposition =  "productComposition"
+    case productProteins = "productProteins"
+    case productCalories = "productCalories"
+    case productCarbohydrates = "productCarbohydrates"
+    case productFats = "productFats"
 }
 
