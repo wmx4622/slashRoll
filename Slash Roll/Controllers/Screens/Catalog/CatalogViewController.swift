@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 
+
 class CatalogViewController: UIViewController {
     //MARK: - Properties
 
@@ -27,7 +28,9 @@ class CatalogViewController: UIViewController {
         tableView.backgroundColor = SRColors.whiteColor
         //        tableView.contentInset.top = catalogNavigationView.frame.size.height + 16
         tableView.register(CatalogTableViewCell.self, forCellReuseIdentifier: CatalogTableViewCell.reuseIdentifier)
+        tableView.refreshControl = refreshControll
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: CGFloat.leastNonzeroMagnitude, height: CGFloat.leastNonzeroMagnitude))
+
         return tableView
     }()
 
@@ -44,6 +47,13 @@ class CatalogViewController: UIViewController {
             ]
         )
         return searchBarController
+    }()
+
+    private lazy var refreshControll: UIRefreshControl = {
+        let refreshControll = UIRefreshControl()
+        refreshControll.addTarget(self, action: #selector(refreshControllHandler), for: .valueChanged)
+        refreshControll.tintColor = SRColors.cherryLightColor
+        return refreshControll
     }()
 
     //MARK: - Layout Configuration
@@ -85,6 +95,15 @@ class CatalogViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         view.backgroundColor = SRColors.whiteColor
         navigationItem.hidesSearchBarWhenScrolling = false
+    }
+
+    //MARK: - User Interaction
+
+    @objc private func refreshControllHandler() {
+        tableViewDataSource.loadProductList { [weak self] in
+            self?.tableView.reloadData()
+            self?.refreshControll.endRefreshing()
+        }
     }
 }
 

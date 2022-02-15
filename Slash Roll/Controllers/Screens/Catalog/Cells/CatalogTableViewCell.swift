@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import FirebaseUI
 
+
 class CatalogTableViewCell: UITableViewCell, ReusableCell {
 
     //MARK: - Properties
@@ -30,7 +31,6 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
 
     private lazy var productNameLabel: SRLabel = {
         let productName = SRLabel()
-//        productName.lineBreakMode = .byWordWrapping
         productName.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return productName
     }()
@@ -96,14 +96,14 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
             make.trailing.lessThanOrEqualTo(productPriceLabel.snp.leading).inset(-8)
         }
 
-        productPriceLabel.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(8)
-            make.top.equalToSuperview().offset(8)
-        }
-
         countWeightLabel.snp.makeConstraints { make in
             make.leading.equalTo(productNameLabel.snp.leading)
             make.top.equalTo(productPriceLabel.snp.bottom).offset(8)
+        }
+
+        productPriceLabel.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(8)
+            make.top.equalToSuperview().offset(8)
         }
     }
 
