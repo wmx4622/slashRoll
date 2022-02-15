@@ -169,8 +169,21 @@ class ProductDetaisViewController: SRScrollableViewController {
         super.viewDidLoad()
         addSubviews()
         configureLayout()
-        view.backgroundColor = SRColors.whiteColor
+        configureControllerAppearance()
         setFields(with: shownProduct)
+    }
+
+    private func configureControllerAppearance() {
+        if let product = shownProduct {
+            title = product.name
+        } else {
+            title = "Информация о продукте"
+        }
+
+        let textAttributes = [NSAttributedString.Key.foregroundColor: SRColors.cherryColor]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        view.backgroundColor = SRColors.whiteColor
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
 
     private func addSubviews() {
