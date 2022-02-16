@@ -151,7 +151,6 @@
 		D56B57A527AF386E00DB097D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				D552E97B27BD1FCF00648887 /* Cart */,
 				D5E848BE2767F6FB0050F799 /* AuthorizationViewController.swift */,
 				D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */,
 				D56610B9276EA2DC00FEA131 /* RegistrationViewController.swift */,
@@ -241,6 +240,7 @@
 				D55A97E6276A48DE003DC200 /* Base Elements */,
 				D56610B8276E6FEB00FEA131 /* Base Controllers */,
 				D55A97E5276A207A003DC200 /* Controllers */,
+				D552E97B27BD1FCF00648887 /* Cart */,
 				D56610B5276E414A00FEA131 /* Constants */,
 				D5E3EFEF276FB6B200ECC6EF /* Extensions */,
 				D5732E9827ADE0350012C049 /* Protocols */,
