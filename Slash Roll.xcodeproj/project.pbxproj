@@ -11,6 +11,7 @@
 		D50A15B927B80C9900F20F4D /* Extension + UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50A15B827B80C9900F20F4D /* Extension + UIImage.swift */; };
 		D523C5C527B711F90053EF86 /* SRQuantityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523C5C427B711F90053EF86 /* SRQuantityButton.swift */; };
 		D533DCBD27B59B0C00D99645 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D533DCBC27B59B0C00D99645 /* ProductDetailsViewController.swift */; };
+		D552E97D27BD231700648887 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552E97C27BD231700648887 /* CartViewController.swift */; };
 		D5541EE82772309F0075BD86 /* RestorePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */; };
 		D557A61327B033E400CC6EC6 /* SRSearchBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557A61227B033E400CC6EC6 /* SRSearchBarController.swift */; };
 		D55A97E8276A4B5C003DC200 /* SRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A97E7276A4B5C003DC200 /* SRButton.swift */; };
@@ -42,6 +43,7 @@
 		D50A15B827B80C9900F20F4D /* Extension + UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIImage.swift"; sourceTree = "<group>"; };
 		D523C5C427B711F90053EF86 /* SRQuantityButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRQuantityButton.swift; sourceTree = "<group>"; };
 		D533DCBC27B59B0C00D99645 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
+		D552E97C27BD231700648887 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewController.swift; sourceTree = "<group>"; };
 		D557A61227B033E400CC6EC6 /* SRSearchBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRSearchBarController.swift; sourceTree = "<group>"; };
 		D55A97E7276A4B5C003DC200 /* SRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRButton.swift; sourceTree = "<group>"; };
@@ -101,6 +103,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D552E97B27BD1FCF00648887 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				D552E97C27BD231700648887 /* CartViewController.swift */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
 		D55A97E5276A207A003DC200 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +151,7 @@
 		D56B57A527AF386E00DB097D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				D552E97B27BD1FCF00648887 /* Cart */,
 				D5E848BE2767F6FB0050F799 /* AuthorizationViewController.swift */,
 				D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */,
 				D56610B9276EA2DC00FEA131 /* RegistrationViewController.swift */,
@@ -364,6 +375,7 @@
 				D5541EE82772309F0075BD86 /* RestorePasswordViewController.swift in Sources */,
 				D56B57A927AF38D300DB097D /* CatalogTableViewCell.swift in Sources */,
 				D5732E9327ADA5880012C049 /* CatalogViewController.swift in Sources */,
+				D552E97D27BD231700648887 /* CartViewController.swift in Sources */,
 				D5732E9527ADA9030012C049 /* SRTableView.swift in Sources */,
 				D56610BA276EA2DC00FEA131 /* RegistrationViewController.swift in Sources */,
 				D56B57AF27AF3C8700DB097D /* CatalogNavigationView.swift in Sources */,

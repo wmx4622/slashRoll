@@ -21,7 +21,7 @@ class CatalogViewController: UIViewController {
         return catalogNavigationView
     }()
 
-    lazy var tableView: SRTableView = {
+    private lazy var tableView: SRTableView = {
         let tableView = SRTableView(frame: view.frame, style: .grouped)
         tableView.dataSource = tableViewDataSource
         tableView.delegate = self
