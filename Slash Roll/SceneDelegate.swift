@@ -20,15 +20,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
 
         let window = UIWindow(windowScene: scene)
-        let authorizationViewController = CatalogViewController()
+        let tabBarController = SRTabBarController()
 
-        let authorizationNavigationController = UINavigationController(rootViewController: authorizationViewController)
-
-        authorizationViewController.navigationController?.navigationBar.tintColor = SRColors.cherryColor
-        authorizationViewController.navigationController?.navigationBar.barTintColor = SRColors.cherryLightColor
+//        let authorizationNavigationController = UINavigationController(rootViewController: authorizationViewController)
+//
+//        authorizationViewController.navigationController?.navigationBar.tintColor = SRColors.cherryColor
+//        authorizationViewController.navigationController?.navigationBar.barTintColor = SRColors.cherryLightColor
         
 
-        window.rootViewController = authorizationNavigationController
+        window.rootViewController = tabBarController
         window.makeKeyAndVisible()
         self.window = window
     }

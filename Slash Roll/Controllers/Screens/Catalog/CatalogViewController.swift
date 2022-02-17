@@ -16,10 +16,10 @@ class CatalogViewController: UIViewController {
 
     //MARK: - GUI varibles
 
-    private lazy var catalogNavigationView: CatalogNavigationView = {
-        let catalogNavigationView = CatalogNavigationView()
-        return catalogNavigationView
-    }()
+//    private lazy var catalogNavigationView: CatalogNavigationView = {
+//        let catalogNavigationView = CatalogNavigationView()
+//        return catalogNavigationView
+//    }()
 
     private lazy var tableView: SRTableView = {
         let tableView = SRTableView(frame: view.frame, style: .grouped)
@@ -56,7 +56,26 @@ class CatalogViewController: UIViewController {
         return refreshControll
     }()
 
-    //MARK: - Layout Configuration
+    //MARK: - View Controller Life Cycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addSubviews()
+        configureLayout()
+        configureControllerAppearance()
+        tableViewDataSource.loadProductList { [weak self] in
+            self?.tableView.reloadData()
+
+        }
+
+
+    }
+
+    private func addSubviews() {
+        view.addSubview(tableView)
+        //        view.addSubview(catalogNavigationView)
+        navigationItem.searchController = searchBarController
+    }
 
     private func configureLayout() {
         tableView.snp.makeConstraints { make in
@@ -70,24 +89,7 @@ class CatalogViewController: UIViewController {
         //        }
     }
 
-    //MARK: - View Controller Life Cycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        addSubviews()
-        configureLayout()
-        configureControllerAppearance()
-        tableViewDataSource.loadProductList { [weak self] in
-            self?.tableView.reloadData()
-        }
-
-    }
-
-    private func addSubviews() {
-        view.addSubview(tableView)
-        //        view.addSubview(catalogNavigationView)
-        navigationItem.searchController = searchBarController
-    }
+    //MARK: - Layout Configuration
 
     private func configureControllerAppearance() {
         title = "Каталог"
@@ -95,6 +97,8 @@ class CatalogViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         view.backgroundColor = SRColors.whiteColor
         navigationItem.hidesSearchBarWhenScrolling = false
+        navigationController?.navigationBar.tintColor = SRColors.cherryColor
+        navigationController?.navigationBar.barTintColor = SRColors.cherryLightColor 
     }
 
     //MARK: - User Interaction

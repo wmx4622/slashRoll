@@ -31,12 +31,14 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
 
     private lazy var productNameLabel: SRLabel = {
         let productName = SRLabel()
+        productName.text = "Название продукта"
         productName.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return productName
     }()
 
     private lazy var countWeightLabel: SRLabel = {
         let countWeightLabel = SRLabel()
+        countWeightLabel.text = "Штук|Вес"
         return countWeightLabel
     }()
 
@@ -54,6 +56,7 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
 
     private lazy var productPriceLabel: SRLabel = {
         let productPriceLabel = SRLabel()
+        productPriceLabel.text = "Цена"
         return productPriceLabel
     }()
 
@@ -98,7 +101,7 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
 
         countWeightLabel.snp.makeConstraints { make in
             make.leading.equalTo(productNameLabel.snp.leading)
-            make.top.equalTo(productPriceLabel.snp.bottom).offset(8)
+            make.top.equalTo(productNameLabel.snp.bottom).offset(8)
         }
 
         productPriceLabel.snp.makeConstraints { make in
