@@ -12,7 +12,7 @@ class CartViewController: UIViewController {
 
     //MARK: - Properties
 
-    private lazy var tableViewDataSource = CartTableViewDataSource()
+    private(set) lazy var tableViewDataSource = CartTableViewDataSource()
 
     //MARK: - GUI varibles
     
@@ -30,7 +30,15 @@ class CartViewController: UIViewController {
     private lazy var continueCheckoutButton: SRButton = {
         let continueCheckoutButton = SRButton()
         continueCheckoutButton.configuration?.title = "Продолжить оформление заказа"
+        continueCheckoutButton.addTarget(self, action: #selector(continueCheckoutButtonDidTapped), for: .touchUpInside)
         return continueCheckoutButton
+    }()
+
+    private lazy var emptyCartLabel: SRLabel = {
+        let emptyCartLabel = SRLabel()
+        emptyCartLabel.text = "Корзина пуста"
+        emptyCartLabel.textAlignment = .center
+        return emptyCartLabel
     }()
 
     //MARK: - View Controller Life Cycle
@@ -42,8 +50,16 @@ class CartViewController: UIViewController {
         configureControllerAppearance()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+        updateControllerState()
+    }
+
+
     private func addSubviews() {
         view.addSubview(tableView)
+        view.addSubview(continueCheckoutButton)
     }
 
     private func configureControllerAppearance() {
@@ -55,12 +71,39 @@ class CartViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = SRColors.cherryLightColor
     }
 
+    private func updateControllerState() {
+        continueCheckoutButton.isHidden = tableViewDataSource.isCartEmpty()
+        if tableViewDataSource.isCartEmpty() {
+            tableView.backgroundView = emptyCartLabel
+            setEmptyCartLabelPosition()
+        } else {
+            tableView.backgroundView = nil
+        }
+    }
+
     //MARK: - Layout Configuration
     
     private func configureLayout() {
         tableView.snp.makeConstraints { make in
             make.width.height.leading.trailing.top.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+
+        continueCheckoutButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(tableView.snp.bottom).inset(continueCheckoutButton.frame.height + 8)
+        }
+    }
+
+    private func setEmptyCartLabelPosition() {
+        emptyCartLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
+
+    //MARK: - User Interation
+
+    @objc private func continueCheckoutButtonDidTapped() {
+        
     }
 }
 
@@ -69,5 +112,27 @@ class CartViewController: UIViewController {
 extension CartViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         122
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let productDetailsViewController = ProductDetaisViewController()
+        productDetailsViewController.shownProduct = tableViewDataSource.getProduct(with: indexPath.row).product
+        navigationController?.pushViewController(productDetailsViewController, animated: true)
+    }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        UISwipeActionsConfiguration(
+            actions:
+                [
+                    UIContextualAction(
+                        style: .destructive, title: "Удалить", handler: { _, _, complition in
+                            complition(true)
+                            self.tableViewDataSource.deleteProduct(with: indexPath.row)
+                            tableView.deleteRows(at: [indexPath], with: .automatic)
+                            self.updateControllerState()
+                        }
+                    )
+                ]
+        )
     }
 }

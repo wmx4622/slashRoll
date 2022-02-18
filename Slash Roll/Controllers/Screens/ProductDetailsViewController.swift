@@ -158,6 +158,7 @@ class ProductDetaisViewController: SRScrollableViewController {
     private lazy var addToCartButton: SRButton = {
         let addToCartButton = SRButton()
         addToCartButton.configuration?.title = "Добавить в корзину"
+        addToCartButton.addTarget(self, action: #selector(addToCartButtonDidTapped), for: .touchUpInside)
         return addToCartButton
     }()
 
@@ -421,6 +422,11 @@ class ProductDetaisViewController: SRScrollableViewController {
     }
 
     @objc private func addToCartButtonDidTapped() {
+        guard let navigationController = tabBarController?.viewControllers?[TabBarTabs.cart.rawValue] as? UINavigationController,
+              let cartViewController = navigationController.topViewController as? CartViewController else { return }
+        cartViewController.tableViewDataSource.addProductToCart(product: shownProduct, quantity: productQuantityCounter) {
+            self.showAlert(title: "Лимит на заказ", message: "Для покупки более 100 единиц товара свяжитесь с менджерами")
 
+        }
     }
 }

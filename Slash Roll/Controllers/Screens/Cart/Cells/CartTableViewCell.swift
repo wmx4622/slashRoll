@@ -16,6 +16,8 @@ class CartTableViewCell: UITableViewCell, ReusableCell {
     private var timer: Timer?
     private let placeholderImage: UIImage = UIImage(named: "placeholder") ?? UIImage()
     private let productImageSize: CGSize = CGSize(width: 60, height: 60)
+    weak var delegate: CartTableViewCellDelegate?
+    var product: SRProduct?
 
     //MARK: - GUI varibles
     
@@ -154,25 +156,32 @@ class CartTableViewCell: UITableViewCell, ReusableCell {
     }
 
     func setCell(cartItem: SRProductInCart) {
-        self.productImageView.image = self.placeholderImage
+        self.productImageView.image = cartItem.product.image
         self.productNameLabel.text = cartItem.product.name
         self.countWeightLabel.text = "\(cartItem.product.count) штук | \(cartItem.product.weight) грамм"
         self.productPriceLabel.text = "Цена \(String(format: "%.2f", cartItem.product.price)) руб."
-        self.productQuantityLabel.text = "\(cartItem.quantity)"
+        self.productQuantityCounter = cartItem.quantity
+        self.productQuantityLabel.text = String(productQuantityCounter)
     }
 
     //MARK: - User Interaction
 
     private func increaseProductQuantity() {
         if productQuantityCounter < 100 {
+
+            delegate?.addProductToCart(product: self.product, quantity: 1, callback: nil)
             productQuantityCounter += 1
             productQuantityLabel.text = String(productQuantityCounter)
+
         }
     }
 
     private func decreaseProductQuantity() {
         if productQuantityCounter > 1 {
             productQuantityCounter -= 1
+            delegate?.addProductToCart(product: self.product, quantity: -1, callback: {
+                
+            })
             productQuantityLabel.text = String(productQuantityCounter)
         }
     }

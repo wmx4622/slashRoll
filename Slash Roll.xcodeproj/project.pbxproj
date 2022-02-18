@@ -32,6 +32,7 @@
 		D5732E9527ADA9030012C049 /* SRTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5732E9427ADA9030012C049 /* SRTableView.swift */; };
 		D5732E9727ADBED00012C049 /* CatalogTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5732E9627ADBED00012C049 /* CatalogTableViewDataSource.swift */; };
 		D5732E9A27ADE7020012C049 /* ReusableCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5732E9927ADE7020012C049 /* ReusableCellProtocol.swift */; };
+		D5847E7E27BFB7F3002F2FD9 /* CartTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5847E7D27BFB7F3002F2FD9 /* CartTableViewCellDelegate.swift */; };
 		D5C7C55A27B2BFDF009837E6 /* DatabaseCollectionsNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7C55927B2BFDF009837E6 /* DatabaseCollectionsNames.swift */; };
 		D5DAFC3C276920C600520CE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5DAFC3B276920C600520CE9 /* GoogleService-Info.plist */; };
 		D5E3EFF1276FB71800ECC6EF /* Extension + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E3EFF0276FB71800ECC6EF /* Extension + String.swift */; };
@@ -70,6 +71,7 @@
 		D5732E9427ADA9030012C049 /* SRTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRTableView.swift; sourceTree = "<group>"; };
 		D5732E9627ADBED00012C049 /* CatalogTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableViewDataSource.swift; sourceTree = "<group>"; };
 		D5732E9927ADE7020012C049 /* ReusableCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCellProtocol.swift; sourceTree = "<group>"; };
+		D5847E7D27BFB7F3002F2FD9 /* CartTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		D5C7C55927B2BFDF009837E6 /* DatabaseCollectionsNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCollectionsNames.swift; sourceTree = "<group>"; };
 		D5DAFC3B276920C600520CE9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D5E3EFF0276FB71800ECC6EF /* Extension + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + String.swift"; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				D5732E9927ADE7020012C049 /* ReusableCellProtocol.swift */,
+				D5847E7D27BFB7F3002F2FD9 /* CartTableViewCellDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 			files = (
 				D55A92BB27BEC2A800AADC14 /* SRTabBarController.swift in Sources */,
 				D55A92BF27BEE0C100AADC14 /* TabBarTabs.swift in Sources */,
+				D5847E7E27BFB7F3002F2FD9 /* CartTableViewCellDelegate.swift in Sources */,
 				D5E3EFF1276FB71800ECC6EF /* Extension + String.swift in Sources */,
 				D55A97EA276A6893003DC200 /* SRLabel.swift in Sources */,
 				D55A92BD27BEE04600AADC14 /* DatabaseFieldsNames.swift in Sources */,
