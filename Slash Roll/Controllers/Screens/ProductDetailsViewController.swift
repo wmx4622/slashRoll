@@ -389,7 +389,6 @@ class ProductDetaisViewController: SRScrollableViewController {
 
     @objc private func increaseProductQuantityButtonDidTapped() {
         increaseProductQuantity()
-        
     }
 
     @objc private func decreaseProductQuantityButtonDidTapped() {
@@ -422,8 +421,9 @@ class ProductDetaisViewController: SRScrollableViewController {
     }
 
     @objc private func addToCartButtonDidTapped() {
-        guard let navigationController = tabBarController?.viewControllers?[TabBarTabs.cart.rawValue] as? UINavigationController,
-              let cartViewController = navigationController.topViewController as? CartViewController else { return }
+        guard let navigationController = tabBarController?.viewControllers?[TabBarTabs.cart.rawValue] as? UINavigationController else { return }
+        let cartViewController = navigationController.viewControllers.first(where: { $0 is CartViewController })
+        guard let cartViewController = cartViewController as? CartViewController else { return }
         cartViewController.tableViewDataSource.addProductToCart(product: shownProduct, quantity: productQuantityCounter) {
             self.showAlert(title: "Лимит на заказ", message: "Для покупки более 100 единиц товара свяжитесь с менджерами")
 

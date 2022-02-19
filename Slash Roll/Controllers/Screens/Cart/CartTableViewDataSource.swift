@@ -9,10 +9,18 @@ import UIKit
 
 
 class CartTableViewDataSource: NSObject, UITableViewDataSource, CartTableViewCellDelegate {
+
     //MARK: - Properties
 
     private lazy var productsInCart: [SRProductInCart] = []
+    private var callback: (()-> ())
 
+    //MARK: DataSource init
+
+    required init(callback: @escaping (()->())) {
+        self.callback = callback
+    }
+    
     //MARK: - DataSource
 
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -24,6 +32,7 @@ class CartTableViewDataSource: NSObject, UITableViewDataSource, CartTableViewCel
         cell.setCell(cartItem: productsInCart[indexPath.row])
         cell.delegate = self
         cell.product = productsInCart[indexPath.row].product
+        cell.callback = callback
         return cell
     }
 
@@ -59,5 +68,9 @@ class CartTableViewDataSource: NSObject, UITableViewDataSource, CartTableViewCel
 
     func getProduct(with id: Int) -> SRProductInCart {
         productsInCart[id]
+    }
+
+    func getAllOrderedProducts() -> [SRProductInCart] {
+        productsInCart
     }
 }

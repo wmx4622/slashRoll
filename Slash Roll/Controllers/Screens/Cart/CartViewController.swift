@@ -12,7 +12,9 @@ class CartViewController: UIViewController {
 
     //MARK: - Properties
 
-    private(set) lazy var tableViewDataSource = CartTableViewDataSource()
+    private(set) lazy var tableViewDataSource = CartTableViewDataSource(callback: {
+        self.showAlert(title: "Лимит товара", message: "Для закакза более 100 единиц товара свяжитесь с менджерами")
+    })
 
     //MARK: - GUI varibles
     

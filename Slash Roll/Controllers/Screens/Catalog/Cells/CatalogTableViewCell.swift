@@ -65,6 +65,7 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubviews()
+        selectionStyle = .none
 
     }
 

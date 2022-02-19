@@ -17,6 +17,7 @@ class CartTableViewCell: UITableViewCell, ReusableCell {
     private let placeholderImage: UIImage = UIImage(named: "placeholder") ?? UIImage()
     private let productImageSize: CGSize = CGSize(width: 60, height: 60)
     weak var delegate: CartTableViewCellDelegate?
+    var callback:(() -> ())?
     var product: SRProduct?
 
     //MARK: - GUI varibles
@@ -172,16 +173,15 @@ class CartTableViewCell: UITableViewCell, ReusableCell {
             delegate?.addProductToCart(product: self.product, quantity: 1, callback: nil)
             productQuantityCounter += 1
             productQuantityLabel.text = String(productQuantityCounter)
-
+        } else if let callback = callback {
+            callback()
         }
     }
 
     private func decreaseProductQuantity() {
         if productQuantityCounter > 1 {
             productQuantityCounter -= 1
-            delegate?.addProductToCart(product: self.product, quantity: -1, callback: {
-                
-            })
+            delegate?.addProductToCart(product: self.product, quantity: -1, callback: nil)
             productQuantityLabel.text = String(productQuantityCounter)
         }
     }
