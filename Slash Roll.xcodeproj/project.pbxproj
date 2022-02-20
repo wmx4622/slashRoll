@@ -28,8 +28,9 @@
 		D56B57A927AF38D300DB097D /* CatalogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B57A827AF38D300DB097D /* CatalogTableViewCell.swift */; };
 		D56B57AC27AF39BE00DB097D /* SRProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B57AB27AF39BE00DB097D /* SRProduct.swift */; };
 		D56B57AF27AF3C8700DB097D /* CatalogNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B57AE27AF3C8700DB097D /* CatalogNavigationView.swift */; };
+		D572EE5B27C1531800FE4CE8 /* FormOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572EE5A27C1531800FE4CE8 /* FormOrderController.swift */; };
+		D572EE5D27C1ABE500FE4CE8 /* SRSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572EE5C27C1ABE500FE4CE8 /* SRSegmentedControl.swift */; };
 		D5732E9327ADA5880012C049 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5732E9227ADA5880012C049 /* CatalogViewController.swift */; };
-		D5732E9527ADA9030012C049 /* SRTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5732E9427ADA9030012C049 /* SRTableView.swift */; };
 		D5732E9727ADBED00012C049 /* CatalogTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5732E9627ADBED00012C049 /* CatalogTableViewDataSource.swift */; };
 		D5732E9A27ADE7020012C049 /* ReusableCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5732E9927ADE7020012C049 /* ReusableCellProtocol.swift */; };
 		D5847E7E27BFB7F3002F2FD9 /* CartTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5847E7D27BFB7F3002F2FD9 /* CartTableViewCellDelegate.swift */; };
@@ -67,8 +68,9 @@
 		D56B57A827AF38D300DB097D /* CatalogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableViewCell.swift; sourceTree = "<group>"; };
 		D56B57AB27AF39BE00DB097D /* SRProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRProduct.swift; sourceTree = "<group>"; };
 		D56B57AE27AF3C8700DB097D /* CatalogNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogNavigationView.swift; sourceTree = "<group>"; };
+		D572EE5A27C1531800FE4CE8 /* FormOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormOrderController.swift; sourceTree = "<group>"; };
+		D572EE5C27C1ABE500FE4CE8 /* SRSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRSegmentedControl.swift; sourceTree = "<group>"; };
 		D5732E9227ADA5880012C049 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
-		D5732E9427ADA9030012C049 /* SRTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRTableView.swift; sourceTree = "<group>"; };
 		D5732E9627ADBED00012C049 /* CatalogTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableViewDataSource.swift; sourceTree = "<group>"; };
 		D5732E9927ADE7020012C049 /* ReusableCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCellProtocol.swift; sourceTree = "<group>"; };
 		D5847E7D27BFB7F3002F2FD9 /* CartTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCellDelegate.swift; sourceTree = "<group>"; };
@@ -159,7 +161,6 @@
 				D55A97E9276A6893003DC200 /* SRLabel.swift */,
 				D55A97EB276A6A7B003DC200 /* SRTextField.swift */,
 				D523C5C427B711F90053EF86 /* SRQuantityButton.swift */,
-				D5732E9427ADA9030012C049 /* SRTableView.swift */,
 			);
 			path = "Base Elements";
 			sourceTree = "<group>";
@@ -181,6 +182,7 @@
 				D5E82D6C276BD7C900DDCD73 /* SRScrollableViewController.swift */,
 				D557A61227B033E400CC6EC6 /* SRSearchBarController.swift */,
 				D55A92BA27BEC2A800AADC14 /* SRTabBarController.swift */,
+				D572EE5C27C1ABE500FE4CE8 /* SRSegmentedControl.swift */,
 			);
 			path = "Base Controllers";
 			sourceTree = "<group>";
@@ -192,6 +194,7 @@
 				D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */,
 				D56610B9276EA2DC00FEA131 /* RegistrationViewController.swift */,
 				D533DCBC27B59B0C00D99645 /* ProductDetailsViewController.swift */,
+				D572EE5E27C1D10800FE4CE8 /* FormOrderController */,
 				D56B57A627AF387F00DB097D /* Catalog */,
 				D552E97B27BD1FCF00648887 /* Cart */,
 			);
@@ -231,6 +234,14 @@
 				D56B57AE27AF3C8700DB097D /* CatalogNavigationView.swift */,
 			);
 			path = CatalogNavigationView;
+			sourceTree = "<group>";
+		};
+		D572EE5E27C1D10800FE4CE8 /* FormOrderController */ = {
+			isa = PBXGroup;
+			children = (
+				D572EE5A27C1531800FE4CE8 /* FormOrderController.swift */,
+			);
+			path = FormOrderController;
 			sourceTree = "<group>";
 		};
 		D5732E9827ADE0350012C049 /* Protocols */ = {
@@ -417,7 +428,6 @@
 				D56B57A927AF38D300DB097D /* CatalogTableViewCell.swift in Sources */,
 				D5732E9327ADA5880012C049 /* CatalogViewController.swift in Sources */,
 				D552E97D27BD231700648887 /* CartViewController.swift in Sources */,
-				D5732E9527ADA9030012C049 /* SRTableView.swift in Sources */,
 				D56610BA276EA2DC00FEA131 /* RegistrationViewController.swift in Sources */,
 				D552E97F27BD6F3300648887 /* CartTableViewDataSource.swift in Sources */,
 				D56B57AF27AF3C8700DB097D /* CatalogNavigationView.swift in Sources */,
@@ -437,6 +447,8 @@
 				D50A15B927B80C9900F20F4D /* Extension + UIImage.swift in Sources */,
 				D56B57AC27AF39BE00DB097D /* SRProduct.swift in Sources */,
 				D5E848BD2767F6FB0050F799 /* SceneDelegate.swift in Sources */,
+				D572EE5B27C1531800FE4CE8 /* FormOrderController.swift in Sources */,
+				D572EE5D27C1ABE500FE4CE8 /* SRSegmentedControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,8 +21,8 @@ class CatalogViewController: UIViewController {
 //        return catalogNavigationView
 //    }()
 
-    private lazy var tableView: SRTableView = {
-        let tableView = SRTableView(frame: view.frame, style: .grouped)
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: view.frame, style: .grouped)
         tableView.dataSource = tableViewDataSource
         tableView.delegate = self
         tableView.backgroundColor = SRColors.whiteColor
@@ -67,8 +67,6 @@ class CatalogViewController: UIViewController {
             self?.tableView.reloadData()
 
         }
-
-
     }
 
     private func addSubviews() {
