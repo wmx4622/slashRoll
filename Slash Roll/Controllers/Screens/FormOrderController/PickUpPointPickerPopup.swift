@@ -38,6 +38,9 @@ class PickUpPointPickerPopup: UIViewController {
         }
     }
 
+    func getPickUpPointName(with id: Int) -> String {
+        pickUpPonints[id]
+    }
 }
 
 extension PickUpPointPickerPopup: UIPickerViewDelegate {

@@ -12,14 +12,15 @@ import Firebase
 class FormOrderController: SRScrollableViewController {
 
     //MARK: - Properties
-    private var courierDeliveryStackViewHeight: CGFloat = 220
 
+    private var courierDeliveryStackViewHeight: CGFloat = 0
     private let pickUpPointSelectionButtonAttibutes = [NSAttributedString.Key.underlineStyle : 1, NSAttributedString.Key.foregroundColor : SRColors.cherryColor] as [NSAttributedString.Key : Any]
 
     var orderedProducts: [SRProductInCart] = Array(repeating: SRProductInCart(product: SRProduct(id: "1", name: "1", count: 1, weight: 1, price: 1, composition: "1", image: nil, imageUrl: "", type: .roll, proteins: 1, fats: 1, carbohydrates: 1, calories: 1), quantity: 5), count: 5)
 
     private lazy var selectedPaymentMethod: PaymentMethods = .cash
-    private lazy var isCourierDelivery: Bool = true
+    private var selectedPickUpPointID: Int?
+    private lazy var selectedDeliveryMethod: DeliveryMethods = .courierDelivery
 
     //MARK: - GUI varibles
 
@@ -52,8 +53,9 @@ class FormOrderController: SRScrollableViewController {
         pickUpPointSelectionButton.isHidden = true
         let title = NSMutableAttributedString(string: "Пункт самовывоза:")
         title.addAttributes(pickUpPointSelectionButtonAttibutes, range: NSRange(location: 0, length: title.length))
+        pickUpPointSelectionButton.addTarget(self, action: #selector(pickUpPointSelectionButtonDidTapped), for: .touchUpInside)
         pickUpPointSelectionButton.setAttributedTitle(title, for: .normal)
-
+        pickUpPointSelectionButton.titleLabel?.lineBreakMode = .byTruncatingHead
         return pickUpPointSelectionButton
     }()
 
@@ -119,7 +121,13 @@ class FormOrderController: SRScrollableViewController {
         let alertViewController = PickUpPointPickerPopup()
         pickupAlert.setValue(alertViewController, forKey: "contentViewController")
         pickupAlert.addAction(UIAlertAction(title: "Выбрать", style: .default, handler: { _ in
-            print(alertViewController.selectedComponent)
+            self.selectedPickUpPointID = alertViewController.selectedComponent
+            let pickUpPointName = alertViewController.getPickUpPointName(with: alertViewController.selectedComponent)
+            let title = NSMutableAttributedString(string: "Пункт самовывоза:\(pickUpPointName)")
+            title.addAttributes(self.pickUpPointSelectionButtonAttibutes, range: NSRange(location: 0, length: title.length))
+            self.pickUpPointSelectionButton.setAttributedTitle(title, for: .normal)
+
+
         }))
         alertViewController.preferredContentSize = .init(width: view.bounds.width, height: 300)
         return pickupAlert
@@ -133,8 +141,10 @@ class FormOrderController: SRScrollableViewController {
 
     private lazy var paymentMethodSegmentedControl: SRSegmentedControl = {
         let paymentMethodSegmentedControl = SRSegmentedControl(frame: CGRect.init(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 150, height: 150)))
+        paymentMethodSegmentedControl.addTarget(self, action: #selector(paymentMethodDidChanged), for: .valueChanged)
         paymentMethodSegmentedControl.insertSegment(withTitle: "Наличными", at: 0, animated: false)
         paymentMethodSegmentedControl.insertSegment(withTitle: "Картой", at: 1, animated: false)
+        paymentMethodSegmentedControl.selectedSegmentIndex = 0
         return paymentMethodSegmentedControl
     }()
 
@@ -256,15 +266,21 @@ class FormOrderController: SRScrollableViewController {
         }
     }
 
+    //MARK: - User Interaction
+
     @objc private func deliveryMethodDidChanged(sender: SRSegmentedControl) {
 
         switch sender.selectedSegmentIndex {
         case DeliveryMethods.pickup.rawValue:
 
+            courierDeliveryStackViewHeight = courierDeliveryStackView.frame.height
+
             pickUpPointSelectionButton.snp.makeConstraints { make in
                 make.height.equalTo(30)
-                make.top.equalTo(courierDeliveryStackView.snp.bottom).offset(16)//jj
+                make.top.equalTo(courierDeliveryStackView.snp.bottom).offset(16)
+
                 make.leading.equalToSuperview().inset(8)
+                make.trailing.lessThanOrEqualToSuperview().inset(8)
             }
 
             pickUpPointSelectionButton.isHidden = false
@@ -297,12 +313,12 @@ class FormOrderController: SRScrollableViewController {
             courierDeliveryTownField.snp.makeConstraints { make in
                 make.height.equalTo(0)
             }
-//
+
             courierDeliveryStackView.snp.makeConstraints { make in
                 make.height.equalTo(0)
             }
 
-            isCourierDelivery.toggle()
+            selectedDeliveryMethod = .pickup
 
         case DeliveryMethods.courierDelivery.rawValue:
 
@@ -330,7 +346,6 @@ class FormOrderController: SRScrollableViewController {
                 make.height.equalTo(30)
             }
 
-
             courierDeliveryStackView.snp.remakeConstraints { make in
                 make.top.equalTo(phoneNumberTextField.snp.bottom).offset(8)
                 make.height.equalTo(courierDeliveryStackViewHeight)
@@ -342,18 +357,30 @@ class FormOrderController: SRScrollableViewController {
                 make.leading.equalToSuperview().inset(8)
             }
 
-
-
             pickUpPointSelectionButton.isHidden = true
-
-            isCourierDelivery.toggle()
+            selectedDeliveryMethod = .courierDelivery
 
         default:
             break
         }
     }
-    //MARK: - Firebase requests
 
+    @objc private func pickUpPointSelectionButtonDidTapped() {
+        present(pickupPointAlert, animated: true, completion: nil)
+    }
+
+    @objc private func paymentMethodDidChanged(sender: SRSegmentedControl) {
+        PaymentMethods.allCases.forEach { element in
+            if element.rawValue == sender.selectedSegmentIndex {
+                selectedPaymentMethod = element
+            }
+        }
+    }
+
+    @objc private func sendOrderButtonDidTapped() {
+
+    }
+    //MARK: - Firebase requests
 
     private func formOrder() -> SROrder {
         let address = "Город \(courierDeliveryTownField.text ?? ""), Улица \(courierDeliveryStreetField.text ?? ""),  Сооружение \(courierDeliveryBuildingField.text ?? ""), Подъезд \(courierDeliveryEntranceField.text ?? ""), Этаж \(courierDeliveryFloorField.text ?? ""), Квартира \(courierDeliveryFlatField.text ?? "" )"
@@ -373,6 +400,7 @@ class FormOrderController: SRScrollableViewController {
         orderedProducts.forEach {
             orderedProductsDictionary.updateValue($0.quantity, forKey: $0.product.id)
         }
+
         return orderedProductsDictionary
     }
 
@@ -394,9 +422,7 @@ class FormOrderController: SRScrollableViewController {
         database.collection("orders").document("test").setData(orderData)
     }
 
-    @objc private func sendOrderButtonDidTapped() {
-        present(pickupPointAlert, animated: true, completion: nil)
-    }
+
 
 }
 

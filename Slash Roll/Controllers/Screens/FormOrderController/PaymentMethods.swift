@@ -8,18 +8,10 @@
 import Foundation
 
 
-enum PaymentMethods {
-    case cash
+enum PaymentMethods: Int, CaseIterable {
+    case cash = 0
     case card
 
-    var info: (id: Int, description: String) {
-        switch self {
-        case .cash:
-            return (0, "Наличными")
-        case .card:
-            return (1,"Картой")
-        }
-    }
 }
 
 
