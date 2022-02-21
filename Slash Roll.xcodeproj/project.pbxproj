@@ -11,6 +11,11 @@
 		D50A15B927B80C9900F20F4D /* Extension + UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50A15B827B80C9900F20F4D /* Extension + UIImage.swift */; };
 		D523C5C527B711F90053EF86 /* SRQuantityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523C5C427B711F90053EF86 /* SRQuantityButton.swift */; };
 		D533DCBD27B59B0C00D99645 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D533DCBC27B59B0C00D99645 /* ProductDetailsViewController.swift */; };
+		D54BBE6327C3CA0200F39896 /* DeliveryMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54BBE6227C3CA0200F39896 /* DeliveryMethods.swift */; };
+		D54FC84327C26ACB006286F7 /* PaymentMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC84227C26ACB006286F7 /* PaymentMethods.swift */; };
+		D54FC84527C29027006286F7 /* SROrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC84427C29027006286F7 /* SROrder.swift */; };
+		D54FC84927C2DCA3006286F7 /* SRPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC84827C2DCA3006286F7 /* SRPickerView.swift */; };
+		D54FC84B27C2EF7A006286F7 /* PickUpPointPickerPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC84A27C2EF7A006286F7 /* PickUpPointPickerPopup.swift */; };
 		D552E97D27BD231700648887 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552E97C27BD231700648887 /* CartViewController.swift */; };
 		D552E97F27BD6F3300648887 /* CartTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552E97E27BD6F3300648887 /* CartTableViewDataSource.swift */; };
 		D552E98127BD915C00648887 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552E98027BD915C00648887 /* CartTableViewCell.swift */; };
@@ -51,6 +56,11 @@
 		D50A15B827B80C9900F20F4D /* Extension + UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIImage.swift"; sourceTree = "<group>"; };
 		D523C5C427B711F90053EF86 /* SRQuantityButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRQuantityButton.swift; sourceTree = "<group>"; };
 		D533DCBC27B59B0C00D99645 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
+		D54BBE6227C3CA0200F39896 /* DeliveryMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMethods.swift; sourceTree = "<group>"; };
+		D54FC84227C26ACB006286F7 /* PaymentMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethods.swift; sourceTree = "<group>"; };
+		D54FC84427C29027006286F7 /* SROrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SROrder.swift; sourceTree = "<group>"; };
+		D54FC84827C2DCA3006286F7 /* SRPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRPickerView.swift; sourceTree = "<group>"; };
+		D54FC84A27C2EF7A006286F7 /* PickUpPointPickerPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpPointPickerPopup.swift; sourceTree = "<group>"; };
 		D552E97C27BD231700648887 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D552E97E27BD6F3300648887 /* CartTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewDataSource.swift; sourceTree = "<group>"; };
 		D552E98027BD915C00648887 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
@@ -161,6 +171,7 @@
 				D55A97E9276A6893003DC200 /* SRLabel.swift */,
 				D55A97EB276A6A7B003DC200 /* SRTextField.swift */,
 				D523C5C427B711F90053EF86 /* SRQuantityButton.swift */,
+				D54FC84827C2DCA3006286F7 /* SRPickerView.swift */,
 			);
 			path = "Base Elements";
 			sourceTree = "<group>";
@@ -240,6 +251,10 @@
 			isa = PBXGroup;
 			children = (
 				D572EE5A27C1531800FE4CE8 /* FormOrderController.swift */,
+				D54BBE6227C3CA0200F39896 /* DeliveryMethods.swift */,
+				D54FC84A27C2EF7A006286F7 /* PickUpPointPickerPopup.swift */,
+				D54FC84427C29027006286F7 /* SROrder.swift */,
+				D54FC84227C26ACB006286F7 /* PaymentMethods.swift */,
 			);
 			path = FormOrderController;
 			sourceTree = "<group>";
@@ -430,14 +445,18 @@
 				D552E97D27BD231700648887 /* CartViewController.swift in Sources */,
 				D56610BA276EA2DC00FEA131 /* RegistrationViewController.swift in Sources */,
 				D552E97F27BD6F3300648887 /* CartTableViewDataSource.swift in Sources */,
+				D54BBE6327C3CA0200F39896 /* DeliveryMethods.swift in Sources */,
 				D56B57AF27AF3C8700DB097D /* CatalogNavigationView.swift in Sources */,
 				D552E98127BD915C00648887 /* CartTableViewCell.swift in Sources */,
 				D5E848BB2767F6FB0050F799 /* AppDelegate.swift in Sources */,
 				D557A61327B033E400CC6EC6 /* SRSearchBarController.swift in Sources */,
+				D54FC84527C29027006286F7 /* SROrder.swift in Sources */,
 				D56610B7276E41CE00FEA131 /* SRColors.swift in Sources */,
 				D533DCBD27B59B0C00D99645 /* ProductDetailsViewController.swift in Sources */,
 				D5732E9A27ADE7020012C049 /* ReusableCellProtocol.swift in Sources */,
 				D5C7C55A27B2BFDF009837E6 /* DatabaseCollectionsNames.swift in Sources */,
+				D54FC84927C2DCA3006286F7 /* SRPickerView.swift in Sources */,
+				D54FC84B27C2EF7A006286F7 /* PickUpPointPickerPopup.swift in Sources */,
 				D5E3EFF3276FCA2400ECC6EF /* Extension + UIViewController.swift in Sources */,
 				D55A97E8276A4B5C003DC200 /* SRButton.swift in Sources */,
 				D5732E9727ADBED00012C049 /* CatalogTableViewDataSource.swift in Sources */,
@@ -445,6 +464,7 @@
 				D523C5C527B711F90053EF86 /* SRQuantityButton.swift in Sources */,
 				D5E82D6D276BD7C900DDCD73 /* SRScrollableViewController.swift in Sources */,
 				D50A15B927B80C9900F20F4D /* Extension + UIImage.swift in Sources */,
+				D54FC84327C26ACB006286F7 /* PaymentMethods.swift in Sources */,
 				D56B57AC27AF39BE00DB097D /* SRProduct.swift in Sources */,
 				D5E848BD2767F6FB0050F799 /* SceneDelegate.swift in Sources */,
 				D572EE5B27C1531800FE4CE8 /* FormOrderController.swift in Sources */,
@@ -588,6 +608,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9CS35KL25V;
@@ -604,6 +625,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Voxar.Belarus.Slash-Roll";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -616,6 +638,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9CS35KL25V;
@@ -632,6 +655,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Voxar.Belarus.Slash-Roll";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
