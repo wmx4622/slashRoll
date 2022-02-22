@@ -42,6 +42,7 @@ class FormOrderController: SRScrollableViewController {
     private lazy var phoneNumberTextField: SRTextField = {
         let phoneNumberTextField = SRTextField()
         phoneNumberTextField.placeholder = "Номер телефона"
+        phoneNumberTextField.delegate = self
         phoneNumberTextField.keyboardType = .numberPad
         phoneNumberTextField.smartInsertDeleteType = .no
         phoneNumberTextField.returnKeyType = .next
@@ -380,10 +381,51 @@ class FormOrderController: SRScrollableViewController {
     @objc private func sendOrderButtonDidTapped() {
 
     }
+
+    //MARK: - Validate Order Information
+
+    private func isOrderInformationValid() -> Bool {
+        guard let phoneNumber = phoneNumberTextField.text else { return false }
+
+        if phoneNumber.count < 17 {
+            showAlert(title: "Ошибка", message: "Некорректный номер телефона")
+        }
+
+        if selectedDeliveryMethod == .pickup {
+            guard let _ = selectedPickUpPointID else {
+                showAlert(title: "Ошибка", message: "Выберите пункт самовывоза")
+                return false
+            }
+        }
+
+        if selectedDeliveryMethod == .courierDelivery {
+            guard let town = courierDeliveryTownField.text,
+                  let street = courierDeliveryStreetField.text,
+                  let building = courierDeliveryBuildingField.text else { return false }
+
+            if town.isEmpty {
+                showAlert(title: "Ошибка", message: "Введите город")
+                return false
+            }
+
+            if street.isEmpty {
+                showAlert(title: "Ошибка", message: "Введите улицу")
+                return false
+            }
+
+            if building.isEmpty {
+                showAlert(title: "Ошибка", message: "Введите номер дома")
+                return false
+            }
+        }
+
+        return true
+    }
+
     //MARK: - Firebase requests
 
     private func formOrder() -> SROrder {
-        let address = "Город \(courierDeliveryTownField.text ?? ""), Улица \(courierDeliveryStreetField.text ?? ""),  Сооружение \(courierDeliveryBuildingField.text ?? ""), Подъезд \(courierDeliveryEntranceField.text ?? ""), Этаж \(courierDeliveryFloorField.text ?? ""), Квартира \(courierDeliveryFlatField.text ?? "" )"
+        let address = "Город \(courierDeliveryTownField.text ?? ""), Улица \(courierDeliveryStreetField.text ?? ""),  Дом \(courierDeliveryBuildingField.text ?? ""), Подъезд \(courierDeliveryEntranceField.text ?? ""), Этаж \(courierDeliveryFloorField.text ?? ""), Квартира \(courierDeliveryFlatField.text ?? "" )"
         let order = SROrder(isCourierDelivery: deliveryMethodSegmentedControl.selectedSegmentIndex == 0, phoneNumber: phoneNumberTextField.text ?? "", deliveryAddress: address, deliveryPaymentMethodId: 1, deliveryComment: orderCommentTextView.text ?? "", deliveryProduct: getDictionaryFromOrderedProducts(), orderDate: getStringFromDate())
         return order
     }
@@ -421,8 +463,38 @@ class FormOrderController: SRScrollableViewController {
 
         database.collection("orders").document("test").setData(orderData)
     }
-
-
-
 }
 
+//MARK: - Extensions
+extension FormOrderController: UITextFieldDelegate {
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        switch textField {
+        case self.phoneNumberTextField:
+            guard let phoneNumber = textField.text,
+                  let rangeOfTextToReplace = Range(range, in: phoneNumber) else { return true }
+            let formattedText = phoneNumber.applyPatternOnNumbers(pattern: "# (###) ###-##-##", replacmentCharacter: "#")
+            let substringToReplace = phoneNumber[rangeOfTextToReplace]
+            let count = phoneNumber.count - substringToReplace.count + string.count
+            textField.text = formattedText
+            return count <= 17
+        default: return true
+        }
+    }
+
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+
+        switch textField {
+        case self.phoneNumberTextField:
+            guard let phoneNumber = textField.text, phoneNumber.isEmpty else { return true }
+            textField.text = "8 (0"
+            let end = textField.endOfDocument
+            textField.selectedTextRange = textField.textRange(from: end, to: end)
+        default: return true
+        }
+
+        return true
+    }
+
+}
