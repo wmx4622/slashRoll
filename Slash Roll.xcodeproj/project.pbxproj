@@ -14,7 +14,6 @@
 		D54BBE6327C3CA0200F39896 /* DeliveryMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54BBE6227C3CA0200F39896 /* DeliveryMethods.swift */; };
 		D54FC84327C26ACB006286F7 /* PaymentMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC84227C26ACB006286F7 /* PaymentMethods.swift */; };
 		D54FC84527C29027006286F7 /* SROrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC84427C29027006286F7 /* SROrder.swift */; };
-		D54FC84927C2DCA3006286F7 /* SRPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC84827C2DCA3006286F7 /* SRPickerView.swift */; };
 		D54FC84B27C2EF7A006286F7 /* PickUpPointPickerPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC84A27C2EF7A006286F7 /* PickUpPointPickerPopup.swift */; };
 		D552E97D27BD231700648887 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552E97C27BD231700648887 /* CartViewController.swift */; };
 		D552E97F27BD6F3300648887 /* CartTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552E97E27BD6F3300648887 /* CartTableViewDataSource.swift */; };
@@ -60,7 +59,6 @@
 		D54BBE6227C3CA0200F39896 /* DeliveryMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMethods.swift; sourceTree = "<group>"; };
 		D54FC84227C26ACB006286F7 /* PaymentMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethods.swift; sourceTree = "<group>"; };
 		D54FC84427C29027006286F7 /* SROrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SROrder.swift; sourceTree = "<group>"; };
-		D54FC84827C2DCA3006286F7 /* SRPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRPickerView.swift; sourceTree = "<group>"; };
 		D54FC84A27C2EF7A006286F7 /* PickUpPointPickerPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpPointPickerPopup.swift; sourceTree = "<group>"; };
 		D552E97C27BD231700648887 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D552E97E27BD6F3300648887 /* CartTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 				D55A97E9276A6893003DC200 /* SRLabel.swift */,
 				D55A97EB276A6A7B003DC200 /* SRTextField.swift */,
 				D523C5C427B711F90053EF86 /* SRQuantityButton.swift */,
-				D54FC84827C2DCA3006286F7 /* SRPickerView.swift */,
 			);
 			path = "Base Elements";
 			sourceTree = "<group>";
@@ -475,7 +472,6 @@
 				D533DCBD27B59B0C00D99645 /* ProductDetailsViewController.swift in Sources */,
 				D5732E9A27ADE7020012C049 /* ReusableCellProtocol.swift in Sources */,
 				D5C7C55A27B2BFDF009837E6 /* DatabaseCollectionsNames.swift in Sources */,
-				D54FC84927C2DCA3006286F7 /* SRPickerView.swift in Sources */,
 				D54FC84B27C2EF7A006286F7 /* PickUpPointPickerPopup.swift in Sources */,
 				D5E3EFF3276FCA2400ECC6EF /* Extension + UIViewController.swift in Sources */,
 				D55A97E8276A4B5C003DC200 /* SRButton.swift in Sources */,

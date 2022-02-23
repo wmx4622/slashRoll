@@ -9,6 +9,9 @@ import UIKit
 
 
 class SRSearchBarController: UISearchController {
+
+    //MARK: - Initialization
+
     override init(searchResultsController: UIViewController?) {
         super.init(searchResultsController: searchResultsController)
         obscuresBackgroundDuringPresentation = false

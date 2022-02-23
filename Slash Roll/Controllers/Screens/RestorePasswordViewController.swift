@@ -83,6 +83,8 @@ class RestorePasswordViewController : SRScrollableViewController {
     }
 }
 
+//MARK: - Delegates
+
 extension RestorePasswordViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == emailTextField {

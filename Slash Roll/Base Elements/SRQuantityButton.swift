@@ -9,6 +9,8 @@ import UIKit
 
 class SRQuantityButton: UIButton {
 
+    //MARK: - Initialization
+
     required init(title: String) {
         super.init(frame: .zero)
         configureButtonAppearance(title: title)
@@ -18,6 +20,8 @@ class SRQuantityButton: UIButton {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    //MARK: - Appearance Configuration
     
     private func configureButtonAppearance(title: String) {
         setAttributedTitle(NSAttributedString(string: title, attributes: [

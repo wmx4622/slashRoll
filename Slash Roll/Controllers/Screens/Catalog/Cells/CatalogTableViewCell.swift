@@ -125,6 +125,7 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
         super.layoutSubviews()
         configureLayout()
     }
+    
     //MARK: - Firebase requests
 
     private func loadImage(product: SRProduct) {

@@ -17,8 +17,8 @@ class PickUpPointPickerPopup: UIViewController {
 
     //MARK: - GUI Varibles
 
-    private lazy var picker: SRPickerView = {
-        let picker = SRPickerView()
+    private lazy var picker: UIPickerView = {
+        let picker = UIPickerView()
         picker.delegate = self
         picker.dataSource = self
         return picker
@@ -52,6 +52,7 @@ class PickUpPointPickerPopup: UIViewController {
         pickUpPonints[id]
     }
 }
+
 //MARK: Delegates
 
 extension PickUpPointPickerPopup: UIPickerViewDelegate {
