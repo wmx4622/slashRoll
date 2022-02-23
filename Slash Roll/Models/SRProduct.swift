@@ -36,17 +36,17 @@ struct SRProduct {
 
         for document in queryDocumentsArray {
             let product = SRProduct(
-                id: document.documentID, name: document[DataBaseDocumentFieldsNames.productName.rawValue] as? String ?? "",
-                count: document[DataBaseDocumentFieldsNames.productCount.rawValue] as? Int ?? 0,
-                weight: document[DataBaseDocumentFieldsNames.productWeight.rawValue] as? Int ?? 0,
-                price: document[DataBaseDocumentFieldsNames.productPrice.rawValue] as? Double ?? 0,
-                composition: document[DataBaseDocumentFieldsNames.productComposition.rawValue] as? String ?? "",
-                imageUrl: document[DataBaseDocumentFieldsNames.productImageUrl.rawValue] as? String ?? "",
-                type: ProductType(rawValue: document[DataBaseDocumentFieldsNames.productCategoryNumber.rawValue] as? Int ?? 1) ?? .roll,
-                proteins: document[DataBaseDocumentFieldsNames.productProteins.rawValue] as? Double ?? 0,
-                fats: document[DataBaseDocumentFieldsNames.productFats.rawValue] as? Double ?? 0,
-                carbohydrates: document[DataBaseDocumentFieldsNames.productCarbohydrates.rawValue] as? Double ?? 0,
-                calories: document[DataBaseDocumentFieldsNames.productCalories.rawValue] as? Double ?? 0
+                id: document.documentID, name: document[DataBaseProductFieldsNames.productName.rawValue] as? String ?? "",
+                count: document[DataBaseProductFieldsNames.productCount.rawValue] as? Int ?? 0,
+                weight: document[DataBaseProductFieldsNames.productWeight.rawValue] as? Int ?? 0,
+                price: document[DataBaseProductFieldsNames.productPrice.rawValue] as? Double ?? 0,
+                composition: document[DataBaseProductFieldsNames.productComposition.rawValue] as? String ?? "",
+                imageUrl: document[DataBaseProductFieldsNames.productImageUrl.rawValue] as? String ?? "",
+                type: ProductType(rawValue: document[DataBaseProductFieldsNames.productCategoryNumber.rawValue] as? Int ?? 1) ?? .roll,
+                proteins: document[DataBaseProductFieldsNames.productProteins.rawValue] as? Double ?? 0,
+                fats: document[DataBaseProductFieldsNames.productFats.rawValue] as? Double ?? 0,
+                carbohydrates: document[DataBaseProductFieldsNames.productCarbohydrates.rawValue] as? Double ?? 0,
+                calories: document[DataBaseProductFieldsNames.productCalories.rawValue] as? Double ?? 0
             )
 
             productsArray.append(product)

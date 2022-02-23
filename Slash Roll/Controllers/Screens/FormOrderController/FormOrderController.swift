@@ -12,15 +12,21 @@ import Firebase
 class FormOrderController: SRScrollableViewController {
 
     //MARK: - Properties
+    required init(orderedProducts: [SRProductInCart]) {
+        super.init(nibName: nil, bundle: nil)
+        self.orderedProducts = orderedProducts
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private lazy var orderedProducts: [SRProductInCart] = []
+    private lazy var orderManager = OrderManager(orderedProducts: orderedProducts)
 
     private var courierDeliveryStackViewHeight: CGFloat = 0
     private let pickUpPointSelectionButtonAttibutes = [NSAttributedString.Key.underlineStyle : 1, NSAttributedString.Key.foregroundColor : SRColors.cherryColor] as [NSAttributedString.Key : Any]
 
-    var orderedProducts: [SRProductInCart] = Array(repeating: SRProductInCart(product: SRProduct(id: "1", name: "1", count: 1, weight: 1, price: 1, composition: "1", image: nil, imageUrl: "", type: .roll, proteins: 1, fats: 1, carbohydrates: 1, calories: 1), quantity: 5), count: 5)
-
-    private lazy var selectedPaymentMethod: PaymentMethods = .cash
-    private var selectedPickUpPointID: Int?
-    private lazy var selectedDeliveryMethod: DeliveryMethods = .courierDelivery
 
     //MARK: - GUI varibles
 
@@ -122,7 +128,7 @@ class FormOrderController: SRScrollableViewController {
         let alertViewController = PickUpPointPickerPopup()
         pickupAlert.setValue(alertViewController, forKey: "contentViewController")
         pickupAlert.addAction(UIAlertAction(title: "Выбрать", style: .default, handler: { _ in
-            self.selectedPickUpPointID = alertViewController.selectedComponent
+            self.orderManager.changePickUpPointID(to: alertViewController.selectedComponent)
             let pickUpPointName = alertViewController.getPickUpPointName(with: alertViewController.selectedComponent)
             let title = NSMutableAttributedString(string: "Пункт самовывоза:\(pickUpPointName)")
             title.addAttributes(self.pickUpPointSelectionButtonAttibutes, range: NSRange(location: 0, length: title.length))
@@ -167,7 +173,9 @@ class FormOrderController: SRScrollableViewController {
 
     private lazy var totalOrderedProductsPriceLabel: SRLabel = {
         let totalOrderedProductPriceLabel = SRLabel()
-        totalOrderedProductPriceLabel.text = "Общая стоимость корзины:"
+        totalOrderedProductPriceLabel.lineBreakMode = .byTruncatingHead
+        totalOrderedProductPriceLabel.text = "Общая стоимость корзины: \(String(format: "%.2f", orderManager.calculateTotalPrice())) руб"
+
         return totalOrderedProductPriceLabel
     }()
 
@@ -258,6 +266,7 @@ class FormOrderController: SRScrollableViewController {
         totalOrderedProductsPriceLabel.snp.makeConstraints { make in
             make.top.equalTo(orderCommentTextView.snp.bottom).offset(8)
             make.leading.equalToSuperview().inset(8)
+            make.trailing.lessThanOrEqualToSuperview().inset(8)
         }
 
         compliteOrderButton.snp.makeConstraints { make in
@@ -270,9 +279,11 @@ class FormOrderController: SRScrollableViewController {
     //MARK: - User Interaction
 
     @objc private func deliveryMethodDidChanged(sender: SRSegmentedControl) {
+        view.endEditing(true)
 
         switch sender.selectedSegmentIndex {
         case DeliveryMethods.pickup.rawValue:
+
 
             courierDeliveryStackViewHeight = courierDeliveryStackView.frame.height
 
@@ -295,31 +306,39 @@ class FormOrderController: SRScrollableViewController {
                 make.height.equalTo(0)
             }
 
+            courierDeliveryTownField.isHidden = true
+
             courierDeliveryFloorField.snp.makeConstraints { make in
                 make.height.equalTo(0)
             }
+
+            courierDeliveryFloorField.isHidden = true
 
             courierDeliveryEntranceField.snp.makeConstraints { make in
                 make.height.equalTo(0)
             }
 
+            courierDeliveryEntranceField.isHidden = true
+
             courierDeliveryBuildingField.snp.makeConstraints { make in
                 make.height.equalTo(0)
             }
+
+            courierDeliveryBuildingField.isHidden = true
 
             courierDeliveryStreetField.snp.makeConstraints { make in
                 make.height.equalTo(0)
             }
 
+            courierDeliveryStreetField.isHidden = true
+
             courierDeliveryTownField.snp.makeConstraints { make in
                 make.height.equalTo(0)
             }
 
-            courierDeliveryStackView.snp.makeConstraints { make in
-                make.height.equalTo(0)
-            }
+            courierDeliveryTownField.isHidden = true
 
-            selectedDeliveryMethod = .pickup
+            orderManager.changeDeliveryMethod(to: .pickup)
 
         case DeliveryMethods.courierDelivery.rawValue:
 
@@ -327,31 +346,38 @@ class FormOrderController: SRScrollableViewController {
                 make.height.equalTo(30)
             }
 
+            courierDeliveryFlatField.isHidden = false
+
+
             courierDeliveryFloorField.snp.remakeConstraints { make in
                 make.height.equalTo(30)
             }
+
+            courierDeliveryFloorField.isHidden = false
 
             courierDeliveryEntranceField.snp.remakeConstraints { make in
                 make.height.equalTo(30)
             }
 
+            courierDeliveryEntranceField.isHidden = false
+
             courierDeliveryBuildingField.snp.remakeConstraints { make in
                 make.height.equalTo(30)
             }
+
+            courierDeliveryBuildingField.isHidden = false
 
             courierDeliveryStreetField.snp.remakeConstraints { make in
                 make.height.equalTo(30)
             }
 
+            courierDeliveryStreetField.isHidden = false
+
             courierDeliveryTownField.snp.remakeConstraints { make in
                 make.height.equalTo(30)
             }
 
-            courierDeliveryStackView.snp.remakeConstraints { make in
-                make.top.equalTo(phoneNumberTextField.snp.bottom).offset(8)
-                make.height.equalTo(courierDeliveryStackViewHeight)
-                make.leading.trailing.equalToSuperview().inset(8)
-            }
+            courierDeliveryTownField.isHidden = false
 
             paymentMethodLabel.snp.remakeConstraints { make in
                 make.top.equalTo(courierDeliveryStackView.snp.bottom).offset(32)
@@ -359,7 +385,7 @@ class FormOrderController: SRScrollableViewController {
             }
 
             pickUpPointSelectionButton.isHidden = true
-            selectedDeliveryMethod = .courierDelivery
+            orderManager.changeDeliveryMethod(to: .courierDelivery)
 
         default:
             break
@@ -373,99 +399,29 @@ class FormOrderController: SRScrollableViewController {
     @objc private func paymentMethodDidChanged(sender: SRSegmentedControl) {
         PaymentMethods.allCases.forEach { element in
             if element.rawValue == sender.selectedSegmentIndex {
-                selectedPaymentMethod = element
+                orderManager.changePaymentMethod(to: element)
             }
+
         }
     }
 
     @objc private func sendOrderButtonDidTapped() {
 
-    }
+        orderManager.compliteOrdering(phoneNumber: phoneNumberTextField.text, town: courierDeliveryTownField.text, street: courierDeliveryStreetField.text, building: courierDeliveryBuildingField.text, entrance: courierDeliveryEntranceField.text, floor: courierDeliveryFloorField.text, flat: courierDeliveryFlatField.text, comment: orderCommentTextView.text) { [weak self] title, message, isAutorize in
 
-    //MARK: - Validate Order Information
-
-    private func isOrderInformationValid() -> Bool {
-        guard let phoneNumber = phoneNumberTextField.text else { return false }
-
-        if phoneNumber.count < 17 {
-            showAlert(title: "Ошибка", message: "Некорректный номер телефона")
-        }
-
-        if selectedDeliveryMethod == .pickup {
-            guard let _ = selectedPickUpPointID else {
-                showAlert(title: "Ошибка", message: "Выберите пункт самовывоза")
-                return false
-            }
-        }
-
-        if selectedDeliveryMethod == .courierDelivery {
-            guard let town = courierDeliveryTownField.text,
-                  let street = courierDeliveryStreetField.text,
-                  let building = courierDeliveryBuildingField.text else { return false }
-
-            if town.isEmpty {
-                showAlert(title: "Ошибка", message: "Введите город")
-                return false
+            if isAutorize == false {
+                self?.present(AuthorizationViewController(), animated: true, completion: nil)
             }
 
-            if street.isEmpty {
-                showAlert(title: "Ошибка", message: "Введите улицу")
-                return false
-            }
-
-            if building.isEmpty {
-                showAlert(title: "Ошибка", message: "Введите номер дома")
-                return false
+            if let title = title, let message = message {
+                self?.showAlert(title: title, message: message)
             }
         }
-
-        return true
-    }
-
-    //MARK: - Firebase requests
-
-    private func formOrder() -> SROrder {
-        let address = "Город \(courierDeliveryTownField.text ?? ""), Улица \(courierDeliveryStreetField.text ?? ""),  Дом \(courierDeliveryBuildingField.text ?? ""), Подъезд \(courierDeliveryEntranceField.text ?? ""), Этаж \(courierDeliveryFloorField.text ?? ""), Квартира \(courierDeliveryFlatField.text ?? "" )"
-        let order = SROrder(isCourierDelivery: deliveryMethodSegmentedControl.selectedSegmentIndex == 0, phoneNumber: phoneNumberTextField.text ?? "", deliveryAddress: address, deliveryPaymentMethodId: 1, deliveryComment: orderCommentTextView.text ?? "", deliveryProduct: getDictionaryFromOrderedProducts(), orderDate: getStringFromDate())
-        return order
-    }
-
-    private func getStringFromDate() -> String {
-        let dateFormater = DateFormatter()
-        dateFormater.dateFormat = "dd.MM.yy"
-        let dateString = dateFormater.string(from: Date())
-        return dateString
-    }
-
-    private func getDictionaryFromOrderedProducts() -> [String: Int] {
-        var orderedProductsDictionary: [String:Int] = [:]
-        orderedProducts.forEach {
-            orderedProductsDictionary.updateValue($0.quantity, forKey: $0.product.id)
-        }
-
-        return orderedProductsDictionary
-    }
-
-    private func sendOrder() {
-        let database = Firestore.firestore()
-        let newOrder = formOrder()
-        let orderData: [String:Any] = [
-            newOrder.orderDate: [
-                "date": newOrder.orderDate,
-                "phoneNumber": newOrder.phoneNumber,
-                "address": newOrder.deliveryAddress,
-                "deliveryPaymentMethod": newOrder.deliveryPaymentMethodId,
-                "deliveryComment": newOrder.deliveryComment,
-                "deliveryProducts": newOrder.deliveryProduct
-
-            ]
-        ]
-
-        database.collection("orders").document("test").setData(orderData)
     }
 }
 
 //MARK: - Extensions
+
 extension FormOrderController: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

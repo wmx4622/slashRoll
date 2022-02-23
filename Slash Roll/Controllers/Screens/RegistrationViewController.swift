@@ -140,6 +140,8 @@ class RegistrationViewController: SRScrollableViewController {
                 changeRequest.commitChanges { error in
                     if let error = error {
                         self?.showAlert(title: "Ошибка", message: error.localizedDescription)
+                    } else {
+                        self?.showAlert(title: "Регистрация", message: "Регистрация прошла успешно")
                     }
                 }
             }

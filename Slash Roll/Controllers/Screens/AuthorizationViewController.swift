@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
 
 
 class AuthorizationViewController: SRScrollableViewController {
@@ -107,7 +108,7 @@ class AuthorizationViewController: SRScrollableViewController {
     //MARK: - User Interaction
 
     @objc private func logInButtonDidTapped() {
-        
+        finishLogging()
     }
 
     @objc private func forgotPasswordButtonDidTapped() {
@@ -116,6 +117,36 @@ class AuthorizationViewController: SRScrollableViewController {
 
     @objc private func registerButtonDidTap() {
         navigationController?.pushViewController(RegistrationViewController(), animated: true)
+    }
+
+
+    //MARK: - Authorization
+
+    private func finishLogging() {
+        guard isLoggingInformationValid(),
+              let email = emailTextField.text,
+              let password = passwordTextField.text else { return }
+
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            if let error = error {
+                self?.showAlert(title: "Ошибка", message: error.localizedDescription)
+            }
+
+            if let _ = authResult {
+                self?.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+
+    private func isLoggingInformationValid() -> Bool {
+        guard let email = emailTextField.text else { return false }
+
+        if !email.isEmailValid() {
+            showAlert(title: "Ошибка", message: "Неверный формат e-mail адреса")
+            return false
+        }
+
+        return true
     }
 
 }

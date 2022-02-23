@@ -19,10 +19,12 @@
 		D552E97D27BD231700648887 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552E97C27BD231700648887 /* CartViewController.swift */; };
 		D552E97F27BD6F3300648887 /* CartTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552E97E27BD6F3300648887 /* CartTableViewDataSource.swift */; };
 		D552E98127BD915C00648887 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552E98027BD915C00648887 /* CartTableViewCell.swift */; };
+		D5540C9427C5115700528F62 /* OrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5540C9327C5115700528F62 /* OrderManager.swift */; };
+		D5540C9627C5789F00528F62 /* DatabaseOrderFieldNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5540C9527C5789F00528F62 /* DatabaseOrderFieldNames.swift */; };
 		D5541EE82772309F0075BD86 /* RestorePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */; };
 		D557A61327B033E400CC6EC6 /* SRSearchBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557A61227B033E400CC6EC6 /* SRSearchBarController.swift */; };
 		D55A92BB27BEC2A800AADC14 /* SRTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A92BA27BEC2A800AADC14 /* SRTabBarController.swift */; };
-		D55A92BD27BEE04600AADC14 /* DatabaseFieldsNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A92BC27BEE04600AADC14 /* DatabaseFieldsNames.swift */; };
+		D55A92BD27BEE04600AADC14 /* DatabaseProductFieldsNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A92BC27BEE04600AADC14 /* DatabaseProductFieldsNames.swift */; };
 		D55A92BF27BEE0C100AADC14 /* TabBarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A92BE27BEE0C100AADC14 /* TabBarTabs.swift */; };
 		D55A92C127BEE1D600AADC14 /* SRProductsInCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A92C027BEE1D600AADC14 /* SRProductsInCart.swift */; };
 		D55A97E8276A4B5C003DC200 /* SRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A97E7276A4B5C003DC200 /* SRButton.swift */; };
@@ -64,10 +66,12 @@
 		D552E97C27BD231700648887 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D552E97E27BD6F3300648887 /* CartTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewDataSource.swift; sourceTree = "<group>"; };
 		D552E98027BD915C00648887 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
+		D5540C9327C5115700528F62 /* OrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderManager.swift; sourceTree = "<group>"; };
+		D5540C9527C5789F00528F62 /* DatabaseOrderFieldNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseOrderFieldNames.swift; sourceTree = "<group>"; };
 		D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewController.swift; sourceTree = "<group>"; };
 		D557A61227B033E400CC6EC6 /* SRSearchBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRSearchBarController.swift; sourceTree = "<group>"; };
 		D55A92BA27BEC2A800AADC14 /* SRTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRTabBarController.swift; sourceTree = "<group>"; };
-		D55A92BC27BEE04600AADC14 /* DatabaseFieldsNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseFieldsNames.swift; sourceTree = "<group>"; };
+		D55A92BC27BEE04600AADC14 /* DatabaseProductFieldsNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProductFieldsNames.swift; sourceTree = "<group>"; };
 		D55A92BE27BEE0C100AADC14 /* TabBarTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarTabs.swift; sourceTree = "<group>"; };
 		D55A92C027BEE1D600AADC14 /* SRProductsInCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRProductsInCart.swift; sourceTree = "<group>"; };
 		D55A97E7276A4B5C003DC200 /* SRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRButton.swift; sourceTree = "<group>"; };
@@ -181,7 +185,8 @@
 			children = (
 				D56610B6276E41CE00FEA131 /* SRColors.swift */,
 				D5C7C55927B2BFDF009837E6 /* DatabaseCollectionsNames.swift */,
-				D55A92BC27BEE04600AADC14 /* DatabaseFieldsNames.swift */,
+				D55A92BC27BEE04600AADC14 /* DatabaseProductFieldsNames.swift */,
+				D5540C9527C5789F00528F62 /* DatabaseOrderFieldNames.swift */,
 				D55A92BE27BEE0C100AADC14 /* TabBarTabs.swift */,
 			);
 			path = Constants;
@@ -251,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				D572EE5A27C1531800FE4CE8 /* FormOrderController.swift */,
+				D5540C9327C5115700528F62 /* OrderManager.swift */,
 				D54BBE6227C3CA0200F39896 /* DeliveryMethods.swift */,
 				D54FC84A27C2EF7A006286F7 /* PickUpPointPickerPopup.swift */,
 				D54FC84427C29027006286F7 /* SROrder.swift */,
@@ -436,17 +442,19 @@
 				D5847E7E27BFB7F3002F2FD9 /* CartTableViewCellDelegate.swift in Sources */,
 				D5E3EFF1276FB71800ECC6EF /* Extension + String.swift in Sources */,
 				D55A97EA276A6893003DC200 /* SRLabel.swift in Sources */,
-				D55A92BD27BEE04600AADC14 /* DatabaseFieldsNames.swift in Sources */,
+				D55A92BD27BEE04600AADC14 /* DatabaseProductFieldsNames.swift in Sources */,
 				D5E848BF2767F6FB0050F799 /* AuthorizationViewController.swift in Sources */,
 				D55A97EC276A6A7B003DC200 /* SRTextField.swift in Sources */,
 				D5541EE82772309F0075BD86 /* RestorePasswordViewController.swift in Sources */,
 				D56B57A927AF38D300DB097D /* CatalogTableViewCell.swift in Sources */,
 				D5732E9327ADA5880012C049 /* CatalogViewController.swift in Sources */,
 				D552E97D27BD231700648887 /* CartViewController.swift in Sources */,
+				D5540C9427C5115700528F62 /* OrderManager.swift in Sources */,
 				D56610BA276EA2DC00FEA131 /* RegistrationViewController.swift in Sources */,
 				D552E97F27BD6F3300648887 /* CartTableViewDataSource.swift in Sources */,
 				D54BBE6327C3CA0200F39896 /* DeliveryMethods.swift in Sources */,
 				D56B57AF27AF3C8700DB097D /* CatalogNavigationView.swift in Sources */,
+				D5540C9627C5789F00528F62 /* DatabaseOrderFieldNames.swift in Sources */,
 				D552E98127BD915C00648887 /* CartTableViewCell.swift in Sources */,
 				D5E848BB2767F6FB0050F799 /* AppDelegate.swift in Sources */,
 				D557A61327B033E400CC6EC6 /* SRSearchBarController.swift in Sources */,

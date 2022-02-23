@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum DataBaseDocumentFieldsNames: String {
+enum DataBaseProductFieldsNames: String {
     case productName = "productName"
     case productCount = "productCount"
     case productWeight = "productWeight"

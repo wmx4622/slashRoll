@@ -105,7 +105,8 @@ class CartViewController: UIViewController {
     //MARK: - User Interation
 
     @objc private func continueCheckoutButtonDidTapped() {
-        
+        let formOrderController = FormOrderController(orderedProducts: tableViewDataSource.getAllOrderedProducts())
+        present(formOrderController, animated: true, completion: nil)
     }
 }
 
