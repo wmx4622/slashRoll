@@ -41,7 +41,7 @@ class SRTabBarController: UITabBarController {
         tabBar.tintColor = SRColors.cherryColor
         tabBar.barTintColor = SRColors.whiteColor
         tabBar.isTranslucent = false
-        
+        UITabBarItem.appearance().badgeColor = SRColors.cherryLightColor
         view.backgroundColor = SRColors.whiteColor
     }
 }

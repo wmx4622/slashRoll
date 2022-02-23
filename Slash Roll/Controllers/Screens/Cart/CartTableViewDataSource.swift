@@ -73,4 +73,8 @@ class CartTableViewDataSource: NSObject, UITableViewDataSource, CartTableViewCel
     func getAllOrderedProducts() -> [SRProductInCart] {
         productsInCart
     }
+
+    func getProductCount() -> Int {
+        productsInCart.count
+    }
 }

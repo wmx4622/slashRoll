@@ -133,6 +133,11 @@ extension CartViewController: UITableViewDelegate {
                             self.tableViewDataSource.deleteProduct(with: indexPath.row)
                             tableView.deleteRows(at: [indexPath], with: .automatic)
                             self.updateControllerState()
+                            if self.tableViewDataSource.getProductCount() > 0 {
+                                self.tabBarController?.tabBar.items?[TabBarTabs.cart.rawValue].badgeValue = "\(self.tableViewDataSource.getProductCount())"
+                            } else {
+                                self.tabBarController?.tabBar.items?[TabBarTabs.cart.rawValue].badgeValue = nil
+                            }
                         }
                     )
                 ]

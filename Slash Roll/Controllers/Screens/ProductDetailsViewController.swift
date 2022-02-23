@@ -159,6 +159,8 @@ class ProductDetaisViewController: SRScrollableViewController {
         let addToCartButton = SRButton()
         addToCartButton.configuration?.title = "Добавить в корзину"
         addToCartButton.addTarget(self, action: #selector(addToCartButtonDidTapped), for: .touchUpInside)
+        addToCartButton.configuration?.image = UIImage(systemName: "cart.badge.plus")
+        addToCartButton.configuration?.imagePadding = 16
         return addToCartButton
     }()
 
@@ -428,5 +430,12 @@ class ProductDetaisViewController: SRScrollableViewController {
             self.showAlert(title: "Лимит на заказ", message: "Для покупки более 100 единиц товара свяжитесь с менджерами")
 
         }
+
+        if cartViewController.tableViewDataSource.getProductCount() > 0 {
+            tabBarController?.tabBar.items?[TabBarTabs.cart.rawValue].badgeValue = "\(cartViewController.tableViewDataSource.getProductCount())"
+        } else {
+            tabBarController?.tabBar.items?[TabBarTabs.cart.rawValue].badgeValue = nil
+        }
+
     }
 }

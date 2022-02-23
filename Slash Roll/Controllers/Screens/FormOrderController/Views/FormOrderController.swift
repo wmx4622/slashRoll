@@ -12,6 +12,7 @@ import Firebase
 class FormOrderController: SRScrollableViewController {
 
     //MARK: - Properties
+
     required init(orderedProducts: [SRProductInCart]) {
         super.init(nibName: nil, bundle: nil)
         self.orderedProducts = orderedProducts
@@ -23,10 +24,8 @@ class FormOrderController: SRScrollableViewController {
 
     private lazy var orderedProducts: [SRProductInCart] = []
     private lazy var orderManager = OrderManager(orderedProducts: orderedProducts)
-
     private var courierDeliveryStackViewHeight: CGFloat = 0
     private let pickUpPointSelectionButtonAttibutes = [NSAttributedString.Key.underlineStyle : 1, NSAttributedString.Key.foregroundColor : SRColors.cherryColor] as [NSAttributedString.Key : Any]
-
 
     //MARK: - GUI varibles
 
@@ -401,7 +400,6 @@ class FormOrderController: SRScrollableViewController {
             if element.rawValue == sender.selectedSegmentIndex {
                 orderManager.changePaymentMethod(to: element)
             }
-
         }
     }
 
@@ -427,6 +425,7 @@ extension FormOrderController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
         switch textField {
+
         case self.phoneNumberTextField:
             guard let phoneNumber = textField.text,
                   let rangeOfTextToReplace = Range(range, in: phoneNumber) else { return true }
@@ -442,6 +441,7 @@ extension FormOrderController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
 
         switch textField {
+
         case self.phoneNumberTextField:
             guard let phoneNumber = textField.text, phoneNumber.isEmpty else { return true }
             textField.text = "8 (0"

@@ -117,7 +117,7 @@ class CatalogTableViewCell: UITableViewCell, ReusableCell {
         self.countWeightLabel.text = "\(product.count) штук | \(product.weight) грамм"
         self.productPriceLabel.text = "Цена \(String(format: "%.2f", product.price)) руб."
         if !product.imageUrl.isEmpty {
-            loadImage(product: product)
+            self.loadImage(product: product)
         }
     }
 

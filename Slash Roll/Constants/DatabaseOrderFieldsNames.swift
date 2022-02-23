@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum DatabaseOrderFieldNames: String {
+enum DatabaseOrderFieldsNames: String {
 
     case phoneNumber = "phoneNumber"
     case deliveryMethod = "deliveryMethod"

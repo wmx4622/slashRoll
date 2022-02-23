@@ -38,7 +38,7 @@ struct SRProduct {
             let product = SRProduct(
                 id: document.documentID, name: document[DataBaseProductFieldsNames.productName.rawValue] as? String ?? "",
                 count: document[DataBaseProductFieldsNames.productCount.rawValue] as? Int ?? 0,
-                weight: document[DataBaseProductFieldsNames.productWeight.rawValue] as? Int ?? 0,
+                weight: document[DataBaseProductFieldsNames.productWeight.rawValue] as? Gramm ?? 0,
                 price: document[DataBaseProductFieldsNames.productPrice.rawValue] as? Double ?? 0,
                 composition: document[DataBaseProductFieldsNames.productComposition.rawValue] as? String ?? "",
                 imageUrl: document[DataBaseProductFieldsNames.productImageUrl.rawValue] as? String ?? "",

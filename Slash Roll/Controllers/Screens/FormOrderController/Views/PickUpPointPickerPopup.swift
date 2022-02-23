@@ -7,10 +7,15 @@
 
 import UIKit
 
+
 class PickUpPointPickerPopup: UIViewController {
+
+    //MARK: - Properties
 
     private(set) lazy var selectedComponent = 0
     private var pickUpPonints = ["Победителей 111, Минск", "Ратомская 2, Минск"]
+
+    //MARK: - GUI Varibles
 
     private lazy var picker: SRPickerView = {
         let picker = SRPickerView()
@@ -18,6 +23,9 @@ class PickUpPointPickerPopup: UIViewController {
         picker.dataSource = self
         return picker
     }()
+
+
+    //MARK: - View Controller Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +39,8 @@ class PickUpPointPickerPopup: UIViewController {
         view.addSubview(picker)
     }
 
+    //MARK: - Layout Configuration
+
     private func configureLayout() {
         picker.snp.makeConstraints { make in
             make.width.height.equalToSuperview()
@@ -42,6 +52,7 @@ class PickUpPointPickerPopup: UIViewController {
         pickUpPonints[id]
     }
 }
+//MARK: Delegates
 
 extension PickUpPointPickerPopup: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -52,6 +63,8 @@ extension PickUpPointPickerPopup: UIPickerViewDelegate {
         pickUpPonints[row]
     }
 }
+
+//MARK: DataSource
 
 extension PickUpPointPickerPopup: UIPickerViewDataSource {
 

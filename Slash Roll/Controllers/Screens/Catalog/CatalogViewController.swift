@@ -10,23 +10,18 @@ import Firebase
 
 
 class CatalogViewController: UIViewController {
+
     //MARK: - Properties
 
     private lazy var tableViewDataSource = CatalogTableViewDataSource()
 
     //MARK: - GUI varibles
 
-//    private lazy var catalogNavigationView: CatalogNavigationView = {
-//        let catalogNavigationView = CatalogNavigationView()
-//        return catalogNavigationView
-//    }()
-
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: view.frame, style: .grouped)
         tableView.dataSource = tableViewDataSource
         tableView.delegate = self
         tableView.backgroundColor = SRColors.whiteColor
-        //        tableView.contentInset.top = catalogNavigationView.frame.size.height + 16
         tableView.register(CatalogTableViewCell.self, forCellReuseIdentifier: CatalogTableViewCell.reuseIdentifier)
         tableView.refreshControl = refreshControll
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: CGFloat.leastNonzeroMagnitude, height: CGFloat.leastNonzeroMagnitude))
@@ -71,7 +66,6 @@ class CatalogViewController: UIViewController {
 
     private func addSubviews() {
         view.addSubview(tableView)
-        //        view.addSubview(catalogNavigationView)
         navigationItem.searchController = searchBarController
     }
 
@@ -80,11 +74,6 @@ class CatalogViewController: UIViewController {
             make.top.bottom.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             make.width.height.equalTo(view.safeAreaLayoutGuide)
         }
-
-        //        catalogNavigationView.snp.makeConstraints { make in
-        //            make.top.equalTo(view.safeAreaLayoutGuide).inset(16)
-        //            make.trailing.leading.equalToSuperview().inset(8)
-        //        }
     }
 
     //MARK: - Layout Configuration
@@ -96,7 +85,7 @@ class CatalogViewController: UIViewController {
         view.backgroundColor = SRColors.whiteColor
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationController?.navigationBar.tintColor = SRColors.cherryColor
-        navigationController?.navigationBar.barTintColor = SRColors.cherryLightColor 
+        navigationController?.navigationBar.barTintColor = SRColors.cherryLightColor
     }
 
     //MARK: - User Interaction

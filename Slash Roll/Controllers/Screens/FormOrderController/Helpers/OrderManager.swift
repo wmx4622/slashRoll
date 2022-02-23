@@ -9,8 +9,8 @@ import Foundation
 import Firebase
 
 
-
 class OrderManager {
+
     //MARK: - Initialization
 
     required init(orderedProducts: [SRProductInCart]) {
@@ -20,7 +20,6 @@ class OrderManager {
     //MARK: - Properties
 
     private var orderedProducts: [SRProductInCart]
-
     private lazy var selectedPaymentMethod: PaymentMethods = .cash
     private var selectedPickUpPointID: Int?
     private lazy var selectedDeliveryMethod: DeliveryMethods = .courierDelivery
@@ -57,7 +56,16 @@ class OrderManager {
 
             switch selectedDeliveryMethod {
             case .courierDelivery:
-                let order = formOrder(phoneNumber: phoneNumber ?? "", town: town ?? "", street: street ?? "", building: building ?? "", entrance: entrance ?? "", floor: floor ?? "", flat: flat ?? "", comment: comment ?? "")
+                let order = formOrder(
+                    phoneNumber: phoneNumber ?? "",
+                    town: town ?? "",
+                    street: street ?? "",
+                    building: building ?? "",
+                    entrance: entrance ?? "",
+                    floor: floor ?? "",
+                    flat: flat ?? "",
+                    comment: comment ?? ""
+                )
                 sendOrder(order: order, userID: currentUser.uid) { title, message in
                     callback(title, message, nil)
                 }
@@ -146,15 +154,14 @@ class OrderManager {
         let userOrders = orders.document(userID)
         let orderData: [String: Any] = [
             order.orderDate: [
-                DatabaseOrderFieldNames.phoneNumber.rawValue: order.phoneNumber,
-                DatabaseOrderFieldNames.deliveryMethod.rawValue: order.deliveryMethod.rawValue,
-                DatabaseOrderFieldNames.deliveryAddress.rawValue: order.deliveryAddress as Any,
-                DatabaseOrderFieldNames.pickUpPointID.rawValue: order.pickUpPointID as Any,
-                DatabaseOrderFieldNames.deliveryPaymentMethod.rawValue: order.deliveryPaymentMethod.rawValue,
-                DatabaseOrderFieldNames.deliveryComment.rawValue: order.deliveryComment,
-                DatabaseOrderFieldNames.deliveryProducts.rawValue: order.deliveryProducts,
-                DatabaseOrderFieldNames.totalPrice.rawValue: order.totalPrice,
-                DatabaseOrderFieldNames.orderDate.rawValue: order.orderDate,
+                DatabaseOrderFieldsNames.phoneNumber.rawValue: order.phoneNumber,
+                DatabaseOrderFieldsNames.deliveryMethod.rawValue: order.deliveryMethod.rawValue,
+                DatabaseOrderFieldsNames.deliveryAddress.rawValue: order.deliveryAddress as Any,
+                DatabaseOrderFieldsNames.pickUpPointID.rawValue: order.pickUpPointID as Any,
+                DatabaseOrderFieldsNames.deliveryPaymentMethod.rawValue: order.deliveryPaymentMethod.rawValue,
+                DatabaseOrderFieldsNames.deliveryComment.rawValue: order.deliveryComment,
+                DatabaseOrderFieldsNames.deliveryProducts.rawValue: order.deliveryProducts,
+                DatabaseOrderFieldsNames.totalPrice.rawValue: order.totalPrice,
             ]
         ]
 

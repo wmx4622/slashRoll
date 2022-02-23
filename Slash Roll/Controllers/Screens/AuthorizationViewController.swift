@@ -112,11 +112,19 @@ class AuthorizationViewController: SRScrollableViewController {
     }
 
     @objc private func forgotPasswordButtonDidTapped() {
-        navigationController?.pushViewController(RestorePasswordViewController(), animated: true)
+        if let navigationController = navigationController {
+            navigationController.pushViewController(RestorePasswordViewController(), animated: true)
+        } else {
+            present(RestorePasswordViewController(), animated: true)
+        }
     }
 
     @objc private func registerButtonDidTap() {
-        navigationController?.pushViewController(RegistrationViewController(), animated: true)
+        if let navigationController = navigationController {
+        navigationController.pushViewController(RegistrationViewController(), animated: true)
+        } else {
+            present(RegistrationViewController(), animated: true, completion: nil)
+        }
     }
 
 

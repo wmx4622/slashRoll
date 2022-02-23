@@ -20,7 +20,7 @@
 		D552E97F27BD6F3300648887 /* CartTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552E97E27BD6F3300648887 /* CartTableViewDataSource.swift */; };
 		D552E98127BD915C00648887 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552E98027BD915C00648887 /* CartTableViewCell.swift */; };
 		D5540C9427C5115700528F62 /* OrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5540C9327C5115700528F62 /* OrderManager.swift */; };
-		D5540C9627C5789F00528F62 /* DatabaseOrderFieldNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5540C9527C5789F00528F62 /* DatabaseOrderFieldNames.swift */; };
+		D5540C9627C5789F00528F62 /* DatabaseOrderFieldsNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5540C9527C5789F00528F62 /* DatabaseOrderFieldsNames.swift */; };
 		D5541EE82772309F0075BD86 /* RestorePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */; };
 		D557A61327B033E400CC6EC6 /* SRSearchBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557A61227B033E400CC6EC6 /* SRSearchBarController.swift */; };
 		D55A92BB27BEC2A800AADC14 /* SRTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A92BA27BEC2A800AADC14 /* SRTabBarController.swift */; };
@@ -34,7 +34,6 @@
 		D56610BA276EA2DC00FEA131 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56610B9276EA2DC00FEA131 /* RegistrationViewController.swift */; };
 		D56B57A927AF38D300DB097D /* CatalogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B57A827AF38D300DB097D /* CatalogTableViewCell.swift */; };
 		D56B57AC27AF39BE00DB097D /* SRProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B57AB27AF39BE00DB097D /* SRProduct.swift */; };
-		D56B57AF27AF3C8700DB097D /* CatalogNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B57AE27AF3C8700DB097D /* CatalogNavigationView.swift */; };
 		D572EE5B27C1531800FE4CE8 /* FormOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572EE5A27C1531800FE4CE8 /* FormOrderController.swift */; };
 		D572EE5D27C1ABE500FE4CE8 /* SRSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572EE5C27C1ABE500FE4CE8 /* SRSegmentedControl.swift */; };
 		D5732E9327ADA5880012C049 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5732E9227ADA5880012C049 /* CatalogViewController.swift */; };
@@ -67,7 +66,7 @@
 		D552E97E27BD6F3300648887 /* CartTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewDataSource.swift; sourceTree = "<group>"; };
 		D552E98027BD915C00648887 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
 		D5540C9327C5115700528F62 /* OrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderManager.swift; sourceTree = "<group>"; };
-		D5540C9527C5789F00528F62 /* DatabaseOrderFieldNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseOrderFieldNames.swift; sourceTree = "<group>"; };
+		D5540C9527C5789F00528F62 /* DatabaseOrderFieldsNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseOrderFieldsNames.swift; sourceTree = "<group>"; };
 		D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewController.swift; sourceTree = "<group>"; };
 		D557A61227B033E400CC6EC6 /* SRSearchBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRSearchBarController.swift; sourceTree = "<group>"; };
 		D55A92BA27BEC2A800AADC14 /* SRTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRTabBarController.swift; sourceTree = "<group>"; };
@@ -81,7 +80,6 @@
 		D56610B9276EA2DC00FEA131 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		D56B57A827AF38D300DB097D /* CatalogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableViewCell.swift; sourceTree = "<group>"; };
 		D56B57AB27AF39BE00DB097D /* SRProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRProduct.swift; sourceTree = "<group>"; };
-		D56B57AE27AF3C8700DB097D /* CatalogNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogNavigationView.swift; sourceTree = "<group>"; };
 		D572EE5A27C1531800FE4CE8 /* FormOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormOrderController.swift; sourceTree = "<group>"; };
 		D572EE5C27C1ABE500FE4CE8 /* SRSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRSegmentedControl.swift; sourceTree = "<group>"; };
 		D5732E9227ADA5880012C049 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +129,33 @@
 				EFF4E395164C6ABB1AD2B4B9 /* Pods_Slash_Roll.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D527B8EA27C66E6B00E89298 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D5540C9327C5115700528F62 /* OrderManager.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D527B8EB27C66EA300E89298 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D54BBE6227C3CA0200F39896 /* DeliveryMethods.swift */,
+				D54FC84427C29027006286F7 /* SROrder.swift */,
+				D54FC84227C26ACB006286F7 /* PaymentMethods.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D527B8EC27C66EB300E89298 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D572EE5A27C1531800FE4CE8 /* FormOrderController.swift */,
+				D54FC84A27C2EF7A006286F7 /* PickUpPointPickerPopup.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D552E97B27BD1FCF00648887 /* Cart */ = {
@@ -186,7 +211,7 @@
 				D56610B6276E41CE00FEA131 /* SRColors.swift */,
 				D5C7C55927B2BFDF009837E6 /* DatabaseCollectionsNames.swift */,
 				D55A92BC27BEE04600AADC14 /* DatabaseProductFieldsNames.swift */,
-				D5540C9527C5789F00528F62 /* DatabaseOrderFieldNames.swift */,
+				D5540C9527C5789F00528F62 /* DatabaseOrderFieldsNames.swift */,
 				D55A92BE27BEE0C100AADC14 /* TabBarTabs.swift */,
 			);
 			path = Constants;
@@ -220,7 +245,6 @@
 		D56B57A627AF387F00DB097D /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
-				D56B57AD27AF3C6800DB097D /* CatalogNavigationView */,
 				D56B57A727AF38C200DB097D /* Cells */,
 				D5732E9227ADA5880012C049 /* CatalogViewController.swift */,
 				D5732E9627ADBED00012C049 /* CatalogTableViewDataSource.swift */,
@@ -244,23 +268,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		D56B57AD27AF3C6800DB097D /* CatalogNavigationView */ = {
-			isa = PBXGroup;
-			children = (
-				D56B57AE27AF3C8700DB097D /* CatalogNavigationView.swift */,
-			);
-			path = CatalogNavigationView;
-			sourceTree = "<group>";
-		};
 		D572EE5E27C1D10800FE4CE8 /* FormOrderController */ = {
 			isa = PBXGroup;
 			children = (
-				D572EE5A27C1531800FE4CE8 /* FormOrderController.swift */,
-				D5540C9327C5115700528F62 /* OrderManager.swift */,
-				D54BBE6227C3CA0200F39896 /* DeliveryMethods.swift */,
-				D54FC84A27C2EF7A006286F7 /* PickUpPointPickerPopup.swift */,
-				D54FC84427C29027006286F7 /* SROrder.swift */,
-				D54FC84227C26ACB006286F7 /* PaymentMethods.swift */,
+				D527B8EC27C66EB300E89298 /* Views */,
+				D527B8EA27C66E6B00E89298 /* Helpers */,
+				D527B8EB27C66EA300E89298 /* Models */,
 			);
 			path = FormOrderController;
 			sourceTree = "<group>";
@@ -453,8 +466,7 @@
 				D56610BA276EA2DC00FEA131 /* RegistrationViewController.swift in Sources */,
 				D552E97F27BD6F3300648887 /* CartTableViewDataSource.swift in Sources */,
 				D54BBE6327C3CA0200F39896 /* DeliveryMethods.swift in Sources */,
-				D56B57AF27AF3C8700DB097D /* CatalogNavigationView.swift in Sources */,
-				D5540C9627C5789F00528F62 /* DatabaseOrderFieldNames.swift in Sources */,
+				D5540C9627C5789F00528F62 /* DatabaseOrderFieldsNames.swift in Sources */,
 				D552E98127BD915C00648887 /* CartTableViewCell.swift in Sources */,
 				D5E848BB2767F6FB0050F799 /* AppDelegate.swift in Sources */,
 				D557A61327B033E400CC6EC6 /* SRSearchBarController.swift in Sources */,
