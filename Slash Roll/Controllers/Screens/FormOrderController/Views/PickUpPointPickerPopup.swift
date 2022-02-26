@@ -13,7 +13,7 @@ class PickUpPointPickerPopup: UIViewController {
     //MARK: - Properties
 
     private(set) lazy var selectedComponent = 0
-    private var pickUpPonints = ["Победителей 111, Минск", "Ратомская 2, Минск"]
+    private var pickUpPonints = ["Победителей 111, Минск", "Скорины 25/3, Минск"]
 
     //MARK: - GUI Varibles
 

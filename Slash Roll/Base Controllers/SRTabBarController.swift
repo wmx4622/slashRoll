@@ -27,10 +27,14 @@ class SRTabBarController: UITabBarController {
         let cartController = CartViewController()
         cartController.tabBarItem = UITabBarItem(title: "Корзина", image: UIImage(systemName: "cart"), selectedImage: UIImage(systemName: "cart.fill"))
 
+        let mapController = MapViewController()
+        mapController.tabBarItem = UITabBarItem(title: "Карта", image: UIImage(systemName: "map"), selectedImage: UIImage(systemName: "map.fill"))
+
         setViewControllers(
             [
                 UINavigationController(rootViewController: catalogController),
-                UINavigationController(rootViewController: cartController)
+                UINavigationController(rootViewController: cartController),
+                UINavigationController(rootViewController: mapController)
             ],
             animated: true
         )

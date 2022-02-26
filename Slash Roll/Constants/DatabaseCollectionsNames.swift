@@ -11,5 +11,6 @@ import Foundation
 enum DatabaseCollectionsNames: String {
     case products = "products"
     case orders = "orders"
+    case markets = "markets"
 }
 

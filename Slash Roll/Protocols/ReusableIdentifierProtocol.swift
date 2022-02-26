@@ -8,10 +8,10 @@
 import UIKit
 
 
-protocol ReusableCell: AnyObject {
+protocol ReusableIdentifier: AnyObject {
     static var reuseIdentifier: String { get }
 }
 
-extension ReusableCell where Self: UIView {
+extension ReusableIdentifier where Self: UIView {
     static var reuseIdentifier: String { String(describing: Self.self) }
 }

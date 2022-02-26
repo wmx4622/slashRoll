@@ -22,6 +22,7 @@
 		D5540C9627C5789F00528F62 /* DatabaseOrderFieldsNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5540C9527C5789F00528F62 /* DatabaseOrderFieldsNames.swift */; };
 		D5541EE82772309F0075BD86 /* RestorePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */; };
 		D557A61327B033E400CC6EC6 /* SRSearchBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557A61227B033E400CC6EC6 /* SRSearchBarController.swift */; };
+		D5597EC227C6FE98006BDAFA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5597EC127C6FE98006BDAFA /* MapViewController.swift */; };
 		D55A92BB27BEC2A800AADC14 /* SRTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A92BA27BEC2A800AADC14 /* SRTabBarController.swift */; };
 		D55A92BD27BEE04600AADC14 /* DatabaseProductFieldsNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A92BC27BEE04600AADC14 /* DatabaseProductFieldsNames.swift */; };
 		D55A92BF27BEE0C100AADC14 /* TabBarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A92BE27BEE0C100AADC14 /* TabBarTabs.swift */; };
@@ -33,13 +34,19 @@
 		D56610BA276EA2DC00FEA131 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56610B9276EA2DC00FEA131 /* RegistrationViewController.swift */; };
 		D56B57A927AF38D300DB097D /* CatalogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B57A827AF38D300DB097D /* CatalogTableViewCell.swift */; };
 		D56B57AC27AF39BE00DB097D /* SRProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B57AB27AF39BE00DB097D /* SRProduct.swift */; };
+		D57110D027C7F0A50079D351 /* SRMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57110CF27C7F0A50079D351 /* SRMarket.swift */; };
+		D57110D427C808A30079D351 /* MarketDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57110D327C808A30079D351 /* MarketDataManager.swift */; };
+		D57110D627C84A2F0079D351 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57110D527C84A2F0079D351 /* CustomAnnotation.swift */; };
 		D572EE5B27C1531800FE4CE8 /* FormOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572EE5A27C1531800FE4CE8 /* FormOrderController.swift */; };
 		D572EE5D27C1ABE500FE4CE8 /* SRSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572EE5C27C1ABE500FE4CE8 /* SRSegmentedControl.swift */; };
 		D5732E9327ADA5880012C049 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5732E9227ADA5880012C049 /* CatalogViewController.swift */; };
 		D5732E9727ADBED00012C049 /* CatalogTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5732E9627ADBED00012C049 /* CatalogTableViewDataSource.swift */; };
-		D5732E9A27ADE7020012C049 /* ReusableCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5732E9927ADE7020012C049 /* ReusableCellProtocol.swift */; };
+		D5732E9A27ADE7020012C049 /* ReusableIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5732E9927ADE7020012C049 /* ReusableIdentifierProtocol.swift */; };
 		D5847E7E27BFB7F3002F2FD9 /* CartTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5847E7D27BFB7F3002F2FD9 /* CartTableViewCellDelegate.swift */; };
 		D5C7C55A27B2BFDF009837E6 /* DatabaseCollectionsNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7C55927B2BFDF009837E6 /* DatabaseCollectionsNames.swift */; };
+		D5D97AB227C93CF000F811E7 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D97AB127C93CF000F811E7 /* CustomAnnotationView.swift */; };
+		D5D97AB427C9687C00F811E7 /* CustomUserAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D97AB327C9687C00F811E7 /* CustomUserAnnotation.swift */; };
+		D5D97AB627C9B86400F811E7 /* DataBaseMarketFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D97AB527C9B86400F811E7 /* DataBaseMarketFields.swift */; };
 		D5DAFC3C276920C600520CE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5DAFC3B276920C600520CE9 /* GoogleService-Info.plist */; };
 		D5E3EFF1276FB71800ECC6EF /* Extension + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E3EFF0276FB71800ECC6EF /* Extension + String.swift */; };
 		D5E3EFF3276FCA2400ECC6EF /* Extension + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E3EFF2276FCA2400ECC6EF /* Extension + UIViewController.swift */; };
@@ -67,6 +74,7 @@
 		D5540C9527C5789F00528F62 /* DatabaseOrderFieldsNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseOrderFieldsNames.swift; sourceTree = "<group>"; };
 		D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewController.swift; sourceTree = "<group>"; };
 		D557A61227B033E400CC6EC6 /* SRSearchBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRSearchBarController.swift; sourceTree = "<group>"; };
+		D5597EC127C6FE98006BDAFA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D55A92BA27BEC2A800AADC14 /* SRTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRTabBarController.swift; sourceTree = "<group>"; };
 		D55A92BC27BEE04600AADC14 /* DatabaseProductFieldsNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProductFieldsNames.swift; sourceTree = "<group>"; };
 		D55A92BE27BEE0C100AADC14 /* TabBarTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarTabs.swift; sourceTree = "<group>"; };
@@ -78,13 +86,19 @@
 		D56610B9276EA2DC00FEA131 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		D56B57A827AF38D300DB097D /* CatalogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableViewCell.swift; sourceTree = "<group>"; };
 		D56B57AB27AF39BE00DB097D /* SRProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRProduct.swift; sourceTree = "<group>"; };
+		D57110CF27C7F0A50079D351 /* SRMarket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRMarket.swift; sourceTree = "<group>"; };
+		D57110D327C808A30079D351 /* MarketDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDataManager.swift; sourceTree = "<group>"; };
+		D57110D527C84A2F0079D351 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		D572EE5A27C1531800FE4CE8 /* FormOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormOrderController.swift; sourceTree = "<group>"; };
 		D572EE5C27C1ABE500FE4CE8 /* SRSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRSegmentedControl.swift; sourceTree = "<group>"; };
 		D5732E9227ADA5880012C049 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		D5732E9627ADBED00012C049 /* CatalogTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableViewDataSource.swift; sourceTree = "<group>"; };
-		D5732E9927ADE7020012C049 /* ReusableCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCellProtocol.swift; sourceTree = "<group>"; };
+		D5732E9927ADE7020012C049 /* ReusableIdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableIdentifierProtocol.swift; sourceTree = "<group>"; };
 		D5847E7D27BFB7F3002F2FD9 /* CartTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		D5C7C55927B2BFDF009837E6 /* DatabaseCollectionsNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCollectionsNames.swift; sourceTree = "<group>"; };
+		D5D97AB127C93CF000F811E7 /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
+		D5D97AB327C9687C00F811E7 /* CustomUserAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUserAnnotation.swift; sourceTree = "<group>"; };
+		D5D97AB527C9B86400F811E7 /* DataBaseMarketFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseMarketFields.swift; sourceTree = "<group>"; };
 		D5DAFC3B276920C600520CE9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D5E3EFF0276FB71800ECC6EF /* Extension + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + String.swift"; sourceTree = "<group>"; };
 		D5E3EFF2276FCA2400ECC6EF /* Extension + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIViewController.swift"; sourceTree = "<group>"; };
@@ -209,6 +223,7 @@
 				D5C7C55927B2BFDF009837E6 /* DatabaseCollectionsNames.swift */,
 				D55A92BC27BEE04600AADC14 /* DatabaseProductFieldsNames.swift */,
 				D5540C9527C5789F00528F62 /* DatabaseOrderFieldsNames.swift */,
+				D5D97AB527C9B86400F811E7 /* DataBaseMarketFields.swift */,
 				D55A92BE27BEE0C100AADC14 /* TabBarTabs.swift */,
 			);
 			path = Constants;
@@ -232,6 +247,7 @@
 				D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */,
 				D56610B9276EA2DC00FEA131 /* RegistrationViewController.swift */,
 				D533DCBC27B59B0C00D99645 /* ProductDetailsViewController.swift */,
+				D57110CE27C7F0890079D351 /* MapViewController */,
 				D572EE5E27C1D10800FE4CE8 /* FormOrderController */,
 				D56B57A627AF387F00DB097D /* Catalog */,
 				D552E97B27BD1FCF00648887 /* Cart */,
@@ -265,6 +281,33 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		D57110CE27C7F0890079D351 /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D5597EC127C6FE98006BDAFA /* MapViewController.swift */,
+				D5D97AB927C9CB3700F811E7 /* VIews */,
+				D57110D227C7FE220079D351 /* Helpers */,
+				D57110D127C7F0AB0079D351 /* Models */,
+			);
+			path = MapViewController;
+			sourceTree = "<group>";
+		};
+		D57110D127C7F0AB0079D351 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D57110CF27C7F0A50079D351 /* SRMarket.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D57110D227C7FE220079D351 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D57110D327C808A30079D351 /* MarketDataManager.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		D572EE5E27C1D10800FE4CE8 /* FormOrderController */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,10 +321,20 @@
 		D5732E9827ADE0350012C049 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				D5732E9927ADE7020012C049 /* ReusableCellProtocol.swift */,
+				D5732E9927ADE7020012C049 /* ReusableIdentifierProtocol.swift */,
 				D5847E7D27BFB7F3002F2FD9 /* CartTableViewCellDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D5D97AB927C9CB3700F811E7 /* VIews */ = {
+			isa = PBXGroup;
+			children = (
+				D5D97AB127C93CF000F811E7 /* CustomAnnotationView.swift */,
+				D57110D527C84A2F0079D351 /* CustomAnnotation.swift */,
+				D5D97AB327C9687C00F811E7 /* CustomUserAnnotation.swift */,
+			);
+			path = VIews;
 			sourceTree = "<group>";
 		};
 		D5E3EFEF276FB6B200ECC6EF /* Extensions */ = {
@@ -449,6 +502,8 @@
 			files = (
 				D55A92BB27BEC2A800AADC14 /* SRTabBarController.swift in Sources */,
 				D55A92BF27BEE0C100AADC14 /* TabBarTabs.swift in Sources */,
+				D5D97AB427C9687C00F811E7 /* CustomUserAnnotation.swift in Sources */,
+				D57110D027C7F0A50079D351 /* SRMarket.swift in Sources */,
 				D5847E7E27BFB7F3002F2FD9 /* CartTableViewCellDelegate.swift in Sources */,
 				D5E3EFF1276FB71800ECC6EF /* Extension + String.swift in Sources */,
 				D55A97EA276A6893003DC200 /* SRLabel.swift in Sources */,
@@ -465,13 +520,17 @@
 				D54BBE6327C3CA0200F39896 /* DeliveryMethods.swift in Sources */,
 				D5540C9627C5789F00528F62 /* DatabaseOrderFieldsNames.swift in Sources */,
 				D552E98127BD915C00648887 /* CartTableViewCell.swift in Sources */,
+				D5D97AB627C9B86400F811E7 /* DataBaseMarketFields.swift in Sources */,
+				D5D97AB227C93CF000F811E7 /* CustomAnnotationView.swift in Sources */,
 				D5E848BB2767F6FB0050F799 /* AppDelegate.swift in Sources */,
+				D5597EC227C6FE98006BDAFA /* MapViewController.swift in Sources */,
 				D557A61327B033E400CC6EC6 /* SRSearchBarController.swift in Sources */,
 				D54FC84527C29027006286F7 /* SROrder.swift in Sources */,
 				D56610B7276E41CE00FEA131 /* SRColors.swift in Sources */,
 				D533DCBD27B59B0C00D99645 /* ProductDetailsViewController.swift in Sources */,
-				D5732E9A27ADE7020012C049 /* ReusableCellProtocol.swift in Sources */,
+				D5732E9A27ADE7020012C049 /* ReusableIdentifierProtocol.swift in Sources */,
 				D5C7C55A27B2BFDF009837E6 /* DatabaseCollectionsNames.swift in Sources */,
+				D57110D427C808A30079D351 /* MarketDataManager.swift in Sources */,
 				D54FC84B27C2EF7A006286F7 /* PickUpPointPickerPopup.swift in Sources */,
 				D5E3EFF3276FCA2400ECC6EF /* Extension + UIViewController.swift in Sources */,
 				D55A97E8276A4B5C003DC200 /* SRButton.swift in Sources */,
@@ -485,6 +544,7 @@
 				D5E848BD2767F6FB0050F799 /* SceneDelegate.swift in Sources */,
 				D572EE5B27C1531800FE4CE8 /* FormOrderController.swift in Sources */,
 				D572EE5D27C1ABE500FE4CE8 /* SRSegmentedControl.swift in Sources */,
+				D57110D627C84A2F0079D351 /* CustomAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

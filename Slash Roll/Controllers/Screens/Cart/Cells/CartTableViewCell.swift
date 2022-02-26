@@ -8,7 +8,7 @@
 import UIKit
 
 
-class CartTableViewCell: UITableViewCell, ReusableCell {
+class CartTableViewCell: UITableViewCell, ReusableIdentifier {
 
     //MARK:- Properties
     

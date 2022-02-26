@@ -10,7 +10,7 @@ import Firebase
 import FirebaseUI
 
 
-class CatalogTableViewCell: UITableViewCell, ReusableCell {
+class CatalogTableViewCell: UITableViewCell, ReusableIdentifier {
 
     //MARK: - Properties
 
