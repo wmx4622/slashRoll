@@ -15,6 +15,10 @@ class CustomUserAnnotationView: MKUserLocationView, ReusableIdentifier {
     override func prepareForDisplay() {
         super.prepareForDisplay()
         tintColor = SRColors.cherryColor
+        layer.shadowPath = UIBezierPath(
+            roundedRect: .zero,
+            cornerRadius: 22
+          ).cgPath
     }
 }
 

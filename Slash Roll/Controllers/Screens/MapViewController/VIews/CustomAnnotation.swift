@@ -27,6 +27,7 @@ class CustomAnnotation: NSObject, MKAnnotation {
         self.address = address
         self.workingHours = workingHours
         
+        
     }
 
 

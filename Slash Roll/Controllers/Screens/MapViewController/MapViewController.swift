@@ -35,8 +35,18 @@ class MapViewController: UIViewController {
         clearOverlayButton.setImage(UIImage(systemName: "clear" ), for: .normal)
         clearOverlayButton.contentVerticalAlignment = .fill
         clearOverlayButton.contentHorizontalAlignment = .fill
-        clearOverlayButton.addTarget(self, action: #selector(removeAllOverlays), for: .touchUpInside)
+        clearOverlayButton.addTarget(self, action: #selector(removeAllOverlaysButtonDidTapped), for: .touchUpInside)
         return clearOverlayButton
+    }()
+
+    private lazy var centerCameraButton: UIButton = {
+        let centerCameraButton = UIButton()
+        centerCameraButton.tintColor = SRColors.cherryColor
+        centerCameraButton.setImage(UIImage(systemName: "location.magnifyingglass" ), for: .normal)
+        centerCameraButton.contentVerticalAlignment = .fill
+        centerCameraButton.contentHorizontalAlignment = .fill
+        centerCameraButton.addTarget(self, action: #selector(centerCameraButtonDidTapped), for: .touchUpInside)
+        return centerCameraButton
     }()
 
     //MARK: - Life Cycle
@@ -49,11 +59,13 @@ class MapViewController: UIViewController {
         addMarketAnnotations()
         configureLocationManager()
         centerCamera()
+        showHideClearOverlayButton()
     }
 
     private func addSubviews() {
         view.addSubview(mapView)
         view.addSubview(clearOverlayButton)
+        view.addSubview(centerCameraButton)
     }
     
     //MARK: - Layout Configuration
@@ -65,6 +77,11 @@ class MapViewController: UIViewController {
 
         clearOverlayButton.snp.makeConstraints { make in
             make.leading.top.equalTo(view.safeAreaLayoutGuide)
+            make.width.height.equalTo(30)
+        }
+
+        centerCameraButton.snp.makeConstraints { make in
+            make.trailing.top.equalTo(view.safeAreaLayoutGuide)
             make.width.height.equalTo(30)
         }
     }
@@ -99,8 +116,13 @@ class MapViewController: UIViewController {
 
     //MARK: - User Interaction
 
-    @objc private func removeAllOverlays() {
+    @objc private func removeAllOverlaysButtonDidTapped() {
         mapView.removeOverlays(mapView.overlays)
+        showHideClearOverlayButton()
+    }
+
+    @objc private func centerCameraButtonDidTapped() {
+        centerCamera()
     }
 }
 
@@ -170,8 +192,13 @@ extension MapViewController: MKMapViewDelegate {
             ),
             animated: true
         )
+
+        showHideClearOverlayButton()
     }
 
+    private func showHideClearOverlayButton() {
+        clearOverlayButton.isHidden = mapView.overlays.isEmpty
+    }
 }
 
 //MARK: - Location Manager Delegate

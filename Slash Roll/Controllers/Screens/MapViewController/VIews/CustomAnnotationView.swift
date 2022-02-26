@@ -17,14 +17,12 @@ class CustomAnnotationView: MKMarkerAnnotationView, ReusableIdentifier {
         super.prepareForDisplay()
         tintColor = SRColors.cherryLightColor
         markerTintColor = SRColors.cherryLightColor
+
         canShowCallout = true
         animatesWhenAdded = true
-
-        let detailsView = UIView()
-        detailCalloutAccessoryView = detailsView
-        let callaoutButton = UIButton(type: .detailDisclosure)
-        callaoutButton.setImage(UIImage(systemName: "applepencil"), for: .normal)
-        leftCalloutAccessoryView = callaoutButton
+        let leftCallaoutButton = UIButton(type: .detailDisclosure)
+        leftCallaoutButton.setImage(UIImage(systemName: "applepencil"), for: .normal)
+        leftCalloutAccessoryView = leftCallaoutButton
         rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
     }
 }
