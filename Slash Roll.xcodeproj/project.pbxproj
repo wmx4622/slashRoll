@@ -30,6 +30,10 @@
 		D55A97E8276A4B5C003DC200 /* SRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A97E7276A4B5C003DC200 /* SRButton.swift */; };
 		D55A97EA276A6893003DC200 /* SRLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A97E9276A6893003DC200 /* SRLabel.swift */; };
 		D55A97EC276A6A7B003DC200 /* SRTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55A97EB276A6A7B003DC200 /* SRTextField.swift */; };
+		D55FBAD327CAB1DA0089458E /* ProfileVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55FBAD227CAB1DA0089458E /* ProfileVIewController.swift */; };
+		D55FBAD827CB088E0089458E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55FBAD727CB088E0089458E /* SettingsViewController.swift */; };
+		D55FBADA27CB09F50089458E /* TitledDecoratedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55FBAD927CB09F50089458E /* TitledDecoratedButton.swift */; };
+		D55FBADD27CB1FC50089458E /* DataBaseUserFieldsNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55FBADC27CB1FC50089458E /* DataBaseUserFieldsNames.swift */; };
 		D56610B7276E41CE00FEA131 /* SRColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56610B6276E41CE00FEA131 /* SRColors.swift */; };
 		D56610BA276EA2DC00FEA131 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56610B9276EA2DC00FEA131 /* RegistrationViewController.swift */; };
 		D56B57A927AF38D300DB097D /* CatalogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B57A827AF38D300DB097D /* CatalogTableViewCell.swift */; };
@@ -82,6 +86,10 @@
 		D55A97E7276A4B5C003DC200 /* SRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRButton.swift; sourceTree = "<group>"; };
 		D55A97E9276A6893003DC200 /* SRLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRLabel.swift; sourceTree = "<group>"; };
 		D55A97EB276A6A7B003DC200 /* SRTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRTextField.swift; sourceTree = "<group>"; };
+		D55FBAD227CAB1DA0089458E /* ProfileVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVIewController.swift; sourceTree = "<group>"; };
+		D55FBAD727CB088E0089458E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D55FBAD927CB09F50089458E /* TitledDecoratedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledDecoratedButton.swift; sourceTree = "<group>"; };
+		D55FBADC27CB1FC50089458E /* DataBaseUserFieldsNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseUserFieldsNames.swift; sourceTree = "<group>"; };
 		D56610B6276E41CE00FEA131 /* SRColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRColors.swift; sourceTree = "<group>"; };
 		D56610B9276EA2DC00FEA131 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		D56B57A827AF38D300DB097D /* CatalogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableViewCell.swift; sourceTree = "<group>"; };
@@ -212,8 +220,18 @@
 				D55A97E9276A6893003DC200 /* SRLabel.swift */,
 				D55A97EB276A6A7B003DC200 /* SRTextField.swift */,
 				D523C5C427B711F90053EF86 /* SRQuantityButton.swift */,
+				D55FBAD927CB09F50089458E /* TitledDecoratedButton.swift */,
 			);
 			path = "Base Elements";
+			sourceTree = "<group>";
+		};
+		D55FBADB27CB1DE20089458E /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D55FBAD227CAB1DA0089458E /* ProfileVIewController.swift */,
+				D55FBAD727CB088E0089458E /* SettingsViewController.swift */,
+			);
+			path = ProfileViewController;
 			sourceTree = "<group>";
 		};
 		D56610B5276E414A00FEA131 /* Constants */ = {
@@ -222,6 +240,7 @@
 				D56610B6276E41CE00FEA131 /* SRColors.swift */,
 				D5C7C55927B2BFDF009837E6 /* DatabaseCollectionsNames.swift */,
 				D55A92BC27BEE04600AADC14 /* DatabaseProductFieldsNames.swift */,
+				D55FBADC27CB1FC50089458E /* DataBaseUserFieldsNames.swift */,
 				D5540C9527C5789F00528F62 /* DatabaseOrderFieldsNames.swift */,
 				D5D97AB527C9B86400F811E7 /* DataBaseMarketFields.swift */,
 				D55A92BE27BEE0C100AADC14 /* TabBarTabs.swift */,
@@ -247,6 +266,7 @@
 				D5541EE72772309F0075BD86 /* RestorePasswordViewController.swift */,
 				D56610B9276EA2DC00FEA131 /* RegistrationViewController.swift */,
 				D533DCBC27B59B0C00D99645 /* ProductDetailsViewController.swift */,
+				D55FBADB27CB1DE20089458E /* ProfileViewController */,
 				D57110CE27C7F0890079D351 /* MapViewController */,
 				D572EE5E27C1D10800FE4CE8 /* FormOrderController */,
 				D56B57A627AF387F00DB097D /* Catalog */,
@@ -502,6 +522,7 @@
 			files = (
 				D55A92BB27BEC2A800AADC14 /* SRTabBarController.swift in Sources */,
 				D55A92BF27BEE0C100AADC14 /* TabBarTabs.swift in Sources */,
+				D55FBADA27CB09F50089458E /* TitledDecoratedButton.swift in Sources */,
 				D5D97AB427C9687C00F811E7 /* CustomUserAnnotation.swift in Sources */,
 				D57110D027C7F0A50079D351 /* SRMarket.swift in Sources */,
 				D5847E7E27BFB7F3002F2FD9 /* CartTableViewCellDelegate.swift in Sources */,
@@ -510,6 +531,7 @@
 				D55A92BD27BEE04600AADC14 /* DatabaseProductFieldsNames.swift in Sources */,
 				D5E848BF2767F6FB0050F799 /* AuthorizationViewController.swift in Sources */,
 				D55A97EC276A6A7B003DC200 /* SRTextField.swift in Sources */,
+				D55FBAD327CAB1DA0089458E /* ProfileVIewController.swift in Sources */,
 				D5541EE82772309F0075BD86 /* RestorePasswordViewController.swift in Sources */,
 				D56B57A927AF38D300DB097D /* CatalogTableViewCell.swift in Sources */,
 				D5732E9327ADA5880012C049 /* CatalogViewController.swift in Sources */,
@@ -521,6 +543,7 @@
 				D5540C9627C5789F00528F62 /* DatabaseOrderFieldsNames.swift in Sources */,
 				D552E98127BD915C00648887 /* CartTableViewCell.swift in Sources */,
 				D5D97AB627C9B86400F811E7 /* DataBaseMarketFields.swift in Sources */,
+				D55FBAD827CB088E0089458E /* SettingsViewController.swift in Sources */,
 				D5D97AB227C93CF000F811E7 /* CustomAnnotationView.swift in Sources */,
 				D5E848BB2767F6FB0050F799 /* AppDelegate.swift in Sources */,
 				D5597EC227C6FE98006BDAFA /* MapViewController.swift in Sources */,
@@ -533,6 +556,7 @@
 				D57110D427C808A30079D351 /* MarketDataManager.swift in Sources */,
 				D54FC84B27C2EF7A006286F7 /* PickUpPointPickerPopup.swift in Sources */,
 				D5E3EFF3276FCA2400ECC6EF /* Extension + UIViewController.swift in Sources */,
+				D55FBADD27CB1FC50089458E /* DataBaseUserFieldsNames.swift in Sources */,
 				D55A97E8276A4B5C003DC200 /* SRButton.swift in Sources */,
 				D5732E9727ADBED00012C049 /* CatalogTableViewDataSource.swift in Sources */,
 				D55A92C127BEE1D600AADC14 /* SRProductsInCart.swift in Sources */,

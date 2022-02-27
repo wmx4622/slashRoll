@@ -214,7 +214,7 @@ class FormOrderController: SRScrollableViewController {
     private func configureLayout() {
 
         deliveryMethodLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
+            make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().inset(8)
         }
 

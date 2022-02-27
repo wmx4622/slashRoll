@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    let tabBarController = SRTabBarController()
 
     var window: UIWindow?
 
@@ -20,47 +22,53 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
 
         let window = UIWindow(windowScene: scene)
-        let tabBarController = SRTabBarController()
 
-//        let authorizationNavigationController = UINavigationController(rootViewController: authorizationViewController)
-//
-//        authorizationViewController.navigationController?.navigationBar.tintColor = SRColors.cherryColor
-//        authorizationViewController.navigationController?.navigationBar.barTintColor = SRColors.cherryLightColor
-        
+        configureTabBarTabs()
 
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
         self.window = window
     }
 
-    func sceneDidDisconnect(_ scene: UIScene) {
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
-    }
+    func configureTabBarTabs() {
+        let catalogController = CatalogViewController()
+        catalogController.tabBarItem = UITabBarItem(title: "Католог", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
 
-    func sceneDidBecomeActive(_ scene: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
-    }
+        let cartController = CartViewController()
+        cartController.tabBarItem = UITabBarItem(title: "Корзина", image: UIImage(systemName: "cart"), selectedImage: UIImage(systemName: "cart.fill"))
 
-    func sceneWillResignActive(_ scene: UIScene) {
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
-    }
+        let mapController = MapViewController()
+        mapController.tabBarItem = UITabBarItem(title: "Карта", image: UIImage(systemName: "map"), selectedImage: UIImage(systemName: "map.fill"))
 
-    func sceneWillEnterForeground(_ scene: UIScene) {
-        // Called as the scene transitions from the background to the foreground.
-        // Use this method to undo the changes made on entering the background.
-    }
+        let profileController = ProfileViewController()
+        profileController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
 
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
-    }
+        let authorizationController = AuthorizationViewController()
+        authorizationController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
 
+        if Auth.auth().currentUser != nil {
+
+            tabBarController.setViewControllers(
+                [
+                    UINavigationController(rootViewController: catalogController),
+                    UINavigationController(rootViewController: cartController),
+                    UINavigationController(rootViewController: mapController),
+                    UINavigationController(rootViewController: profileController)
+                ],
+                animated: true
+            )
+        } else {
+            tabBarController.setViewControllers(
+                [
+                    UINavigationController(rootViewController: catalogController),
+                    UINavigationController(rootViewController: cartController),
+                    UINavigationController(rootViewController: mapController),
+                    UINavigationController(rootViewController: authorizationController)
+                ],
+                animated: true
+            )
+        }
+    }
 
 }
 

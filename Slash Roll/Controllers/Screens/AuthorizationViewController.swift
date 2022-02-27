@@ -142,6 +142,10 @@ class AuthorizationViewController: SRScrollableViewController {
 
             if let _ = authResult {
                 self?.dismiss(animated: true, completion: nil)
+
+                guard let scene = UIApplication.shared.connectedScenes.first,
+                      let sceneDelegate = scene.delegate as? SceneDelegate else { return }
+                sceneDelegate.configureTabBarTabs()
             }
         }
     }
