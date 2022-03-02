@@ -49,26 +49,10 @@ class ProfileViewController: SRScrollableViewController {
         return nameEmailStackView
     }()
 
-    private lazy var userAddressDescriptionLabel: SRLabel = {
-        let userAddressDescriptionLabel = SRLabel()
-        userAddressDescriptionLabel.text = "Адрес доставки:"
-        userAddressDescriptionLabel.textColor = SRColors.cherryColor
-        userAddressDescriptionLabel.font = .boldSystemFont(ofSize: 16)
-        return userAddressDescriptionLabel
-    }()
-
-    private lazy var userAddressLabel: SRLabel = {
-        let userAddressLabel = SRLabel()
-        userAddressLabel.textColor = SRColors.cherryColor
-        return userAddressLabel
-    }()
-
     private lazy var userAddressStackView: UIStackView = {
         let userAddressStackView = UIStackView()
         userAddressStackView.axis = .horizontal
         userAddressStackView.spacing = 8
-        userAddressStackView.addArrangedSubview(userAddressDescriptionLabel)
-        userAddressStackView.addArrangedSubview(userAddressLabel)
         return userAddressStackView
     }()
 
@@ -106,7 +90,6 @@ class ProfileViewController: SRScrollableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setData()
-        loadUserAddress()
     }
 
     private func configureControllerAppearance() {
@@ -124,7 +107,6 @@ class ProfileViewController: SRScrollableViewController {
         contentView.addSubview(avatarImageView)
         contentView.addSubview(nameEmailStackView)
         contentView.addSubview(menuStackView)
-        contentView.addSubview(userAddressStackView)
     }
 
     //MARK: - Layout Configuration
@@ -142,16 +124,9 @@ class ProfileViewController: SRScrollableViewController {
             make.top.equalToSuperview().offset(8)
         }
 
-        userAddressStackView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(8)
-            make.trailing.lessThanOrEqualToSuperview().inset(24)
-            make.top.equalTo(avatarImageView.snp.bottom).offset(16)
-        }
-
-
         menuStackView.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(8)
-            make.top.equalTo(userAddressStackView.snp.bottom).offset(16)
+            make.top.equalTo(avatarImageView.snp.bottom).offset(16)
             make.bottom.equalToSuperview().inset(20)
         }
     }
@@ -184,22 +159,4 @@ class ProfileViewController: SRScrollableViewController {
         emailLabel.text = Auth.auth().currentUser?.email
         nameLabel.text = Auth.auth().currentUser?.displayName
     }
-
-    //MARK: - Firebase Requests
-
-    private func loadUserAddress() {
-        guard let user = Auth.auth().currentUser else { return }
-        let addresses = Firestore.firestore().collection(DatabaseCollectionsNames.addresses.rawValue)
-        let userAddress = addresses.document(user.uid)
-        userAddress.getDocument { [weak self] (document, error) in
-            if let document = document, document.exists {
-                if let address = document.get(DataBaseUserFieldsNames.address.rawValue) as? String {
-                    self?.userAddressLabel.text = address
-                }
-            } else if let error = error {
-                self?.showAlert(title: "Ошибка", message: error.localizedDescription)
-            }
-        }
-    }
-
 }

@@ -31,12 +31,6 @@ class SettingsViewController: SRScrollableViewController {
         return changeEmailButton
     }()
 
-    private lazy var changeAddressButton: TitledDecoratedButton = {
-        let changeAddressButton = TitledDecoratedButton(title: "Изменить адресс", image: UIImage(systemName: "house"), frame: .zero)
-        changeAddressButton.addTarget(self, action: #selector(changeUserAddressButtonDidTapped), for: .touchUpInside)
-        return changeAddressButton
-    }()
-
     private lazy var settingsStackView: UIStackView = {
         let settingsStackView = UIStackView()
         settingsStackView.axis = .vertical
@@ -45,7 +39,6 @@ class SettingsViewController: SRScrollableViewController {
         settingsStackView.addArrangedSubview(changeNameButton)
         settingsStackView.addArrangedSubview(changePasswordButton)
         settingsStackView.addArrangedSubview(changeEmailButton)
-        settingsStackView.addArrangedSubview(changeAddressButton)
 
         return settingsStackView
     }()
@@ -78,7 +71,6 @@ class SettingsViewController: SRScrollableViewController {
     private func configureLayout() {
         settingsStackView.snp.makeConstraints { make in
             make.leading.top.bottom.equalToSuperview().inset(8)
-
         }
     }
 
@@ -86,9 +78,6 @@ class SettingsViewController: SRScrollableViewController {
 
     @objc private func changeUserNameButtonDidTapped() {
         changeUserName()
-    }
-
-    @objc private func changeUserAddressButtonDidTapped() {
     }
 
     @objc private func changeEmailButtonDidTapped() {
@@ -198,6 +187,4 @@ class SettingsViewController: SRScrollableViewController {
 
         self.present(alert, animated: true, completion: nil)
     }
-
-
 }
